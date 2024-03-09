@@ -5,6 +5,7 @@
   align-items: center;
   font-size: 14px;
   color: #555;
+  
 
   .wrapper {
     width: 100%;
@@ -12,12 +13,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    .search {
-      display: flex;
-      align-items: center;
-      border: 0.5px solid lightgray;
-      padding: 3px;
 
       input {
         margin-right: 10px;
@@ -29,24 +24,19 @@
           font-size: 12px;
         }
       }
-    }
+    
 
-    .items {
-      display: flex;
-      align-items: center;
-      .item {
-        display: flex; /* Use flexbox for item content */
-        align-items: center;
-        margin-right: 20px;
-        position: relative;
+    // .items {
+    //   display: flex;
+    //   align-items: center;
 
-        .icon {
-          font-size: 20px;
-        }
         .avatar{
           width: 30px;
           height: 30px;
-          border-radius: 50%;  
+          border-radius: 50%;
+          float: right; /* Float the image to the right */
+          margin-left: 930px; 
+
         }
         .counter{
             width: 15px;
@@ -66,5 +56,5 @@
         }
       }
     }
-  }
-}
+  
+

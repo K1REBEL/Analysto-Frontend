@@ -16,6 +16,10 @@ export default function Form() {
           <input type="text" placeholder="Enter Organization Name" />
           <input type="text" placeholder="Nish" />
           <input type="text" placeholder="Enter Your Location " />
+          <input type="email" placeholder="Contact E-mail " />
+          <input type="Number" placeholder="Avrage Revenu In The Last Quarter " />
+
+          
           <button className="btn">Send Reqiuest </button>
         </form>
         </div>
