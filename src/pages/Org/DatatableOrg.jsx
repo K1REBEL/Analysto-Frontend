@@ -1,12 +1,12 @@
+import React, { useState } from 'react';
 import "./DatatableOrg.scss";
 import { DataGrid } from '@mui/x-data-grid';
-import { Button } from '@mui/material';
+import { Button, TextField } from '@mui/material';
 
 
 const columns = [
   { field: 'id', headerName: 'ID', width: 70 },
   { field: 'email', headerName: 'Email', width: 130 },
-  
   {
     field: 'fullName',
     headerName: 'Full Name',
@@ -17,17 +17,32 @@ const columns = [
       `${params.row.firstName || ''} ${params.row.lastName || ''}`,
   },
   {
-    field: 'action',
-    headerName: 'Action',
-    className:'action',
+    field: 'edit',
+    headerName: 'Edit',
+    className: 'edit',
     width: 100,
     renderCell: (params) => (
       <Button
-      className="deleteButton"
+        className="configbtn"
+        variant="contained"
+        color="primary"
+        size="small"
+      >
+        Edit
+      </Button>
+    ),
+  },
+  {
+    field: 'action',
+    headerName: 'Action',
+    className: 'action',
+    width: 100,
+    renderCell: (params) => (
+      <Button
+        className="deleteButton"
         variant="contained"
         color="error"
         size="small"
-        onClick={() => handleDelete(params.row.id)}
       >
         Delete
       </Button>
@@ -43,31 +58,73 @@ const rows = [
   { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', email: 'daenerys@example.com' },
 ];
 
-
-const handleDelete = (id) => {
-  console.log(`Delete row with id ${id}`);
-};
-
 function Datatable() {
+  const [newUser, setNewUser] = useState({ id: '', firstName: '', lastName: '', email: '', password: '' });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setNewUser({ ...newUser, [name]: value });
+  };
+
+// Add new user
+  const handleAddUser = () => {
+    const updatedRows = [...rows, newUser];
+    console.log(updatedRows); 
+
+    setNewUser({ id: '', firstName: '', lastName: '', email: '', password: '' });
+  };
+
+  const handleEdit = (id) => {
+    console.log(`Edit row with id ${id}`);
+  };
+
   const handleDelete = (id) => {
     console.log(`Delete row with id ${id}`);
   };
 
   return (
     <div className="datatable">
-      <div className="dataTableAdd">
-        Add New User
+      <div className="dataTableAdd" style={{ borderRadius: '5px', marginBottom: '10px' }}>
+        <TextField
+          name="fullName"
+          label="Full Name"
+          value={newUser.fullName}
+          onChange={handleInputChange}
+          variant="outlined"
+          size="small"
+        />
+        <TextField
+          name="email"
+          label="Email"
+          value={newUser.email}
+          onChange={handleInputChange}
+          variant="outlined"
+          size="small"
+        />
+        <TextField
+          name="password"
+          label="Password"
+          type="password"
+          value={newUser.password}
+          onChange={handleInputChange}
+          variant="outlined"
+          size="small"
+        />
+        <Button
+          variant="contained"
+          color="primary"
+          size="small"
+          onClick={handleAddUser}
+        >
+          Add User
+        </Button>
       </div>
       <DataGrid
         rows={rows}
         columns={columns}
-        initialState={{
-          pagination: {
-            paginationModel: { page: 0, pageSize: 5 },
-          },
-        }}
-        pageSizeOptions={[5, 10]}
+        pageSize={5}
         checkboxSelection
+        disableSelectionOnClick
       />
     </div>
   );
