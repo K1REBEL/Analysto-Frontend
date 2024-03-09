@@ -27,7 +27,6 @@ const columns = [
         variant="contained"
         color="error"
         size="small"
-        onClick={() => handleDelete(params.row.id)}
       >
         Delete
       </Button>

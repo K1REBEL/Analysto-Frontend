@@ -1,8 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Home from "./pages/home/Home";
-import Login from "./pages/Login/Login";
-import Request from "./pages/Login/Request";
+import Login from "./pages/Auth/Login";
+import Request from "./pages/Org/Request";
+import Card from "./pages/User/card.js";
+import Pass from "./pages/Auth/pass.js";
 
 
 
@@ -23,6 +25,14 @@ const router = createBrowserRouter([
   {
     path: "/Request",
     element: <Request />,
+  },
+  {
+    path: "/card",
+    element: <Card />,
+  },
+  {
+    path: "/pass",
+    element: <Pass />,
   },
 
 ]);
