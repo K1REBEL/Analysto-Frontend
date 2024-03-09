@@ -1,4 +1,4 @@
-import "./Datatable.scss";
+import "./DatatableOrg.scss";
 import { DataGrid } from '@mui/x-data-grid';
 import { Button } from '@mui/material';
 
