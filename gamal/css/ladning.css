@@ -1,0 +1,69 @@
+:root {
+  --main-color: #7c3bd9;
+  --secondary-color: #291940;
+  --third-color: #d6c2f2;
+  --fourth-color: #f2f2f2;
+  --fifth-color: #0d0d0d;
+}
+.navbar {
+  height: 100px;
+  background-color: #f2f2f2 !important;
+  padding: 1.8rem;
+}
+.navbar-brand img {
+  width: 50%;
+}
+.navbar-collapse {
+  flex-direction: row-reverse;
+  align-items: center;
+  font-weight: 700;
+}
+button {
+  background-color: #7c3bd9;
+  font-weight: 600;
+  border-radius: 5px;
+  width: 70px;
+  padding: 5px;
+  color: #0d0d0d;
+}
+.navbar-nav {
+  gap: 20px;
+}
+.collapse {
+  margin: 0px 10px;
+}
+.navbar a {
+  margin: 0px 10px;
+}
+.nav-link {
+  font-size: 1.2rem;
+  color: #0d0d0d !important;
+}
+#Contacts {
+  background-color: #d6c2f2 !important;
+}
+.send {
+  background-color: #7c3bd9;
+  font-weight: 600;
+  border-radius: 5px;
+  width: 70px;
+  padding: 5px;
+  color: #0d0d0d;
+}
+textarea {
+  height: 300px;
+}
+.about-section {
+  position: relative;
+  padding: 50px;
+  text-align: center;
+  background-image: url("../images/IMAGE_1672636538.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #f2f2f2;
+  min-height: 100vh;
+}
+.about-us-p {
+  font-size: 2rem;
+}
