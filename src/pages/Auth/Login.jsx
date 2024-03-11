@@ -1,5 +1,5 @@
 import React from "react";
-import "./Login.scss"
+import "../Auth/Login.scss"
  
   function Login() {
   return (
@@ -13,8 +13,6 @@ import "./Login.scss"
             <button className="btn">Send Reqiuest </button>
           </form>
         </div>
-
-       
       </div>
     </section>
   );

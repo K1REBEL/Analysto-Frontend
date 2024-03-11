@@ -1,6 +1,6 @@
 
 import React from "react";
-import "./Login.scss"
+import "../Auth/Login.scss"
 
  
 
