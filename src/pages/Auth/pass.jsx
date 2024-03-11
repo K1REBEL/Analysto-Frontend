@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Auth/pass.css'; 
+import '../Auth/pass.scss'; 
 
 const Pass = () => {
   return (
