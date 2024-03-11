@@ -8,7 +8,7 @@ function Sidebar() {
     <div>
       <div className="sidebar">
         <div className="top">
-          <span className="logo">Analisto</span>
+         <img className="logo" src="/images/logo.png" alt="logo" />
         </div>
         <hr />
         <div className="center">

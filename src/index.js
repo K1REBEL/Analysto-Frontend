@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Home from "./pages/home/Home";
+import Admin from "./pages/Admins/Admin.jsx";
 import Login from "./pages/Auth/Login";
 import Request from "./pages/Org/Request";
 import Card from "./pages/User/card.js";
@@ -35,6 +36,12 @@ const router = createBrowserRouter([
     element: <Pass />,
   },
 
+  {
+    path: "/admin",
+    element: <Admin />,
+  },
+
+ 
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

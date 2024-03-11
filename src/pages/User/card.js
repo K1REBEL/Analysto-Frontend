@@ -13,6 +13,7 @@ const Card = () => {
         {isOpen && (
         <motion.div className="expand">
           <p>
+          lorem40
             loremloremloremloremloremloremloremloremloremlore
             mloremloremloremloremloremloremloremloremloremloreml
             oremloremloremloremloremloremloremloremloremloremlore
