@@ -1,20 +1,22 @@
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Navbar from "../../components/Navbar/Navbar";
-import Datatable from "../Org/DatatableOrg";
-import "./Home.scss";
+import DatatableOrg from "../../pages/Org/DatatableOrg";
+import "./Home.scss"
 
 const Home = () => {
   return (
-    <div className="home">
-      <Sidebar />
+    <div className='home'>
+        <Sidebar />
       <div className="homeContainer">
         <Navbar />
-        <div className="widgets">
-          <Datatable />
-        </div>
+       <div className="widgets">
+        <DatatableOrg />
+       </div>
       </div>
-    </div>
-  );
-};
+    </div> 
+  )
+
+  
+}
 
 export default Home;
