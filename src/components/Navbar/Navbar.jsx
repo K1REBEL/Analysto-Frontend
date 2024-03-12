@@ -8,7 +8,7 @@ function Navbar() {
         <div className="wrapper">
           <div className="items">
             <div className="item">
-              <img src="/public/images/user.png"
+              <img src="/images/user.png"
                alt="" className="avatar"/>
             </div>
                

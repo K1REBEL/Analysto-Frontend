@@ -1,15 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/home/Home";
+import Admin from "./pages/Admins/Admin.jsx";
 import Login from "./pages/Auth/Login";
 import Request from "./pages/Org/Request";
-import Card from "./pages/User/card.js";
-import Pass from "./pages/Auth/pass.js";
-
-
-
-
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Card from "./pages/User/card";
+import Pass from "./pages/Auth/pass";
+import App from "./App";
+import { StrictMode } from "react";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +34,12 @@ const router = createBrowserRouter([
     element: <Pass />,
   },
 
+  {
+    path: "/admin",
+    element: <Admin />,
+  },
+
+ 
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
