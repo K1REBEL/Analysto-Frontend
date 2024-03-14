@@ -11,27 +11,25 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
+import Button from '@mui/material/Button';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
-function createData(name, calories, fat, carbs, protein, price) {
+function createData(OrgName, Nish, Configuration) {
   return {
-    name,
-    calories,
-    fat,
-    carbs,
-    protein,
-    price,
+    OrgName,
+    Nish,
+    Configuration,
     history: [
       {
-        date: '2020-01-05',
-        customerId: '11091700',
-        amount: 3,
+        Reigion: '2020-01-05',
+        ContactForm: '11091700',
+        SubscriptionAbout: 3,
       },
       {
-        date: '2020-01-02',
-        customerId: 'Anonymous',
-        amount: 1,
+        Reigion: '2020-01-05',
+        ContactForm: '11091700',
+        SubscriptionAbout: 3,
       },
     ],
   };
@@ -43,59 +41,61 @@ function Row(props) {
 
   return (
     <React.Fragment>
-      <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
-        <TableCell>
-          <IconButton
-            aria-label="expand row"
-            size="small"
-            onClick={() => setOpen(!open)}
-          >
-            {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-          </IconButton>
-        </TableCell>
-        <TableCell component="th" scope="row">
-          {row.name}
-        </TableCell>
-        <TableCell align="right">{row.calories}</TableCell>
-        <TableCell align="right">{row.fat}</TableCell>
-        <TableCell align="right">{row.carbs}</TableCell>
-        <TableCell align="right">{row.protein}</TableCell>
-      </TableRow>
-      <TableRow>
-        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
-          <Collapse in={open} timeout="auto" unmountOnExit>
-            <Box sx={{ margin: 1 }}>
-              <Typography variant="h6" gutterBottom component="div">
-                Description
-              </Typography>
-              <Table size="small" aria-label="purchases">
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Reigion</TableCell>
-                    <TableCell>Contact Form</TableCell>
-                    <TableCell align="right">Subscription About</TableCell>
+    <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
+      <TableCell>
+        <IconButton
+          aria-label="expand row"
+          size="small"
+          onClick={() => setOpen(!open)}
+        >
+          {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+        </IconButton>
+      </TableCell>
+      <TableCell component="th" scope="row">
+        {row.OrgName}
+      </TableCell>
+      <TableCell align="right">{row.Nish}</TableCell>
+      <TableCell align="right">
+        <Button variant="contained" color="primary" size="small" onClick={() => console.log('Delete clicked')}>
+          Delete
+        </Button>
+        <Button variant="contained" color="secondary" size="small" onClick={() => console.log('Freeze clicked')}>
+          Freeze
+        </Button>
+      </TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
+        <Collapse in={open} timeout="auto" unmountOnExit>
+          <Box sx={{ margin: 1 }}>
+            <Typography variant="h6" gutterBottom component="div">
+              Description
+            </Typography>
+            <Table size="small" aria-label="purchases">
+              <TableHead>
+                <TableRow>
+                  <TableCell>Reigion</TableCell>
+                  <TableCell>Contact Form</TableCell>
+                  <TableCell align="right">Subscription About</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {row.history.map((historyRow, index) => (
+                  <TableRow key={index}>
+                    <TableCell component="th" scope="row">
+                      {historyRow.date}
+                    </TableCell>
+                    <TableCell>{historyRow.customerId}</TableCell>
+                    <TableCell align="right">{historyRow.amount}</TableCell>
                   </TableRow>
-                </TableHead>
-                <TableBody>
-                  {row.history.map((historyRow) => (
-                    <TableRow key={historyRow.date}>
-                      <TableCell component="th" scope="row">
-                        {historyRow.date}
-                      </TableCell>
-                      <TableCell>{historyRow.customerId}</TableCell>
-                      <TableCell align="right">{historyRow.amount}</TableCell>
-                      <TableCell align="right">
-                        {Math.round(historyRow.amount * row.price * 100) / 100}
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </Box>
-          </Collapse>
-        </TableCell>
-      </TableRow>
-    </React.Fragment>
+                ))}
+              </TableBody>
+            </Table>
+          </Box>
+        </Collapse>
+      </TableCell>
+    </TableRow>
+  </React.Fragment>
   );
 }
 
@@ -118,30 +118,26 @@ Row.propTypes = {
 };
 
 const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0, 3.99),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3, 4.99),
-  createData('Eclair', 262, 16.0, 24, 6.0, 3.79),
-  createData('Cupcake', 305, 3.7, 67, 4.3, 2.5),
-  createData('Gingerbread', 356, 16.0, 49, 3.9, 1.5),
+  createData('Electrozone','Appliances', 'Some Configuration'),
+  createData('Electrozone','Appliances', 'Some Configuration'),
+  createData('Electrozone','Appliances', 'Some Configuration'),
 ];
 
 export default function CollapsibleTable() {
   return (
-    <TableContainer component={Paper}>
-      <Table aria-label="collapsible table">
+    <TableContainer component={Paper} style={{ width: '100%' }}>
+    <Table aria-label="collapsible table" sx={{ minWidth: 650 }}>
         <TableHead>
           <TableRow>
             <TableCell />
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
+            <TableCell align="left">OrgName</TableCell>
+            <TableCell align="right">Nish</TableCell>
+            <TableCell align="right">Config</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <Row key={row.name} row={row} />
+          {rows.map((row, index) => (
+            <Row key={index} row={row} />
           ))}
         </TableBody>
       </Table>

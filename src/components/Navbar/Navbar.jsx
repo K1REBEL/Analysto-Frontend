@@ -1,22 +1,27 @@
-import "./Navbar.scss"
-
-
+import React from "react";
+import "./Navbar.scss";
 
 function Navbar() {
-  return (
-    <div className="navbar">
-        <div className="wrapper">
-          <div className="items">
-            <div className="item">
-              <img src="/images/user.png"
-               alt="" className="avatar"/>
-            </div>
-               
+  return ( 
+    <nav className="navbar flex-md flex-md-row flex-column d-flex p-2">
+      <div className="wrapper">
+        <div className="items d-flex justify-content-between">
+          <span>
+            <li>
+              Organization Name:
+              <i> Electrozone</i>
+             </li>
+            <li>
+              Nish:<i>Appliances</i>
+            </li>
+          </span>
+          <div className="item">
+            <img src="/images/org.jpg" alt="" className="avatar" />
           </div>
         </div>
       </div>
-
-  )
+    </nav>
+  );
 }
 
-export default Navbar
+export default Navbar;

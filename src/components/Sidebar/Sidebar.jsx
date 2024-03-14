@@ -27,12 +27,12 @@ function Sidebar() {
               </Link>
             </li>
             <p className="title">YOUR PROFILE</p>
-
+          
             <li>
-              <Link to="/Login" style={{}}>
+              <span to="/Login" style={{}}>
                 <MdLogout className="icon" />
                 <span>Logout</span>
-              </Link>
+              </span>
              
             </li>
           </ul>
