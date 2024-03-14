@@ -23,7 +23,21 @@ export default function Login() {
   async function sendLoginDataToApi() {
     try {
       let { data } = await axios.get(
-        `http://127.0.0.1:4000/api/auth/signIn`
+        `http://127.0.0.1:4000/api/auth/signIn`,
+        {
+          headers: {
+
+            'Postman-Token': 'Bearer YOUR_AUTH<calculated when request is sent>_TOKEN',
+            'Content-Type': 'application/json',
+            'Content-Length': '<calculated when request is sent>',
+            'Host': '<calculated when request is sent>',
+            'User-Agent': 'PostmanRuntime/7.37.0',
+            'Accept': '*/*',
+            'Accept-Encoding': 'gzip, deflate, br',
+            'Connection': 'keep-alive',
+            'X-CSRF-Token': '{{X-CSRF-Token}}',
+          },
+        }
       );
       if (data.message === "Admin found"){
         setisLoading(false);
