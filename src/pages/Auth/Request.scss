@@ -2,7 +2,7 @@
 
 .Req-form {
   position: relative;
-  padding: 30px;
+  padding: 40px; /* Increase the padding to increase the size of the container */
   justify-content: center;
   display: flex;
   align-items: center;
@@ -16,8 +16,10 @@
 
 
 .contain {
-  max-width: 800px;
+  max-width: 1000px; /* Increase the max-width to increase the width of the container */
   margin: 0 auto;
+  padding: 20px; /* Add padding to the contain class */
+
 }
 
 .Req-form .contain {
@@ -32,6 +34,7 @@
   font-size: 30px;
   font-weight: 500;
   text-align: center;
+  padding-top: 15px;
 }
 
 .Req-form .mainn {
@@ -42,48 +45,51 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
               0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-
 .conten {
-  flex-basis: 100%;
-  padding: 3em 3em;
+  flex-basis: 50%; /* Set the width of the content container to 50% */
+  padding: 20px;
   background-color: #fff;
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
+  border-radius: 8px;
 }
 
 .form-image {
-  flex-basis: 100%;
+  flex-basis: 50%; /* Set the width of the image container to 50% */
   background-color: #fff;
-  background-size: cover;
-  padding: 40px;
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  display: grid;
 }
 
+.img-grid {
+  max-width: 100%; 
+  max-height: 100%; 
+  width: auto;
+  height: auto;
+}
 .form-image img {
-  width: 100%;
+  width: 60%;
   max-width: 100%;
 }
 
 
 .Req-form form {
   margin: 30px 0;
+  padding-top: 60px;
 }
 
 .Req-form input {
   outline: none;
   margin-bottom: 15px;
-  font-size: 16px;
+  font-size: 14px;
   color: #999;
-  text-align: left;
-  padding: 14px 20px;
-  display: inline-block;
-  box-sizing: border-box;
+  padding: 14px ;
   background-color: #fff;
   transition: 0.3 ease;
   border: 0.3px solid #4e34b6;
+margin-left: 15px;  
+
 }
 
 .Req-form input:focus {
@@ -97,6 +103,8 @@
   padding: 14px 15px;
   font-weight: 600;
   font-size: 16px;
+  display: block;
+  width: 100%;
 
 }
 
@@ -104,11 +112,13 @@
   color: #ffffff;
   background: #7134b6;
 }
-
 @media (max-width: 736px) {
-  .Req-form .main {
-    flex-direction: column;
+  .form-image,
+  .conten {
+    flex-basis: 100%; /* Set the width of both containers to 100% on smaller screens */
+    border-radius: 8px; /* Add border radius to both containers on smaller screens */
   }
+
 
   .Req-form form {
     margin-top: 30px;

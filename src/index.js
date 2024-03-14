@@ -7,9 +7,13 @@ import Home from "./pages/home/Home";
 import Admin from "./pages/Admins/Admin.jsx";
 import Login from "./pages/Auth/Login";
 import Request from "./pages/Auth/Request";
-import Card from "./pages/employee/card";
-import Pass from "./pages/Auth/pass";
-import Edit from "./pages/Admins/edit.jsx";
+import Card from "./pages/employee/card.jsx";
+import Pass from "./pages/Auth/pass.jsx";
+
+
+
+
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const AppRoutes = () => (
   <Routes>
