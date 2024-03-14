@@ -4,8 +4,8 @@ import "../Auth/Login.scss"
   function Login() {
   return (
     <section className="App">
-      <div className="Request">
-        <div className="col-1">
+      <div className="Login">
+        <div className="container">
           <h2 className="login">Login</h2>
           <form id="form" className="flex flex-col">
             <input type="email" placeholder="Enter You Email" />

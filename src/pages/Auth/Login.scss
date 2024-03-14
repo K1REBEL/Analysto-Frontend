@@ -18,12 +18,13 @@ body{
 
 }
 
-.Request{
-  max-width: 900px;
-  width: 100vw;
+.Login{
+  max-width: 700px;
+  width: 100vh;
   display:flex;
   border: 1px solid #e9ecef;
   border-radius: 5px;
+  padding: 50px;
   box-shadow: 1px 3px 10px #e2b3e9;
   background-color: white;
 }
