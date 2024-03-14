@@ -1,151 +1,130 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./DatatableOrg.scss";
-import { DataGrid } from "@mui/x-data-grid";
-import { Button, TextField } from "@mui/material";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-const columns = [
-  { field: "id", headerName: "ID", width: 70 },
-  { field: "email", headerName: "Email", width: 130 },
-  {
-    field: "fullName",
-    headerName: "Full Name",
-    sortable: false,
-    width: 160,
-    valueGetter: (params) =>
-      `${params.row.firstName || ""} ${params.row.lastName || ""}`,
-  },
-  {
-    field: "action",
-    headerName: "Action",
-    className: "action",
-    width: 200,
-    renderCell: (params) => (
-      <div className="action-buttons">
-       
-        <Button
-          className="configbtn"
-          variant="contained"
-          color="primary"
-          size="small"
-          style={{ marginRight: '10px' }}
-        >
-          Config
-        </Button>
-        <Button
-          className="deleteButton"
-          variant="contained"
-          color="error"
-          size="small"
-        >
-          Delete
-        </Button>
-      </div>
-    ),
-  },
-  ];
+// import axios from "axios";
 
-const rows = [
-  { id: 1, lastName: "Snow", firstName: "Jon", email: "jon@example.com" },
-  {
-    id: 2,
-    lastName: "Lannister",
-    firstName: "Cersei",
-    email: "cersei@example.com",
-  },
-  {
-    id: 3,
-    lastName: "Lannister",
-    firstName: "Jaime",
-    email: "jaime@example.com",
-  },
-  { id: 4, lastName: "Stark", firstName: "Arya", email: "arya@example.com" },
-  {
-    id: 5,
-    lastName: "Targaryen",
-    firstName: "Daenerys",
-    email: "daenerys@example.com",
-  },
-];
-
-function Datatable() {
-  const [newUser, setNewUser] = useState({
-    id: "",
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
+function DatatableOrg() {
+  const [users, setUsers] = useState(() => {
+    const savedUsers = localStorage.getItem("users");
+    return savedUsers ? JSON.parse(savedUsers) : [];
   });
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setNewUser({ ...newUser, [name]: value });
-  };
-
-  // ============Add new user==============
-  const handleAddUser = () => {
-    const updatedRows = [...rows, newUser];
-    console.log(updatedRows);
-
-    setNewUser({
-      id: "",
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
-    });
-  };
-
-  const handleEdit = (id) => {
-    console.log(`Edit row with id ${id}`);
-  };
+  useEffect(() => {
+    localStorage.setItem("users", JSON.stringify(users));
+  }, [users]);
 
   const handleDelete = (id) => {
-    console.log(`Delete row with id ${id}`);
+    const updatedUsers = users.filter((user) => user.id !== id);
+    setUsers(updatedUsers);
+    localStorage.setItem("users", JSON.stringify(updatedUsers));
   };
 
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (!name.trim() || !email.trim() || !password.trim()) {
+      alert("Please fill in all fields");
+      return;
+    }
+    const id = users.length > 0 ? users[users.length - 1].id + 1 : 1;
+    setUsers([...users, { id, name, email }]);
+    setName("");
+    setEmail("");
+    setPassword("");
+  };
+
+  
+
   return (
-    <div className="datatable">
-      <div className="dataTableAdd">
-        <TextField
-          name="fullName"
-          label="Full Name"
-          value={newUser.fullName}
-          className="input"
-          onChange={handleInputChange}
-          variant="outlined"
-          size="small"
-        />
-        <TextField
-          name="email"
-          label="Email"
-          value={newUser.email}
-          className="input"
-          onChange={handleInputChange}
-          variant="outlined"
-          size="small"
-        />
-        <TextField
-          name="password"
-          label="Password"
-          className="input"
-          type="password"
-          value={newUser.password}
-          onChange={handleInputChange}
-          variant="outlined"
-          size="small"
-        />
-        <Button
-          variant="contained"
-          color="primary"
-          size="small"
-          onClick={handleAddUser}
-        >
-          Add User
-        </Button>
-      </div>
-      <DataGrid rows={rows} columns={columns} />
+    <div>
+      <form onSubmit={handleSubmit}>
+        <div className="field row mb-3">
+          <div className="col">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Enter Full Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="col">
+            <input
+              type="email"
+              className="form-control"
+              placeholder="Enter Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className="col">
+            <input
+              type="password"
+              className="form-control"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+      
+
+          <div className="col-4">
+            <button type="submit" className="btn btn-sm btn-success">
+              <i className="fa fa-plus" aria-hidden="true"></i>Add User
+            </button>
+          </div>
+        </div>
+      </form>
+      <table className="table align-middle border mb-0 bg-white">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Users</th>
+            <th>Email</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map((user) => (
+            <tr key={user.id}>
+              <td>{user.id}</td>
+              <td>
+                <div className="d-flex align-items-center">
+                  <div className="ms-3">
+                    <p className="fw-bold mb-1">{user.name}</p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <p className="fw-normal mb-1">{user.email}</p>
+              </td>
+              <td>
+                <button
+                  type="button"
+                  className="btn btn-primary btn-sm btn-rounded"
+                >
+                  Config
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-danger btn-sm btn-rounded"
+                  onClick={() => handleDelete(user.id)}
+
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+   
     </div>
   );
 }
 
-export default Datatable;
+export default DatatableOrg;

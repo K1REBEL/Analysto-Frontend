@@ -1,7 +1,7 @@
 import React from 'react';
 import "./card.css"
 import Navbar from "../../components/Navbar/Navbar";
-import Sidebar from '../../components/Sidebar/Sidebar';
+// import Sidebar from '../../components/Sidebar/Sidebar';
 import img1 from '../../img/samsung.svg';
 import img2 from '../../img/logo-sharp.svg';
 import img3 from '../../img/cdnlogo.com_zanussi.svg';
