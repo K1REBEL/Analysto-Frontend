@@ -1,5 +1,4 @@
 import React from "react";
-import "@fortawesome/fontawesome-free/css/all.min.css";
 import ReactDOM from "react-dom";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
@@ -60,6 +59,9 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+    <Router>
+      <AppRoutes />
+    </Router>
+  </React.StrictMode>,
+  document.getElementById("root")
 );
