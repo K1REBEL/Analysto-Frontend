@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+#Contacts {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+  .send {
+    background-color: #291940;
+    font-weight: 600;
+    border-radius: 5px;
+    width: 70px;
+    padding: 5px;
+    color: #f2f2f2;
+  }
+  textarea {
+    height: 300px;
+  }
+  .error{
+    color: red;
+    font-weight: bold;
+    display: none;
+  }
+  button {
+    background-color: #291940;
+    font-weight: 600;
+    border-radius: 5px;
+    width: 100%;
+    padding: 5px;
+    color: #f2f2f2;
+  }

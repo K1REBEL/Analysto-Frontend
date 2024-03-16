@@ -1,0 +1,33 @@
+.about-section {
+    position: relative;
+    margin-top: 50px;
+  }
+  
+  .about-us-p {
+    font-size: 1.5rem;
+  }
+  .about-us-image {
+    background-image: url("../images/IMAGE_1672636538.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 70vh;
+  }
+  .about-us-description {
+    text-align: left;
+    line-height: 50xp;
+  
+    color: #0d0d0d;
+  }
+  .card-two {
+    border-radius: 10px;
+    padding: 1.5%;
+    width: 55%;
+    margin-right: 4%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+      rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  }
+  * {
+    margin: 0;
+    padding: 0;
+  }
