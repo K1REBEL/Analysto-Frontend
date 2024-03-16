@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import joi from "joi";
+import axios from "axios"; // Import Axios
 import "../Auth/Login.scss";
 
 export default function Login() {
@@ -22,24 +22,13 @@ export default function Login() {
 
   async function sendLoginDataToApi() {
     try {
-      let { data } = await axios.get(
-        `http://127.0.0.1:4000/api/auth/signIn`,
-        {
-          headers: {
-
-            'Postman-Token': 'Bearer YOUR_AUTH<calculated when request is sent>_TOKEN',
-            'Content-Type': 'application/json',
-            'Content-Length': '<calculated when request is sent>',
-            'Host': '<calculated when request is sent>',
-            'User-Agent': 'PostmanRuntime/7.37.0',
-            'Accept': '*/*',
-            'Accept-Encoding': 'gzip, deflate, br',
-            'Connection': 'keep-alive',
-            'X-CSRF-Token': '{{X-CSRF-Token}}',
-          },
-        }
-      );
-      if (data.message === "Admin found"){
+      const response = await axios.post("http://127.0.0.1:4000/api/auth/signIn", user, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = response.data;
+      if (data.message === "Admin found") {
         setisLoading(false);
         navigate("/pass");
       } else {
@@ -72,16 +61,17 @@ export default function Login() {
         .string()
         .email({ minDomainSegments: 2, tlds: { allow: ["com", "net"] } })
         .required(),
-      password: joi.string().pattern(/^[A-Z][a-z]{4,9}/).messages({ 
-        'string.pattern.base': 'Password should start with an uppercase letter and have 3 to 6 lowercase letters.'
+      password: joi.string().messages({
+        "string.pattern.base":
+          "Password should start with an uppercase letter and have 3 to 6 lowercase letters.",
       }),
     });
     return scheme.validate(user, { abortEarly: false });
   }
 
   return (
-    <section className="App">
-      <div className="Login">
+    <section className="logApp">
+      <div className="Logincon">
         <div className="container">
           <h2 className="login">Login</h2>
           {/* validation */}
@@ -119,7 +109,11 @@ export default function Login() {
               placeholder="Enter Password"
             />
             <button type="submit" className="btn">
-              {isLoading ? <i className="fas fa-spinner fa-spin"></i> : "Login"}
+              {isLoading ? (
+                <i className="fas fa-spinner fa-spin"></i>
+              ) : (
+                "Login"
+              )}
             </button>
           </form>
         </div>
