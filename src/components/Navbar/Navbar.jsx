@@ -11,9 +11,7 @@ function Navbar() {
               Organization Name:
               <i> Electrozone</i>
              </li>
-            <li>
-              Nish:<i>Appliances</i>
-            </li>
+           
           </span>
           <div className="item">
             <img src="/images/org.jpg" alt="" className="avatar" />

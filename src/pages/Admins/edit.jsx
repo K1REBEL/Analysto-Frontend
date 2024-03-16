@@ -1,5 +1,5 @@
 import React from "react";
-import "../Admins/edit.css"
+import "../Admins/Edit.css"
 import Navbar from "../../components/Navbar/Navbar";
 
 const Edit = () => {

@@ -1,6 +1,8 @@
+
+import { createRoot } from "react-dom/client";
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/home/Home";
+import DataLink from "./pages/Org/DataLink";
 import Admin from "./pages/Admins/Admin";
 import Login from "./pages/Login/Login";
 import Request from "./pages/Org/Request";
@@ -15,13 +17,14 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path="/home" element={<Home />} />
+          <Route path="/DataLink" element={<DataLink />} />
           <Route path="/login" element={<Login />} />
           <Route path="/request" element={<Request />} />
           <Route path="/pass" element={<Pass />} />
           <Route path="/card" element={<Card />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/edit" element={<Edit />} />
+          <Route path="/notfound" element={<NotFound />} />
         </Routes>
       </Router>
     </>

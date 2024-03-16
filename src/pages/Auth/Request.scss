@@ -21,6 +21,24 @@
   padding: 20px; /* Add padding to the contain class */
 
 }
+.modal-dialog {
+  width: 50% !important; 
+  margin: auto; 
+}
+
+.modal-body {
+  text-align: center;
+  color: green;
+  font-weight: 500;
+  
+}
+
+.check{
+  width:70%;
+  padding-left: 70px;
+}
+
+
 
 .Req-form .contain {
   display: flex;
@@ -77,6 +95,10 @@
 .Req-form form {
   margin: 30px 0;
   padding-top: 60px;
+}
+h5{
+color: #4e34b6;
+text-align: center;
 }
 
 .Req-form input {

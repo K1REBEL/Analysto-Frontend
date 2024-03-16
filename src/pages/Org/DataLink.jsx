@@ -1,13 +1,13 @@
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Navbar from "../../components/Navbar/Navbar";
-import DatatableOrg from "../../pages/Org/DatatableOrg";
-import "./Home.scss"
+import DatatableOrg from "./DatatableOrg";
+import "./DataLink.scss"
 
-const Home = () => {
+const DataLink = () => {
   return (
-    <div className='home'>
+    <div className='DataLink'>
         <Sidebar />
-      <div className="homeContainer">
+      <div className="DataLinkContainer">
         <Navbar />
        <div className="widgets">
         <DatatableOrg />
@@ -19,4 +19,4 @@ const Home = () => {
   
 }
 
-export default Home;
+export default DataLink;

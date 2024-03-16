@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../node_modules/bootstrap/dist/js/bootstrap.min.js";
-import Home from "./pages/home/Home";
+import DataLink from "./pages/Org/DataLink";
 import Admin from "./pages/Admins/Admin.jsx";
 import Login from "./pages/Auth/Login";
 import Request from "./pages/Auth/Request";
@@ -17,8 +17,8 @@ import NotFound from "./components/NotFound/NotFound.jsx";
 
 const router = createBrowserRouter([
   {
-    path: "/home",
-    element: <Home />,
+    path: "/DataLink",
+    element: <DataLink />,
     errorElement: <h2>sorry....</h2>,
   },
     

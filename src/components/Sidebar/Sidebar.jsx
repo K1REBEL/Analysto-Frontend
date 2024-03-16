@@ -2,6 +2,7 @@ import "./Sidebar.scss";
 import { FaUser } from "react-icons/fa";
 import { MdDashboard } from "react-icons/md";
 import { MdLogout } from "react-icons/md";
+import { FaHouse } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 function Sidebar() {
   return (
@@ -18,6 +19,12 @@ function Sidebar() {
               <MdDashboard className="icon" />
               <span>Dashboard</span>
             </li>
+            <li>
+              <Link to="/">
+                <FaHouse  className="icon" />
+                <span>Over view</span>
+              </Link>
+            </li>
 
             <p className="title">LISTS</p>
             <li>
@@ -26,14 +33,14 @@ function Sidebar() {
                 <span>Users</span>
               </Link>
             </li>
+            
             <p className="title">YOUR PROFILE</p>
           
             <li>
-              <span to="/Login" style={{}}>
+              <Link to="/Login">
                 <MdLogout className="icon" />
                 <span>Logout</span>
-              </span>
-             
+              </Link>
             </li>
           </ul>
         </div>
