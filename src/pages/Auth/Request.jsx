@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import "../Auth/Request.scss";
+import { useNavigate } from "react-router-dom";
 import imag1 from "../../img/imag1.svg";
 import check from "../../img/check.svg";
+import axios from "axios";
 
 export default function Request() {
+  let navigate = useNavigate();
   const [error, setError] = useState("");
+  const [isLoading, setisLoading] = useState(false);
   const [org, setOrg] = useState({
     org_name: " ",
     social_media: "",
@@ -13,43 +17,37 @@ export default function Request() {
     niche: "",
     region: "",
     avg_revenue: 0,
+    referral_method:"non"
   });
 
   function getOrgData(eventInfo) {
     let myOrg = { ...org };
     myOrg[eventInfo.target.name] = eventInfo.target.value;
     setOrg(myOrg);
-    console.log(myOrg);
   }
 
   async function sendRequestDataToApi() {
     try {
-      const response = await fetch("http://127.0.0.1:4000/api/requests", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(org),
-      });
-      const data = await response.json();
-      console.log(data);
-      if (data.message === "success") {
-        console.log(data);
+      const response = await axios.post("http://127.0.0.1:4000/api/requests", org);
+      const data = response.data;
+      if (data.message === "Data inserted successfully") {
+        setisLoading(false);
+        navigate("/DataLink");
       } else {
+        setisLoading(false);
         setError(data.message);
       }
     } catch (error) {
+      setisLoading(false);
       console.error("Failed to fetch:", error);
       setError("Failed to send request data");
     }
   }
-  
+
   function submitRequestForm(e) {
     e.preventDefault();
     sendRequestDataToApi();
   }
-  
-  
 
   return (
     <>
@@ -107,14 +105,23 @@ export default function Request() {
                   placeholder="Average Revenue In The Last Quarter"
                   name="avg_revenue"
                 />
+                 <input
+                  onChange={getOrgData}
+                  type="text"
+                  placeholder="Enter referral_method "
+                  name="referral_method"
+                />
                 <button
-                  type="button"
-                  onClick={submitRequestForm}
+                  type="submit"
                   className="btn btn-info"
                   data-bs-toggle="modal"
                   data-bs-target="#exampleModal"
                 >
-                  send Request
+                  {isLoading ? (
+                    <i className="fas fa-spinner fa-spin"></i>
+                  ) : (
+                    "send Request"
+                  )}
                 </button>
 
                 <div
