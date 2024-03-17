@@ -59,7 +59,6 @@ function DatatableOrg() {
       const id = users.length > 0 ? users[users.length - 1].id + 1 : 1;
       setUsers([...users, { id, name, email }]);
     } else {
-      // Handle editing existing user
       const updatedUsers = users.map((user) => {
         if (user.id === editingId) {
           return { ...user, name, email };

@@ -1,51 +1,46 @@
-
-
 .Req-form {
   position: relative;
-  padding: 40px; /* Increase the padding to increase the size of the container */
-  justify-content: center;
+  padding: 40px;
   display: flex;
+  justify-content: center;
   align-items: center;
   background-color: #fff;
 }
+
 .error {
   color: red;
   font-size: 14px;
   margin-top: 5px;
 }
 
-
 .contain {
-  max-width: 1000px; /* Increase the max-width to increase the width of the container */
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 20px; /* Add padding to the contain class */
-
+  padding: 20px;
 }
+
 .modal-dialog {
-  width: 50% !important; 
-  margin: auto; 
+  width: 50% !important;
+  margin: auto;
 }
 
 .modal-body {
   text-align: center;
   color: green;
   font-weight: 500;
-  
 }
 
-.check{
-  width:70%;
+.check {
+  width: 70%;
   padding-left: 70px;
 }
-
-
 
 .Req-form .contain {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 0 15px; 
+  padding: 0 15px;
 }
 
 .Req-form h2 {
@@ -60,18 +55,18 @@
   display: flex;
   flex-wrap: wrap;
   margin: 30px 0;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-              0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
 .conten {
-  flex-basis: 50%; /* Set the width of the content container to 50% */
+  flex-basis: 50%;
   padding: 20px;
   background-color: #fff;
   border-radius: 8px;
 }
 
 .form-image {
-  flex-basis: 50%; /* Set the width of the image container to 50% */
+  flex-basis: 50%;
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
@@ -81,24 +76,25 @@
 }
 
 .img-grid {
-  max-width: 100%; 
-  max-height: 100%; 
+  max-width: 100%;
+  max-height: 100%;
   width: auto;
   height: auto;
 }
+
 .form-image img {
   width: 60%;
   max-width: 100%;
 }
 
-
 .Req-form form {
   margin: 30px 0;
   padding-top: 60px;
 }
-h5{
-color: #4e34b6;
-text-align: center;
+
+h5 {
+  color: #4e34b6;
+  text-align: center;
 }
 
 .Req-form input {
@@ -106,12 +102,11 @@ text-align: center;
   margin-bottom: 15px;
   font-size: 14px;
   color: #999;
-  padding: 14px ;
+  padding: 14px;
   background-color: #fff;
   transition: 0.3 ease;
   border: 0.3px solid #4e34b6;
-margin-left: 15px;  
-
+  margin-left: 15px;
 }
 
 .Req-form input:focus {
@@ -127,20 +122,20 @@ margin-left: 15px;
   font-size: 16px;
   display: block;
   width: 100%;
-
 }
 
 .Req-form button:hover {
   color: #ffffff;
   background: #7134b6;
 }
+
+
 @media (max-width: 736px) {
   .form-image,
   .conten {
-    flex-basis: 100%; /* Set the width of both containers to 100% on smaller screens */
-    border-radius: 8px; /* Add border radius to both containers on smaller screens */
+    flex-basis: 100%;
+    border-radius: 8px;
   }
-
 
   .Req-form form {
     margin-top: 30px;
@@ -162,14 +157,20 @@ margin-left: 15px;
   }
 
   .Req-form .contain {
-    padding: 0; 
+    padding: 0;
   }
 
   .conten {
-    padding: 2em; 
+    padding: 2em;
   }
 
   .fform-image {
-    display: none; 
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .Req-form input {
+    margin-left: 0;
   }
 }

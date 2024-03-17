@@ -72,7 +72,7 @@ export default function Request() {
       avg_revenue: Joi.number().required(),
       referral_method: Joi.string().required(),
     });
-    return schema.validate(org, { abortEarly: true });
+    return schema.validate(org, { abortEarly: false });
   }
 
   return (
