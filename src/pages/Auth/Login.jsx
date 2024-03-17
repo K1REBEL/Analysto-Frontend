@@ -4,7 +4,7 @@ import joi from "joi";
 import axios from "axios"; // Import Axios
 import "../Auth/Login.scss";
 
-export default function Login() {
+export default function Login({saveUserData}) {
   let navigate = useNavigate();
   const [errorList, seterrorList] = useState([]);
   const [error, setError] = useState("");
@@ -30,7 +30,9 @@ export default function Login() {
       const data = response.data;
       if (data.message === "Admin found") {
         setisLoading(false);
+        localStorage.setItem('userToken' , data.token);
         navigate("/pass");
+        saveUserData();
       } else {
         setisLoading(false);
         setError(data.message);
