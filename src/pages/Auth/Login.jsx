@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import joi from "joi";
-import axios from "axios"; // Import Axios
+import axios from "axios"; 
 import "../Auth/Login.scss";
 
 export default function Login({saveUserData}) {
@@ -28,12 +28,24 @@ export default function Login({saveUserData}) {
         },
       });
       const data = response.data;
+      console.log(data);
+
       if (data.message === "Admin found") {
+        setisLoading(false);
+        localStorage.setItem('userToken' , data.token);
+        navigate("/admin");
+        saveUserData();
+      }else if (data.message === "Organization found"){
         setisLoading(false);
         localStorage.setItem('userToken' , data.token);
         navigate("/pass");
         saveUserData();
-      } else {
+      }else if (data.message === "Employee found"){
+        setisLoading(false);
+        localStorage.setItem('userToken' , data.token);
+        navigate("/pass");
+        saveUserData();
+      }else {
         setisLoading(false);
         setError(data.message);
       }
@@ -43,7 +55,6 @@ export default function Login({saveUserData}) {
       setError("An error occurred while logging in.");
     }
   }
-
   function submitLoginForm(e) {
     setisLoading(true);
     e.preventDefault();
