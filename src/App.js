@@ -9,11 +9,13 @@ import Request from "./pages/Org/Request";
 import Pass from "./pages/Auth/pass";
 import Card from "./pages/employee/card";
 import Edit from "./pages/Admins/Edit";
+import Landing from "./pages/Home/Landing";
 
 import "./pages/User/card.css";
 
 function App() {
   return (
+   
     <>
       <Router>
         <Routes>
@@ -25,6 +27,7 @@ function App() {
           <Route path="/admin" element={<Admin />} />
           <Route path="/edit" element={<Edit />} />
           <Route path="/notfound" element={<NotFound />} />
+          <Route path="/Landing" element={<Landing />} />
         </Routes>
       </Router>
     </>

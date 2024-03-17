@@ -1,6 +1,6 @@
 import React from 'react';
 import "./AnalystoDescription.scss";
-
+import img1 from '../../img/IMAGE_1672636538.png';
 function AnalystoDescription() {
   return (
     <div
@@ -20,7 +20,7 @@ className="analysto-section d-flex align-items-center justify-content-center p-4
   </p>
 </div>
 <div className="col-md-8 card-one">
-  <div className="about-us-image"></div>
+  <div  className="about-us-image"></div>
 </div>
 </div>
   );

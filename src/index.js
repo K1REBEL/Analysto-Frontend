@@ -11,7 +11,7 @@ import Card from "./pages/employee/card.jsx";
 import Pass from "./pages/Auth/pass.jsx";
 import Edit from "./pages/Admins/Edit.jsx";
 import NotFound from "./components/NotFound/NotFound.jsx";
-
+import Landing from "./pages/Home/Landing";
 
 
 
@@ -53,6 +53,10 @@ const router = createBrowserRouter([
   {
     path: "/NotFound",
     element: <NotFound />,
+  },
+  {
+    path: "/Landing",
+    element: <Landing />,
   },
 ]);
 

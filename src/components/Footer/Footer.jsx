@@ -1,5 +1,9 @@
 import React from 'react';
 import './Footer.scss';
+import { Link } from "react-router-dom";
+import img1 from '../../img/Logo2.png';
+
+
 
 function Footer() {
   return (
@@ -22,7 +26,7 @@ function Footer() {
             <div className='footer-logo'>
               <a className='footer-logo-link' href='#'>
                 <span className='hidden-link-text'>LOGO</span>
-                <h1>LOGO</h1>
+                <img src={img1} className="d-inline-block align-top" alt="" />     
               </a>
             </div>
             <div className='footer-menu'>
