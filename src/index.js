@@ -1,5 +1,6 @@
-import React from "react";
+import { StrictMode } from "react";
 import ReactDOM from "react-dom";
+<<<<<<< HEAD
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../node_modules/bootstrap/dist/js/bootstrap.min.js";
@@ -66,3 +67,15 @@ root.render(
     <RouterProvider router={router} />
   </React.StrictMode>
 );
+=======
+
+import App from "./App";
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+  rootElement
+);
+>>>>>>> aa0949349a31ff4b55219efec081e23c2cafcc7c
