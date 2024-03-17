@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import "../Auth/Request.scss";
-import { useNavigate } from "react-router-dom";
 import imag1 from "../../img/imag1.svg";
 import check from "../../img/check.svg";
 import axios from "axios";
 import Joi from "joi";
+import { BiSolidErrorCircle } from "react-icons/bi";
+
 
 export default function Request() {
-  let navigate = useNavigate();
   const [errorList, seterrorList] = useState([]);
-  const [error, setError] = useState("");
   const [isLoading, setisLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [org, setOrg] = useState({
@@ -20,10 +19,8 @@ export default function Request() {
     niche: "",
     region: "",
     avg_revenue: "",
-    referral_method: ""
+    referral_method: "",
   });
-
-
 
   function getOrgData(eventInfo) {
     let myOrg = { ...org };
@@ -42,14 +39,11 @@ export default function Request() {
         setisLoading(false);
         setShowModal(true);
       } else {
+        setShowModal(false);
         setisLoading(false);
-        navigate("/DataLink");
-        setError(data.message);
       }
     } catch (error) {
       setisLoading(false);
-      console.error("Failed to fetch:", error);
-      setError("Failed to send request data");
     }
   }
 
@@ -63,7 +57,6 @@ export default function Request() {
       sendRequestDataToApi();
     }
   }
-
   //validation
 
   function validateRequestForm() {
@@ -77,24 +70,13 @@ export default function Request() {
       niche: Joi.string().required(),
       region: Joi.string().required(),
       avg_revenue: Joi.number().required(),
-      referral_method: Joi.string().required()
+      referral_method: Joi.string().required(),
     });
     return schema.validate(org, { abortEarly: true });
   }
 
   return (
     <>
-      {errorList.map((err, index) => (
-        <div key={index} className="alert alert-danger my-2">
-          {err.message}{" "}
-        </div>
-      ))}
-      {/* {error.length > 0 ? (
-        <div className="alert alert-danger my-2">{error} </div>
-      ) : (
-        ""
-      )} */}
-
       <div className="Req-form">
         <div className="contain">
           <div className="mainn">
@@ -107,52 +89,187 @@ export default function Request() {
                   placeholder="Enter Organization Name"
                   name="org_name"
                 />
-                <div className="alert alert-danger my-2">
-                  {errorList.filter((err)=> err.context.label ==='Firt_Name')[0]}
-               
-                </div>
+                {errorList.filter(
+                  (err) => err.context.label === "org_name"
+                  )[0] ? (
+                    
+                    <p className="text-danger">
+                      <BiSolidErrorCircle />
+                      {
+                        errorList.filter(
+                          (err) => err.context.label === "org_name"
+                          )[0]?.message
+                        }
+
+                    </p>
+                
+                ) : (
+                  ""
+                )}
+
                 <input
                   onChange={getOrgData}
                   type="link"
                   placeholder="Social Media"
                   name="social_media"
                 />
+
+{errorList.filter(
+                  (err) => err.context.label === "social_media"
+                  )[0] ? (
+                    
+                    <p className="text-danger">
+                      <BiSolidErrorCircle />
+                      {
+                        errorList.filter(
+                          (err) => err.context.label === "social_media"
+                          )[0]?.message
+                        }
+
+                    </p>
+                
+                ) : (
+                  ""
+                )}
+
                 <input
                   onChange={getOrgData}
                   type="email"
                   placeholder="Contact E-mail"
                   name="reply_email"
                 />
+                    {errorList.filter(
+                  (err) => err.context.label === "reply_email"
+                  )[0] ? (
+                    
+                    <p className="text-danger">
+                      <BiSolidErrorCircle />
+                      {
+                        errorList.filter(
+                          (err) => err.context.label === "reply_email"
+                          )[0]?.message
+                        }
+
+                    </p>
+                
+                ) : (
+                  ""
+                )}
                 <input
                   onChange={getOrgData}
                   type="tel"
                   placeholder="Enter Your Phone"
                   name="reply_phone"
                 />
+                      {errorList.filter(
+                  (err) => err.context.label === "reply_phone"
+                  )[0] ? (
+                    
+                    <p className="text-danger">
+                      <BiSolidErrorCircle />
+                      {
+                        errorList.filter(
+                          (err) => err.context.label === "reply_phone"
+                          )[0]?.message
+                        }
+
+                    </p>
+                
+                ) : (
+                  ""
+                )}
                 <input
                   onChange={getOrgData}
                   type="text"
                   placeholder="Niche"
                   name="niche"
                 />
+                  {errorList.filter(
+                  (err) => err.context.label === "niche"
+                  )[0] ? (
+                    
+                    <p className="text-danger">
+                      <BiSolidErrorCircle />
+                      {
+                        errorList.filter(
+                          (err) => err.context.label === "niche"
+                          )[0]?.message
+                        }
+
+                    </p>
+                
+                ) : (
+                  ""
+                )}
                 <input
                   onChange={getOrgData}
                   type="text"
                   placeholder="Enter Your Location"
                   name="region"
                 />
+                    {errorList.filter(
+                  (err) => err.context.label === "region"
+                  )[0] ? (
+                    
+                    <p className="text-danger">
+                      <BiSolidErrorCircle />
+                      {
+                        errorList.filter(
+                          (err) => err.context.label === "region"
+                          )[0]?.message
+                        }
+
+                    </p>
+                
+                ) : (
+                  ""
+                )}
                 <input
                   onChange={getOrgData}
                   type="Number"
                   placeholder="Average Revenue In The Last Quarter"
                   name="avg_revenue"
                 />
+                  {errorList.filter(
+                  (err) => err.context.label === "avg_revenue"
+                  )[0] ? (
+                    
+                    <p className="text-danger">
+                      <BiSolidErrorCircle />
+                      {
+                        errorList.filter(
+                          (err) => err.context.label === "avg_revenue"
+                          )[0]?.message
+                        }
+
+                    </p>
+                
+                ) : (
+                  ""
+                )}
                 <input
                   onChange={getOrgData}
                   type="text"
                   placeholder="Enter referral_method "
                   name="referral_method"
                 />
+                  {errorList.filter(
+                  (err) => err.context.label === "referral_method"
+                  )[0] ? (
+                    
+                    <p className="text-danger">
+                      <BiSolidErrorCircle />
+                      {
+                        errorList.filter(
+                          (err) => err.context.label === "referral_method"
+                          )[0]?.message
+                        }
+
+                    </p>
+                
+                ) : (
+                  ""
+                )}
                 <button
                   type="submit"
                   className="btn btn-info"
