@@ -1,10 +1,9 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import "./NavbarLanding.scss";
-import 'bootstrap/dist/css/bootstrap.min.css';
 import About from "../../components/About/About";
 import Request from "../../pages/Auth/Request";
 import Contacts from "../../components/Contacts/Contacts";
-import { Link } from "react-router-dom";
 import img1 from '../../img/logo.png';
 
 
