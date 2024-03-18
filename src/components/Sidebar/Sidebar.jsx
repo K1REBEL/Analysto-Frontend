@@ -30,19 +30,19 @@ export default function Sidebar() {
 
             <p className="title">LISTS</p>
             <li>
-              <Link to="/Home">
+             
                 <FaUser className="icon" />
                 <span>Users</span>
-              </Link>
+             
             </li>
             
             <p className="title">YOUR PROFILE</p>
           
             <li>
-              <Link to="/Login">
+            
                 <MdLogout className="icon" />
                 <span>Logout</span>
-              </Link>
+             
             </li>
           </ul>
         </div>
