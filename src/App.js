@@ -10,6 +10,7 @@ import Edit from "./pages/Admins/Edit";
 import Layout from "./components/layout/layout";
 import NotFound from "./components/NotFound/NotFound";
 import {jwtDecode} from 'jwt-decode';
+import Landing from "./pages/Home/Landing";
 
 function App() {
 
@@ -17,13 +18,14 @@ function App() {
 
   function saveUserData(){
     let encodedToken = localStorage.getItem('userToken');
-    let decodedToken = jwtDecode(encodedToken);
+    let decodedToken = jwtDecode(encodedToken); //user info
     console.log(decodedToken);
     setuserData(decodedToken);
   }
 
   let routers = createBrowserRouter ([
     {path:'/' ,element:<Layout/>,children:[
+      {index:true , element:<Landing/>},
       {path:'datalink', element:<DataLink/>},
       {path:'/login', element:<Login saveUserData={saveUserData} />} ,
       {path:'/requet' ,element:<Request />}, 
