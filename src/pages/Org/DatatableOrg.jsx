@@ -1,6 +1,8 @@
+
 import React, { useState, useEffect } from "react";
 import "./DatatableOrg.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
+
 
 function DatatableOrg() {
   const [users, setUsers] = useState(() => {
@@ -54,30 +56,16 @@ function DatatableOrg() {
       alert("Please fill in all fields");
       return;
     }
-  
-    if (editingId === null) {
-      const id = users.length > 0 ? users[users.length - 1].id + 1 : 1;
-      setUsers([...users, { id, name, email }]);
-    } else {
-      const updatedUsers = users.map((user) => {
-        if (user.id === editingId) {
-          return { ...user, name, email };
-        }
-        return user;
-      });
-      setUsers(updatedUsers);
-      setEditingId(null);
-    }
-  
+    const id = users.length > 0 ? users[users.length - 1].id + 1 : 1;
+    setUsers([...users, { id, name, email }]);
     setName("");
     setEmail("");
     setPassword("");
   };
-  
 
   return (
     <div>
-      <form onSubmit={handleSubmit} >
+      <form onSubmit={handleSubmit}>
         <div className="field row mb-3">
           <div className="col">
             <input
@@ -109,7 +97,7 @@ function DatatableOrg() {
 
           <div className="col-4">
             
-              <button  type="submit" className="btn btn-sm btn-success">
+              <button type="submit" className="btn btn-sm btn-success">
                 Add User
               </button>
             
@@ -161,34 +149,38 @@ function DatatableOrg() {
           {editingId === user.id ? (
             <>
               <button
-                type="button"
-                className="btn btn-success btn-sm"
-                onClick={handleSave}
-              >
-                Save
-              </button>
-              <button
-                type="button"
-                className="btn btn-danger btn-sm ms-2"
-                onClick={handleCancel}
-              >
-                Cancel
-              </button>
-            </>
-          ) : (
-            <i
-              className="fas fa-pen-to-square"
-              style={{ marginRight: "10px", cursor: "pointer" }}
-              onClick={() => handleEdit(user.id)}
-            ></i>
-          )}
-          <i
-            className="fas fa-trash"
-            style={{ color: "#c70000", cursor: "pointer" }}
-            onClick={() => handleDelete(user.id)}
-          ></i>
-        </td>
-      </tr>
+            type="button"
+            className="btn btn-success btn-sm me-2"
+            onClick={handleSave}
+          >
+            Save
+          </button>
+          <button
+            type="button"
+            className="btn btn-danger btn-sm"
+            onClick={handleCancel}
+          >
+            Cancel
+          </button>
+        </>
+      ) : (
+        <button
+          type="button"
+          className="btn btn-primary btn-sm me-2"
+          onClick={() => handleEdit(user.id)}
+        >
+            Config
+        </button>
+      )}
+      <button
+        type="button"
+        className="btn btn-danger btn-sm"
+        onClick={() => handleDelete(user.id)}
+      >
+        Delete
+      </button>
+    </td>
+  </tr>
     ))}
   </tbody>
 </table>
