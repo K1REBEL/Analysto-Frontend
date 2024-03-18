@@ -28,7 +28,7 @@ function App() {
       {index:true , element:<Landing/>},
       {path:'datalink', element:<DataLink/>},
       {path:'/login', element:<Login saveUserData={saveUserData} />} ,
-      {path:'/requet' ,element:<Request />}, 
+      {path:'/Request' ,element:<Request />}, 
       {path:'/pass' ,element:<Pass />} ,
       {path:'/card',element:<Card />} ,
       {path:'/admin', element:<Admin />} ,
