@@ -1,81 +1,67 @@
-import React from 'react';
-import "./RequestCard.scss";
+import React, { useState, useEffect } from 'react';
 
-function RequestCard() {
+function RequestCard({ org }) {
+    const [accepted, setAccepted] = useState(false);
+    const [editing, setEditing] = useState(false);
+    const [formData, setFormData] = useState({});
+
+    useEffect(() => {
+        if (org) {
+            setFormData(org);
+        }
+    }, [org]);
+
+    const handleEdit = () => {
+        setEditing(true);
+    };
+
+    const handleAccept = () => {
+        setAccepted(true);
+        setEditing(false);
+    };
+
+    const handleReject = () => {
+        setAccepted(false);
+    };
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value
+        });
+    };
+
     return (
         <div className="requests d-flex justify-content-evenly align-items-center flex-column p-5 m-5">
-            <div id="card" className="pending-card card col-md-12 p-2">
-                <div className="d-flex gap-4 p-3 flex-row">
-                    <div className="column1 col-md-5 p-2">
-                        <div className="data d-flex p-2">
-                            <div className="d-flex justify-content-end">
-                                <div className="data-name p-2">Name:</div>
-                            </div>
-                            <div className="d-flex justify-content-start">
-                                <div className="data-value p-2">Amazon USA</div>
-                            </div>
-                        </div>
-                        <div className="data d-flex p-2">
-                            <div className="d-flex justify-content-end">
-                                <div className="data-name p-2">Niche:</div>
-                            </div>
-                            <div className="d-flex justify-content-start">
-                                <div className="data-value p-2 niche">ecommerce</div>
-                            </div>
-                        </div>
-                        <div className="data d-flex p-2">
-                            <div className="d-flex justify-content-end">
-                                <div className="data-name p-2">Region:</div>
-                            </div>
-                            <div className="d-flex justify-content-start">
-                                <div className="data-value p-2">Egypt</div>
-                            </div>
-                        </div>
+            <div id="card" className={`pending-card card col-md-12 p-2 ${accepted ? 'accepted' : ''}`}>
+                {/* Your card content */}
+                {editing ? (
+                    // Render input fields for editing
+                    <div className="editing">
+                        {/* Render input fields for editing */}
+                        {/* Example: */}
+                        <input type="text" name="org_name" value={formData.org_name || ''} onChange={handleChange} />
+                        {/* Add similar input fields for other data */}
                     </div>
-                    <div className="column2 col-md-5 p-2">
-                        <div className="data d-flex p-2">
-                            <div className="d-flex justify-content-end">
-                                <div className="data-name p-2">Reply Phone:</div>
-                            </div>
-                            <div className="d-flex justify-content-start">
-                                <div className="data-value p-2 phone">+201211085189</div>
-                            </div>
-                        </div>
-                        <div className="data d-flex p-2">
-                            <div className="d-flex justify-content-end">
-                                <div className="data-name p-2">Reply Email:</div>
-                            </div>
-                            <div className="d-flex justify-content-start">
-                                <div className="data-value p-2">eng.gamalsobhi@gmail.com</div>
-                            </div>
-                        </div>
-                        <div className="data d-flex p-2">
-                            <div className="d-flex justify-content-end">
-                                <div className="data-name p-2">Referral method:</div>
-                            </div>
-                            <div className="d-flex justify-content-start">
-                                <div className="data-value p-2 method">Social Media</div>
-                            </div>
-                        </div>
+                ) : (
+                    // Render data values
+                    <div className="data">
+                        <div className="data-value p-2">Name: {formData.org_name || ''}</div>
+                        {/* Render other data values */}
                     </div>
-                    <div className="column3 col-md-2 d-flex p-2 justify-content-start align-items-end flex-column gap-5">
-                        <div style={{ alignSelf: 'end' }} className="me-5">
-                            <button id="edit-button" className="ms-1 edit-button">Edit & Accept</button>
-                            <br />
-                            <br />
-                            <button className="ms-1 reject-button bg-danger">Reject the Request</button>
-                        </div>
+                )}
+                {/* Buttons */}
+                {!accepted && (
+                    <div className="buttons">
+                        {!editing ? (
+                            <button className="edit-button" onClick={handleEdit}>Edit & Accept</button>
+                        ) : (
+                            <button className="accept-button" onClick={handleAccept}>Accept</button>
+                        )}
+                        <button className="reject-button" onClick={handleReject}>Reject the Request</button>
                     </div>
-                </div>
-                <div className="col-md-8 p-2">
-                    <div className="data d-flex p-2">
-                        <div className="data-name p-2">Social Media:</div>
-                        <div className="data-value p-2">https://www.facebook.com/profile.php?id=100001546971200</div>
-                    </div>
-                </div>
-                <p id="pending-word" style={{ position: 'absolute', right: '1%', bottom: '3%', color: '#3B71CA' }} className="me-5">
-                    Pending
-                </p>
+                )}
             </div>
         </div>
     );
