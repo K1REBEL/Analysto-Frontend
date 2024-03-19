@@ -1,21 +1,32 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Navbar.scss";
+import logo2 from "../../img/Logo2.png";
 
 function Navbar() {
   return ( 
     <nav className="navbar flex-md flex-md-row flex-column d-flex p-2">
-      <div className="wrapper">
-        <div className="items d-flex justify-content-between">
-          <span>
-            <li>
-              Organization Name:
-              <i> Electrozone</i>
-             </li>
-           
-          </span>
-          <div className="item">
-            <img src="/images/org.jpg" alt="" className="avatar" />
+      <div className="nav">
+        <input type="checkbox" id="nav-check"/>
+        <div className="nav-header">
+          <div className="nav-title">
+            <img src={logo2} alt="logo" className="small-logo" />
           </div>
+        </div>
+        <div className="nav-btn">
+          <label htmlFor="nav-check">
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+        </div>
+        
+        <div className="nav-links">
+        <Link to='/About'>About Us</Link>
+        <Link to='/About'>Contact Us</Link>
+        <Link to='/About'>Request a Subscription</Link>
+        <Link to='/About'>Login</Link>
+        <Link to='/About'>Logout</Link>
         </div>
       </div>
     </nav>

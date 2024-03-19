@@ -10,7 +10,7 @@ import Edit from "./pages/Admins/Edit";
 import Layout from "./components/layout/layout";
 import NotFound from "./components/NotFound/NotFound";
 import {jwtDecode} from 'jwt-decode';
-import Landing from "./pages/Home/Landing";
+import Landing from "./pages/home/Landing";
 import RequestAdmin from "./pages/request-admin/RequestAdmin";
 function App() {
 
