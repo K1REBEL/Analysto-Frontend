@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./DatatableOrg.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -7,24 +7,35 @@ function DatatableOrg() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emp, setEmp] = useState([]);
- 
+
+const [user, setUser] = useState({
+  id: "",
+  name: "",
+  email: "",
+});
+
 
   const getData = async () => {
     try {
-      const response = await fetch("http://127.0.0.1:4000/api/org/empIndex");
+      const response = await fetch("http://127.0.0.1:4000/api/org/1/empIndex", {
+        headers: {
+          // Add your headers here
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
+        },
+      });
       const data = await response.json();
-      console.log(data); // Check the console to see the actual data structure
+      console.log(data); 
       if (data.message === "Organization's Employees Retrieved") {
-        setEmp(data.employees); // Assuming 'employees' is the correct property in your API response
+        setEmp(data.employees); 
       }
     } catch (error) {
       console.error("Error:", error);
     }
   };
+  
+  
 
-  useEffect(() => {
-    getData();
-  }, []);
   const handleDelete = (id) => {
     const updatedEmp = emp.filter((emp) => emp.id !== id);
     console.log("Delete user with id:", id);
