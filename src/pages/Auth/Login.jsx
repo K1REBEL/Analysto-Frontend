@@ -38,7 +38,7 @@ export default function Login({saveUserData}) {
       }else if (data.message === "Organization found"){
         setisLoading(false);
         localStorage.setItem('userToken' , data.token);
-        navigate("/pass");
+        navigate("pass");
         saveUserData();
       }else if (data.message === "Employee found"){
         setisLoading(false);
@@ -56,8 +56,8 @@ export default function Login({saveUserData}) {
     }
   }
   function submitLoginForm(e) {
-    setisLoading(true);
     e.preventDefault();
+    setisLoading(true);
     let validation = validateLoginForm();
     console.log(validation);
     if (validation.error) {

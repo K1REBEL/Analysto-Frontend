@@ -11,28 +11,32 @@ import Layout from "./components/layout/layout";
 import NotFound from "./components/NotFound/NotFound";
 import {jwtDecode} from 'jwt-decode';
 import Landing from "./pages/Home/Landing";
-
+import RequestAdmin from "./pages/request-admin/RequestAdmin";
 function App() {
 
-  const [userData , setuserData] = useState(null);
+  const [userData , setuserData ] = useState(null);
+  const [userRole , setuserRole ] = useState(null);
 
   function saveUserData(){
     let encodedToken = localStorage.getItem('userToken');
     let decodedToken = jwtDecode(encodedToken); //user info
     console.log(decodedToken);
     setuserData(decodedToken);
+    console.log(decodedToken.role);
+    setuserRole(decodedToken.role);
   }
 
   let routers = createBrowserRouter ([
     {path:'/' ,element:<Layout/>,children:[
       {index:true , element:<Landing/>},
+      {path:'/requestadmin', element:<RequestAdmin />} ,
       {path:'datalink', element:<DataLink/>},
       {path:'/login', element:<Login saveUserData={saveUserData} />} ,
       {path:'/Request' ,element:<Request />}, 
-      {path:'/pass' ,element:<Pass />} ,
+      {path:'login/pass' ,element:<Pass saveUserData={saveUserData} />} ,
       {path:'/card',element:<Card />} ,
       {path:'/admin', element:<Admin />} ,
-      {path:'/edit"', element:<Edit />} ,
+      {path:'/edit', element:<Edit />} ,
       {path:'*', element:<NotFound/>}
     ]}
   ])
