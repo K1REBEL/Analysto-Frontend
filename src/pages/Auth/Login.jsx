@@ -38,7 +38,7 @@ export default function Login({saveUserData}) {
       }else if (data.message === "Organization found"){
         setisLoading(false);
         localStorage.setItem('userToken' , data.token);
-        navigate("DataLink");
+        navigate("/DataLink");
         saveUserData();
       }else if (data.message === "Employee found"){
         setisLoading(false);

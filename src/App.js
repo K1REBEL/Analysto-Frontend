@@ -12,6 +12,7 @@ import NotFound from "./components/NotFound/NotFound";
 import {jwtDecode} from 'jwt-decode';
 import Landing from "./pages/home/Landing";
 import RequestAdmin from "./pages/request-admin/RequestAdmin";
+import BrandsItem from "./pages/employee/brandsItem";
 function App() {
 
   const [userData , setuserData ] = useState(null);
@@ -33,10 +34,11 @@ function App() {
       {path:'Login/Datalink', element:<DataLink/>},
       {path:'/login', element:<Login saveUserData={saveUserData} />} ,
       {path:'/Request' ,element:<Request />}, 
-      {path:'login/pass' ,element:<Pass saveUserData={saveUserData} />} ,
+      {path:'/pass' ,element:<Pass />} ,
       {path:'/card',element:<Card />} ,
       {path:'/admin', element:<Admin />} ,
       {path:'/edit', element:<Edit />} ,
+      {path:'/brand', element:<BrandsItem />} ,
       {path:'*', element:<NotFound/>}
     ]}
   ])
