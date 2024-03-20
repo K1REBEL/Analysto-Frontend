@@ -14,10 +14,10 @@ function DatatableOrg() {
       try {
         const config = {
           headers: {
-            Authorization: Bearer ${fetchedToken}
+            Authorization: `Bearer ${fetchedToken}`
           }
         };
-        const { data } = await axios.get(http://127.0.0.1:4000/api/org/empIndex, config);
+        const { data } = await axios.get(`http://127.0.0.1:4000/api/org/empIndex`, config);
         setOrgEmpl(data.result);
         console.log(data.result);
       } catch (error) {
