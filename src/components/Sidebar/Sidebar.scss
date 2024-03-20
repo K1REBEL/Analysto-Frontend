@@ -1,12 +1,20 @@
 .sidebar {
   flex: 1;
+  
   border-right: 0.5px solid rgb(230, 227, 227);
   min-height: 100vh;
-  background-color: white;
+  --rebecca-purple: hsl(270, 60%, 15%);
+  background-image: linear-gradient(
+    to bottom right, 
+    hsla(203, 92%, 35.5%, 0.25), 
+    var(--rebecca-purple), 
+    hsla(27.6, 87.1%, 35.7%, 0.25)
+  );
+  background-color: var(--rebecca-purple);
+
 
   .top {
     background-color: hsl(0, 0%, 100%) ;
-    height: 59px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -16,10 +24,7 @@
     }
   }
 
-  hr {
-    height: 0;
-    border: 0.5px solid rgb(230, 227, 227);
-  }
+  
 
   .center {
     padding: 10px;
@@ -34,7 +39,7 @@
       .title {
         font-size: 10px;
         font-weight: bold;
-        color: #999;
+        color: #ffffff;
         margin-top: 15px;
         margin-bottom: 5px;
       }
@@ -52,7 +57,7 @@
 
         .icon {
           font-size: 18px;
-          color: #3d035d;
+          color: #ffffff;
           outline: none;
           margin-right: 10px;
 
@@ -62,7 +67,7 @@
           font-size: 13px;
           font-weight: 600;
           margin-left: 10px;
-          color: #888;
+          color: #f8f8f8;
           text-decoration: none;
           outline: none;
 

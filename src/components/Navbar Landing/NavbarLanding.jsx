@@ -5,6 +5,7 @@ import About from "../../components/About/About";
 import Request from "../../pages/Auth/Request";
 import Contacts from "../../components/Contacts/Contacts";
 import img1 from '../../img/logo.png';
+import { HashLink } from "react-router-hash-link";
 
 
 
@@ -20,19 +21,23 @@ function NavbarLanding() {
             <a className="nav-link" href="#"> </a>
           </li>
           <li className="nav-item">
-                      <Link to='/About'>    <span style={{ color: 'black', fontSize: '1.2rem' }}>About</span>
- </Link>
+          <HashLink smooth to='/#About'>
+              <span style={{ color: 'black', fontSize: '1.2rem' }}>About</span>
+            </HashLink>
           </li>
           <li className="nav-item nav-link">
-          <Link to="/Contacts">    <span style={{ color: 'black', fontSize: '1.2rem' }}>Contacts</span>
- </Link>
+          <HashLink smooth to='/#Contacts'>
+              <span style={{ color: 'black', fontSize: '1.2rem' }}>Contacts</span>
+            </HashLink>
           </li>
           <li className="nav-item">
-          <Link to="/Request">   <button>Request a Subscription</button>  </Link>
+          <HashLink smooth to='/#Request'>
+              <span style={{ color: 'black', fontSize: '1.2rem' }}>Request</span>
+            </HashLink>
           </li>
 
           <li className="nav-item">
-          <Link to="/">  <button>Login</button> </Link>
+          <Link to="/login">  <button>Login</button> </Link>
           </li>
         </ul>
       </div>

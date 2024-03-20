@@ -24,14 +24,14 @@ function createData(OrgName, Nish, Configuration) {
     Configuration,
     history: [
       {
-        Reigion: "2020-01-05",
-        ContactForm: "11091700",
-        SubscriptionAbout: 3,
+        Reigion: "",
+        ContactForm: "",
+        SubscriptionAbout: "",
       },
       {
-        Reigion: "2020-01-05",
-        ContactForm: "11091700",
-        SubscriptionAbout: 3,
+        Reigion: "",
+        ContactForm: "",
+        SubscriptionAbout: "",
       },
     ],
   };
@@ -58,9 +58,11 @@ function Row(props) {
         </TableCell>
         <TableCell align="right">{row.Nish}</TableCell>
         <TableCell align="right">
-          <TableCell align="left">
-          <FormControlLabel control={<Switch defaultChecked />} label="active" />
-          </TableCell>
+          <FormControlLabel align="right"
+  control={<Switch defaultChecked able />}
+  label="active"
+/>
+        
         </TableCell>
       </TableRow>
       <TableRow>

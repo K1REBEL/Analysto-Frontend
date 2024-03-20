@@ -8,6 +8,7 @@ import Contacts from "../../components/Contacts/Contacts";
 import Footer from "../../components/Footer/Footer";
 
 
+
 function Landing() {
   return (
     <div>
