@@ -5,58 +5,32 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { data } from "autoprefixer";
 
 function DatatableOrg() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [emp, setEmp] = useState([]);
+  const [orgEmpl, setOrgEmpl] = useState([]);
+  const [userToken, setUserToken] = useState(""); 
 
-// const [user, setUser] = useState({
-//   id: "",
-//   name: "",
-//   email: "",
-// });
-
-
-const getData = async () => {
-  try {
-    const response = await axios.get("http://127.0.0.1:4000/api/org/1/empIndex", {
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
-      },
-    });
-    const data = response.data;
-    console.log(data);
-    if (data.message === "Organization's Employees Retrieved") {
-      setEmp(data.employees);
+  useEffect(() => {
+    async function fetchToken() {
+      const fetchedToken = localStorage.getItem("userToken"); 
+      setUserToken(fetchedToken);
+      console.log(fetchedToken);
+      try {
+        const config = {
+          headers: {
+            Authorization: `Bearer ${fetchedToken}`
+          }
+        };
+        const { data } = await axios.get(`http://127.0.0.1:4000/api/org/empIndex`, config);
+        setOrgEmpl(data.result);
+        console.log(data.result);
+      } catch (error) {
+        console.error("Error fetching users:", error);
+      }
     }
-  } catch (error) {
-    console.error("Error:", error);
-  }
-  console.log(data)
-};
+    
+    fetchToken();
+  }, []); 
+
   
-
-const handleDelete = async (id) => {
-  try {
-    const updatedEmp = emp.filter((emp) => emp.id !== id);
-    console.log("Delete user with id:", id);
-    setEmp(updatedEmp);
-    localStorage.setItem("emp", JSON.stringify(updatedEmp));
-
-    await axios.delete(`http://127.0.0.1:4000/api/org/1/emp/${id}`, {
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
-      },
-    });
-
-    getData(); // Refresh the data after deleting
-    console.log(updatedEmp);
-  } catch (error) {
-    console.error("Error deleting user:", error);
-  }
-};
 
   return (
     <div>
@@ -107,55 +81,26 @@ const handleDelete = async (id) => {
           </tr>
         </thead>
         <tbody>
-          {emp.map((user) => {
-            return (
-              <tr>
-                <td>
-                  <input
-                    type="number"
-                    className="form-control"
-                    value={user.id}
-                    
-                  />
-
-                  <div className="d-flex align-items-center">
-                    <div className="ms-3">
-                      <p className="fw-bold mb-1">{user.id}</p>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    className="form-control"
-                    value={user.name}
-                
-                  />
-
-                  <p className="fw-normal mb-1">{user.name}</p>
-                </td>
-                <td>
-                  <input
-                    type="email"
-                    className="form-control"
-                    value={user.email}
-                   
-                  />
-
-                  <p className="fw-normal mb-1">{user.email}</p>
-                </td>
-                <td>
-                  <button
-                    type="button"
-                    className="btn btn-danger btn-sm"
-                    onClick={() => handleDelete(user.id)}
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            );
-          })}
+          {orgEmpl.map((item, index) => (
+            <tr key={index}>
+              <td>
+                <input type="number"
+                 className="form-control"
+                  value={item.id} />
+              </td>
+              <td>
+                <input type="text" className="form-control" value={item.name} />
+              </td>
+              <td>
+                <input type="email" className="form-control" value={item.email} />
+              </td>
+              <td>
+                <button type="button" className="btn btn-danger btn-sm">
+                  Delete
+                </button>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
