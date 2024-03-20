@@ -28,6 +28,8 @@ function DatatableOrg() {
     fetchToken();
   }, []); 
 
+  
+
   return (
     <div>
       <form>
@@ -74,7 +76,9 @@ function DatatableOrg() {
           {orgEmpl.map((item, index) => (
             <tr key={index}>
               <td>
-                <input type="number" className="form-control" value={item.id} />
+                <input type="number"
+                 className="form-control"
+                  value={item.id} />
               </td>
               <td>
                 <input type="text" className="form-control" value={item.name} />
