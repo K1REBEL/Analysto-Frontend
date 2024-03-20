@@ -31,7 +31,7 @@ function App() {
     {path:'/' ,element:<Layout/>,children:[
       {index:true , element:<Landing/>},
       {path:'/requestadmin', element:<RequestAdmin />} ,
-      {path:'Login/Datalink', element:<DataLink/>},
+      {path:'datalink', element:<DataLink/>},
       {path:'/login', element:<Login saveUserData={saveUserData} />} ,
       {path:'/Request' ,element:<Request />}, 
       {path:'/pass' ,element:<Pass />} ,
