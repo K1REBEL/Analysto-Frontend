@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./DatatableOrg.scss";
-import axios from 'axios';
+import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { data } from "autoprefixer";
-
 function DatatableOrg() {
   const [orgEmpl, setOrgEmpl] = useState([]);
   const [userToken, setUserToken] = useState(""); 
@@ -16,10 +14,10 @@ function DatatableOrg() {
       try {
         const config = {
           headers: {
-            Authorization: `Bearer ${fetchedToken}`
+            Authorization: Bearer ${fetchedToken}
           }
         };
-        const { data } = await axios.get(`http://127.0.0.1:4000/api/org/empIndex`, config);
+        const { data } = await axios.get(http://127.0.0.1:4000/api/org/empIndex, config);
         setOrgEmpl(data.result);
         console.log(data.result);
       } catch (error) {
@@ -41,8 +39,6 @@ function DatatableOrg() {
               type="text"
               className="form-control"
               placeholder="Enter Full Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
             />
           </div>
           <div className="col">
@@ -50,8 +46,6 @@ function DatatableOrg() {
               type="email"
               className="form-control"
               placeholder="Enter Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="col">
@@ -59,8 +53,6 @@ function DatatableOrg() {
               type="password"
               className="form-control"
               placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
 
