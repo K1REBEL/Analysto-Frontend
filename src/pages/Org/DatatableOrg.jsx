@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./DatatableOrg.scss";
+import axios from 'axios';
 import "bootstrap/dist/css/bootstrap.min.css";
+import { data } from "autoprefixer";
 
 function DatatableOrg() {
   const [name, setName] = useState("");
@@ -8,42 +10,53 @@ function DatatableOrg() {
   const [password, setPassword] = useState("");
   const [emp, setEmp] = useState([]);
 
-const [user, setUser] = useState({
-  id: "",
-  name: "",
-  email: "",
-});
+// const [user, setUser] = useState({
+//   id: "",
+//   name: "",
+//   email: "",
+// });
 
 
-  const getData = async () => {
-    try {
-      const response = await fetch("http://127.0.0.1:4000/api/org/1/empIndex", {
-        headers: {
-          // Add your headers here
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
-        },
-      });
-      const data = await response.json();
-      console.log(data); 
-      if (data.message === "Organization's Employees Retrieved") {
-        setEmp(data.employees); 
-      }
-    } catch (error) {
-      console.error("Error:", error);
+const getData = async () => {
+  try {
+    const response = await axios.get("http://127.0.0.1:4000/api/org/1/empIndex", {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
+      },
+    });
+    const data = response.data;
+    console.log(data);
+    if (data.message === "Organization's Employees Retrieved") {
+      setEmp(data.employees);
     }
-  };
-  
+  } catch (error) {
+    console.error("Error:", error);
+  }
+  console.log(data); 
+};
   
 
-  const handleDelete = (id) => {
+const handleDelete = async (id) => {
+  try {
     const updatedEmp = emp.filter((emp) => emp.id !== id);
     console.log("Delete user with id:", id);
     setEmp(updatedEmp);
     localStorage.setItem("emp", JSON.stringify(updatedEmp));
-    getData();
+
+    await axios.delete(`http://127.0.0.1:4000/api/org/1/emp/${id}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
+      },
+    });
+
+    getData(); // Refresh the data after deleting
     console.log(updatedEmp);
-  };
+  } catch (error) {
+    console.error("Error deleting user:", error);
+  }
+};
 
   return (
     <div>
