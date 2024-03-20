@@ -66,7 +66,7 @@ function DatatableOrg() {
       <table className="table align-middle border mb-0 bg-white">
         <thead>
           <tr>
-            <th>Id</th>
+           
             <th>Name</th>
             <th>Email</th>
             <th>Action</th>
@@ -75,16 +75,12 @@ function DatatableOrg() {
         <tbody>
           {orgEmpl.map((item, index) => (
             <tr key={index}>
+             
               <td>
-                <input type="number"
-                 className="form-control"
-                  value={item.id} />
+                <p>{item.name} </p>
               </td>
               <td>
-                <input type="text" className="form-control" value={item.name} />
-              </td>
-              <td>
-                <input type="email" className="form-control" value={item.email} />
+                <p>{item.email}</p>
               </td>
               <td>
                 <button type="button" className="btn btn-danger btn-sm">
