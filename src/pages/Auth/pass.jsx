@@ -1,18 +1,16 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import joi from "joi";
 import axios from "axios"; 
 import "../Auth/pass.scss";
 
-export default function Pass({saveUserData}) {
+export default function Pass({ saveUserData, setuserRole }) {
   let navigate = useNavigate();
-  // const [errorList, seterrorList] = useState([]);
   const [error, setError] = useState("");
   const [isLoading, setisLoading] = useState(false);
   const [user, setUser] = useState({
-    newPassword: ''
+    newPassword: '',
   });
-
+  
   function getUserData(eventinfo) {
     let myUser = { ...user };
     myUser[eventinfo.target.name] = eventinfo.target.value;
@@ -30,25 +28,32 @@ export default function Pass({saveUserData}) {
       const data = response.data;
       console.log(data);
 
-      if (data.message === "Password reset!"){
+      if (data.message === "Password reset!") {
         setisLoading(false);
-        localStorage.setItem('userToken' , data.token);
-        navigate("");
+        localStorage.setItem("userToken", data.token);
+        navigate("/pass");
         saveUserData();
-      }
-      else {
+        setuserRole();
+      } else {
         setisLoading(false);
         setError(data.message);
       }
     } catch (error) {
       setisLoading(false);
       console.log(error);
-      setError("An error occurred while logging in.");
+      setError("An error occurred while resetting password.");
     }
   }
 
   function submitPassForm(e) {
     e.preventDefault();
+
+    // Add validation to check if newPassword matches confirmPassword
+    if (user.newPassword !== user.confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
+
     changepass();
   }
   
@@ -57,25 +62,27 @@ export default function Pass({saveUserData}) {
       <div className="login-form">
         <div className="container">
           <div className="main">
-            <div className="content">
+            <div className="content" >
               <h2>Set Your Own Password</h2>
+              
               <form onSubmit={submitPassForm}>
                 <input
                   onChange={getUserData}
+                  id="newPassword"
                   type="password"
                   name="newPassword"
                   placeholder="New Password"
                   value={user.newPassword} // Adding value attribute
                   required
                 />
-                {/* <input
+                <input
                   onChange={getUserData}
                   type="password"
-                  name="validation"
+                  name="confirmPassword" // Fixing input name for confirmation password
                   placeholder="Confirm Password"
-                  value={user.validation} // Adding value attribute
+                  value={user.confirmPassword} // Adding value attribute
                   required
-                /> */}
+                />
                 <button className="btn" type="submit">
                   Change Password
                 </button>
