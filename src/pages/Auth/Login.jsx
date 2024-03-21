@@ -29,7 +29,12 @@ export default function Login({saveUserData}) {
       });
       const data = response.data;
       console.log(data);
+      // console.log( data.emp.password_set);
+      console.log( data.orgUser.password_set);
+      
 
+
+      
       if (data.message === "Admin found") {
         setisLoading(false);
         localStorage.setItem('userToken' , data.token);
@@ -38,12 +43,20 @@ export default function Login({saveUserData}) {
       }else if (data.message === "Organization found"){
         setisLoading(false);
         localStorage.setItem('userToken' , data.token);
-        navigate("/DataLink");
+        if ( data.orgUser.password_set === 0) {
+          navigate("/pass");
+        }else{
+          navigate("/datalink")
+        }
         saveUserData();
       }else if (data.message === "Employee found"){
         setisLoading(false);
         localStorage.setItem('userToken' , data.token);
-        navigate("/DataLink");
+        if (data.emp.password_set === 0) {
+          navigate("/pass");
+        }else{
+          navigate("/card")
+        }
         saveUserData();
       }else {
         setisLoading(false);

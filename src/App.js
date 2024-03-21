@@ -34,7 +34,7 @@ function App() {
       {path:'datalink', element:<DataLink/>},
       {path:'/login', element:<Login saveUserData={saveUserData} />} ,
       {path:'/Request' ,element:<Request />}, 
-      {path:'/pass' ,element:<Pass />} ,
+      {path:'/pass' ,element:<Pass saveUserData={saveUserData} setuserRole={setuserRole} userRole={userRole}/>} ,
       {path:'/card',element:<Card />} ,
       {path:'/admin', element:<Admin />} ,
       {path:'/edit', element:<Edit />} ,
