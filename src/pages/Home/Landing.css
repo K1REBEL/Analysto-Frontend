@@ -1,10 +1,4 @@
-:root {
-  --main-color: #7c3bd9;
-  --secondary-color: #291940;
-  --third-color: #d6c2f2;
-  --fourth-color: #f2f2f2;
-  --fifth-color: #0d0d0d;
-}
+
 .navbar {
   height: 50px;
   background-color: #f2f2f2 !important;

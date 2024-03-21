@@ -75,6 +75,33 @@ tfoot td {
   color: #8a97a0;
 }
 
+.link {
+  color: #426cb5;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 400;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.link:hover {
+  color: #002360;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.tables {
+  width: 100%;
+  border: 1px #a39485 solid;
+  font-size: 0.9em;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+  margin-top: 30px;
+}
+
 @media all and (max-width: 768px) {
   table, thead, tbody, th, td, tr {
     display: block;
@@ -108,30 +135,4 @@ tfoot td {
   td {
     border-bottom: 1px solid #e5e5e5;
   }
-}
-.link {
-  color: #426cb5;
-  text-decoration: none;
-  cursor: pointer;
-  font-size: 15px;
-  font-weight: 400;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-.link:hover {
-  color: #002360;
-  text-decoration: none;
-  cursor: pointer;
-  font-size: 15px;
-  font-weight: 500;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
-.tables {
-  width: 100%;
-  border: 1px #a39485 solid;
-  font-size: 0.9em;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
-  margin-top: 30px;
 }/*# sourceMappingURL=brandItem.css.map */

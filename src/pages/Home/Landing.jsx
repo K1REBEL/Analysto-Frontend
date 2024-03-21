@@ -1,6 +1,6 @@
 
 import React from "react";
-import NavbarLanding from "../../components/Navbar Landing/NavbarLanding";
+import NavbarLanding from "../../components/Navbar/Navbar";
 import AnalystoDescription from "../../components/AnalystoDescription/AnalystoDescription";
 import About from "../../components/About/About";
 import Request from "../../pages/Auth/Request";
