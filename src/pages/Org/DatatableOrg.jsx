@@ -5,7 +5,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function DatatableOrg() {
   const [orgEmpl, setOrgEmpl] = useState([]);
   const [userToken, setUserToken] = useState(""); 
-
   useEffect(() => {
     async function fetchToken() {
       const fetchedToken = localStorage.getItem("userToken"); 
@@ -27,7 +26,6 @@ function DatatableOrg() {
     
     fetchToken();
   }, []); 
-
   
 
   return (

@@ -3,14 +3,15 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios"; 
 import "../Auth/pass.scss";
 
-export default function Pass({ saveUserData, setuserRole }) {
+export default function Pass({  saveUserData, setuserRole, userRole}) {
   let navigate = useNavigate();
   const [error, setError] = useState("");
   const [isLoading, setisLoading] = useState(false);
+  const [userToken, setUserToken] = useState(""); 
   const [user, setUser] = useState({
     newPassword: '',
   });
-  
+
   function getUserData(eventinfo) {
     let myUser = { ...user };
     myUser[eventinfo.target.name] = eventinfo.target.value;
@@ -20,30 +21,51 @@ export default function Pass({ saveUserData, setuserRole }) {
 
   async function changepass() {
     try {
-      const response = await axios.patch("http://127.0.0.1:4000/api/org/setOrgPass", user, {
+      const fetchedToken = localStorage.getItem("userToken"); 
+      setUserToken(fetchedToken);
+      console.log(fetchedToken);
+  
+      setisLoading(true); 
+  
+      let apiUrl = "";
+  
+      if (userRole === "organization") {
+        apiUrl = "http://127.0.0.1:4000/api/org/setOrgPass";
+      } else if (userRole === "employee") {
+        apiUrl = "http://127.0.0.1:4000/api/emp/setEmpPass";
+      }
+  
+      const response = await axios.patch(apiUrl, user, {
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${fetchedToken}`
         }
       });
+  
       const data = response.data;
-      console.log(data);
 
+      console.log(data);
+      console.log(data.token); 
+  
       if (data.message === "Password reset!") {
-        setisLoading(false);
-        localStorage.setItem("userToken", data.token);
-        navigate("/pass");
         saveUserData();
+        if (userRole === 'organization') {
+          navigate("/datalink");
+        } else if (userRole === 'employee') {
+          navigate("/card");
+        }
         setuserRole();
       } else {
-        setisLoading(false);
         setError(data.message);
       }
     } catch (error) {
-      setisLoading(false);
-      console.log(error);
+      console.error(error);
       setError("An error occurred while resetting password.");
+    } finally {
+      setisLoading(false); 
     }
   }
+  
 
   function submitPassForm(e) {
     e.preventDefault();
@@ -72,21 +94,22 @@ export default function Pass({ saveUserData, setuserRole }) {
                   type="password"
                   name="newPassword"
                   placeholder="New Password"
-                  value={user.newPassword} // Adding value attribute
+                  value={user.newPassword}
                   required
                 />
                 <input
                   onChange={getUserData}
                   type="password"
-                  name="confirmPassword" // Fixing input name for confirmation password
+                  name="confirmPassword"
                   placeholder="Confirm Password"
-                  value={user.confirmPassword} // Adding value attribute
+                  value={user.confirmPassword}
                   required
                 />
-                <button className="btn" type="submit">
-                  Change Password
+                <button className="btn" type="submit" disabled={isLoading}>
+                  {isLoading ? 'Changing Password...' : 'Change Password'}
                 </button>
               </form>
+              {error && <div className="error-message">{error}</div>}
             </div>
             <div className="form-img">
               <img src="/images/My-Password.png" alt="Password" />
@@ -94,6 +117,6 @@ export default function Pass({ saveUserData, setuserRole }) {
           </div>
         </div>
       </div>
-    </>
-  );
+    </>
+  );
 }
