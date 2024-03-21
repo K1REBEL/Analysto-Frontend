@@ -1,0 +1,19 @@
+#layoutError {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.images {
+  width: 80%;
+}
+
+.btn-link {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.btn-link:hover {
+  text-decoration: underline;
+}/*# sourceMappingURL=NotFound.css.map */

@@ -6,9 +6,8 @@
   position: relative;
   margin: 0 auto;
   margin-top: 10px;
-  
-
 }
+
 .brand-image {
   border: 2px solid rgb(222, 222, 226); /* Set your desired active image style */
 }
@@ -21,21 +20,14 @@
   cursor: pointer;
   transition: all 0.3s ease 0s;
   transform: translateY(-7px);
-
- 
 }
 
-
-
-
 *, *:before, *:after {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
 body {
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
   color: #384047;
 }
 
@@ -83,83 +75,63 @@ tfoot td {
   color: #8a97a0;
 }
 
-  
- @media all and (max-width: 768px) {
-    
+@media all and (max-width: 768px) {
   table, thead, tbody, th, td, tr {
     display: block;
   }
-  
   th {
     text-align: right;
   }
-  
   table {
-    position: relative; 
+    position: relative;
     padding-bottom: 0;
     border: none;
-    box-shadow: 0 0 10px rgba(0,0,0,.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   }
-  
   thead {
     float: left;
     white-space: nowrap;
   }
-  
   tbody {
     overflow-x: auto;
     overflow-y: hidden;
     position: relative;
     white-space: nowrap;
   }
-  
   tr {
     display: inline-block;
     vertical-align: top;
   }
-  
   th {
     border-bottom: 1px solid #edd3f6;
   }
-  
   td {
     border-bottom: 1px solid #e5e5e5;
   }
+}
+.link {
+  color: #426cb5;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 400;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.link:hover {
+  color: #002360;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  margin-left: 10px;
+  margin-right: 10px;
+}
 
-  
-  
-  
-  }
-  .link{
-    color: #426cb5;
-    text-decoration: none;
-    cursor: pointer;
-    font-size: 15px;
-    font-weight: 400;
-    margin-left: 10px;
-    margin-right: 10px;
-
-    &:hover{
-      color: #002360;
-      text-decoration: none;
-      cursor: pointer;
-      font-size: 15px;
-      font-weight: 500;
-      margin-left: 10px;
-      margin-right: 10px;
-    }
-  }
-
-  .tables{
-    width: 100%;
-    border: 1px #a39485 solid;
-    font-size:.9em;
-    box-shadow: 0 2px 5px rgba(0,0,0,.25);
-    margin-top: 30px;
-  }
-
-
-
-
-
-
+.tables {
+  width: 100%;
+  border: 1px #a39485 solid;
+  font-size: 0.9em;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+  margin-top: 30px;
+}/*# sourceMappingURL=brandItem.css.map */

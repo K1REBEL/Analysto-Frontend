@@ -1,0 +1,66 @@
+.datatable {
+  height: 600px;
+  padding: 20px;
+}
+
+.dataTableAdd {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-Bottom: 10px;
+  background-color: rgb(250, 247, 247);
+  font-size: 24px;
+  color: gray;
+  display: flex;
+  justify-content: space-between;
+}
+
+.input {
+  width: 100%;
+}
+
+.datatable {
+  overflow-x: auto;
+  width: 100%;
+}
+.datatable .dataTableAdd {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.datatable .dataTableAdd .input {
+  flex: 1;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  min-width: 100px;
+}
+.datatable .dataTableAdd button {
+  margin-bottom: 10px;
+}
+.datatable .MuiDataGrid-root {
+  width: 100%;
+}
+.datatable .MuiDataGrid-root .MuiDataGrid-columnsContainer {
+  min-width: 100%;
+}
+.datatable .MuiDataGrid-root .MuiDataGrid-cell {
+  word-break: break-word;
+}
+.datatable .MuiDataGrid-root .MuiDataGrid-cell:focus-within {
+  outline: none;
+}
+@media (max-width: 768px) {
+  .datatable .dataTableAdd {
+    flex-direction: column;
+    width: 100%;
+  }
+  .datatable .dataTableAdd .input {
+    margin-right: 30px;
+    margin-bottom: 10px;
+    min-width: unset;
+  }
+}
+.datatable .action {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}/*# sourceMappingURL=AdminTable.css.map */

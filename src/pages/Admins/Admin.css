@@ -1,0 +1,6 @@
+.home {
+  display: flex;
+}
+.home .adminContainer {
+  flex: 6;
+}/*# sourceMappingURL=Admin.css.map */

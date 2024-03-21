@@ -6,7 +6,7 @@ import logo2 from "../../img/Logo2.png";
 function Navbar() {
   return ( 
     <nav className="navbar flex-md flex-md-row flex-column d-flex p-2">
-      <div className="nav">
+      <div className="navvv">
         <input type="checkbox" id="nav-check"/>
         <div className="nav-header">
           <div className="nav-title">

@@ -1,0 +1,139 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.login-form {
+  position: relative;
+  min-height: 100vh;
+  z-index: 0;
+  padding: 30px;
+  justify-content: center;
+  display: grid;
+  align-items: center;
+  background-color: #fff;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.login-form .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 900px;
+}
+
+.login-form h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 400;
+}
+
+.login-form h2 {
+  line-height: 40px;
+  margin-bottom: 5px;
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+  font-family: "Kode Mono";
+}
+
+.login-form .main {
+  position: relative;
+  display: flex;
+  margin: 30px 0;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.content {
+  flex-basis: 50%;
+  padding: 3em 3em;
+  background-color: #fff;
+  box-shadow: 2px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.form-img {
+  flex-basis: 50%;
+  background-color: #fff;
+  background-size: cover;
+  padding: 40px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  align-items: center;
+  display: grid;
+}
+
+.form-img img {
+  width: 800px;
+  max-width: 100%;
+}
+
+.btn, button, input {
+  border-radius: 35px;
+}
+
+.login-form form {
+  margin: 30px 0;
+}
+
+.login-form input {
+  outline: none;
+  margin-bottom: 15px;
+  font-stretch: 16px;
+  color: #999;
+  text-align: left;
+  padding: 14px 20px;
+  width: 100%;
+  display: inline-block;
+  box-sizing: border-box;
+  background-color: #fff;
+  transition: 0.3 ease;
+  border: 0.3px solid #4e34b6;
+}
+
+.login-form input:focus {
+  border: 0.3px solid;
+}
+
+.login-form button {
+  font-size: 18px;
+  color: #ffffff;
+  width: 100%;
+  background: #4e34b6;
+  border: none;
+  padding: 14px 15px;
+  font-weight: 600;
+}
+
+.login-form button:hover {
+  color: #ffffff;
+  background: #7134b6;
+}
+
+@media (max-width: 736px) {
+  .login-form .main {
+    flex-direction: column;
+  }
+  .login-form form {
+    margin-top: 30px;
+    margin-bottom: 10px;
+  }
+  .form-img {
+    border-radius: 0;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    order: 2;
+  }
+  .content {
+    order: 1;
+    border-radius: 0;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+}/*# sourceMappingURL=pass.css.map */

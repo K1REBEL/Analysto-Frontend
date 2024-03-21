@@ -1,0 +1,9 @@
+.DataLink {
+  display: flex;
+}
+.DataLink .DataLinkContainer {
+  flex: 6;
+}
+.DataLink body {
+  background-color: aliceblue;
+}/*# sourceMappingURL=DataLink.css.map */

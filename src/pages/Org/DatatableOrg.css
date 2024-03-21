@@ -1,0 +1,15 @@
+.field {
+  margin-top: 40px;
+  margin-left: 5px;
+}
+.field body {
+  background-color: aliceblue;
+}
+
+form {
+  margin-top: 30px;
+}
+
+.btn-purple:hover {
+  background-color: darkpurple;
+}/*# sourceMappingURL=DatatableOrg.css.map */
