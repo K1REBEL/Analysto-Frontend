@@ -1,38 +1,27 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.scss";
-import logo2 from "../../img/Logo2.png";
+import logo from "../../img/logo.png";
 
 function Navbar() {
-  return ( 
-    <nav className="navbar flex-md flex-md-row flex-column d-flex p-2">
-      <div className="navvv">
-        <input type="checkbox" id="nav-check"/>
-        <div className="nav-header">
-          <div className="nav-title">
-            <img src={logo2} alt="logo" className="small-logo" />
-          </div>
-        </div>
-        <div className="nav-btn">
-          <label htmlFor="nav-check">
-            <span></span>
-            <span></span>
-            <span></span>
-          </label>
-        </div>
-        
-        <div className="nav-links">
-        <Link to='/About'>About Us</Link>
-        <Link to='/About'>Contact Us</Link>
-        <Link to='/About'>Request a Subscription</Link>
-        <Link to='/login'>Login</Link>
-        <Link to='/About'>Logout <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
-  <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
-</svg></Link>
-        </div>
-      </div>
-    </nav>
+  return (
+    <div className="container d-flex align-items-center justify-content-between">
+      <header id="header" className="fixed-top">
+        <nav id="navbar" className="navbar">
+            <img className="logo" src={logo} alt="" />
+          <ul className="icons">
+            <li><a className="nav-link scrollto active" href="#hero">Home</a></li>
+            <li><a className="nav-link scrollto" href="#about">About</a></li>
+            <li><a className="nav-link scrollto" href="#services">Contact Us</a></li>
+            <li><a className="nav-link scrollto" href="#services">Request</a></li>
+            <li><a className="getstarted scrollto" href="#about">Login</a></li>
+            <li><a className="getstarted scrollto" href="#about">Logout</a></li>
+           
+          </ul>
+          <i className="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+      </header>
+    </div>
   );
 }
 

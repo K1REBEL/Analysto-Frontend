@@ -80,7 +80,7 @@ function Contacts() {
                 <textarea type='text' id='message' name='message' rows='2' className='form-control md-textarea' placeholder='Your Message'></textarea>
                 <span className='error'> please enter the Message </span>
                 <div className='text-center text-md-left my-5'>
-                  <button className='btn send' type='submit'>Send</button>
+                  <button className='btnnn send' type='submit'>Send</button>
                 </div>
               </div>
             </form>

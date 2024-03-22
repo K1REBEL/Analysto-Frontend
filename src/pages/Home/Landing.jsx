@@ -1,10 +1,9 @@
 
 import React from "react";
-import NavbarLanding from "../../components/Navbar/Navbar";
-import AnalystoDescription from "../../components/AnalystoDescription/AnalystoDescription";
-import About from "../../components/About/About";
+import Navbar from "../../components/Navbar/Navbar";
+import Header from "../../components/Header/Header";
 import Request from "../../pages/Auth/Request";
-import Contacts from "../../components/Contacts/Contacts";
+// import Contacts from "../../components/Contacts/Contacts";
 import Footer from "../../components/Footer/Footer";
 
 
@@ -12,11 +11,16 @@ import Footer from "../../components/Footer/Footer";
 function Landing() {
   return (
     <div>
-      <NavbarLanding />
-      <AnalystoDescription />
-      <About />
+      <Navbar />
+     
+      <div>
+      <Header />
+      </div>
+      <div>
       <Request />
-      <Contacts />
+      </div>
+
+      {/* <Contacts /> */}
       <Footer />
     </div>
   );

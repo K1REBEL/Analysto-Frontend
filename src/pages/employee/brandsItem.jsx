@@ -11,6 +11,7 @@ import "./brandItem.scss";
 const BrandsItem = () => {
   const [activeTab, setActiveTab] = useState(1);
   const [activeImage, setActiveImage] = useState(null);
+ 
 
   const handleTabClick = (tabIndex, image) => {
     setActiveTab(tabIndex);
@@ -18,6 +19,9 @@ const BrandsItem = () => {
       prevActiveImage === image ? null : image
     );
   };
+
+ 
+  
 
   return (
     <div className="container-fluid">
@@ -114,7 +118,7 @@ const BrandsItem = () => {
                           <tr>
                             <th>ASIN</th>
                             <th>
-                              URLs <button class="button">Add URL</button>
+                              URLs <button type="submit" class="button">Add URL</button>
                             </th>
                           </tr>
                         </thead>

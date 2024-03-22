@@ -249,3 +249,14 @@ tfoot td {
     display: none;
   }
 }
+
+.nav-item.active a {
+  background-color: rgba(162, 6, 173, 0.131);
+  color: white;
+  border-radius: 30px;
+}
+
+.nav-item.active img {
+  border: 2px solid rgb(201, 201, 211);
+}
+

@@ -1,142 +1,103 @@
-* {
-  box-sizing: border-box;
+#header {
+  background: #fff;
+  transition: all 0.5s;
+  z-index: 997;
+  padding: 20px 0;
 }
 
-body {
-  margin: 0px;
-  font-family: 'segoe ui';
+@media (max-width: 745px) {
+  #header {
+    padding: 12px 0;
+  }
 }
 
-.navvv {
-border-radius: 5px;
-  height: 50px;
-  width: 100%;
-  --rebecca-purple: hsl(270, 60%, 15%);
-  background-image: linear-gradient(
-    to bottom right, 
-    hsla(203, 92%, 35.5%, 0.25), 
-    var(--rebecca-purple), 
-    hsla(27.6, 87.1%, 35.7%, 0.25)
-  );
-  background-color: var(--rebecca-purple);
-  position: relative;
+.logo{
+  width: 120px;
+  margin-left: 30px;
 }
 
-.navvv > .nav-header {
-  display: inline;
+.navbar {
+  padding: 0;
 }
 
-.navvv > .nav-header > .nav-title {
-  display: inline-block;
-  font-size: 16px;
-  color: #fff;
-  padding: 10px 10px 10px 10px;
-}
-
-.navvv {
+.navbar ul {
+  margin: 0;
+  padding: 0;
+  margin-left: 200px;
   display: flex;
-  justify-content: space-between;
+  list-style: none;
   align-items: center;
 }
 
-.nav-links {
+@media (max-width: 991px) {
+  .navbar ul {
+    margin-left: 0;
+  }
+}
+
+.navbar li {
+  position: relative;
+}
+
+.navbar a,
+.navbar a:focus {
   display: flex;
-  gap: 20px; /* Adjust the value as needed */
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: inherit;
-}
-
-.navvv > .nav-btn {
-  display: none;
-}
-
-.navvv > .nav-links {
-  display: inline;
-  float: right;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0 10px 30px;
+  font-family: "Raleway", sans-serif;
   font-size: 16px;
-  
-
+  font-weight: 700;
+  color: #6a7489;
+  white-space: nowrap;
+  transition: 0.3s;
 }
 
-.navvv > .nav-links > a {
-  display: inline-block;
-  padding: 13px 10px 13px 10px;
-  text-decoration: none;
-  color: #efefef;
+@media (max-width: 991px) {
+  .navbar a,
+  .navbar a:focus {
+    padding: 10px 15px;
+  }
 }
 
-.navvv > .nav-links > a:hover {
-  background-color: rgba(255, 249, 249, 0.3);
+.navbar a i,
+.navbar a:focus i {
+  font-size: 12px;
+  line-height: 0;
+  margin-left: 5px;
 }
 
-.small-logo{
-  width: 110px;
+.navbar a:hover,
+.navbar .active,
+.navbar .active:focus,
+.navbar li:hover>a {
+  color: -webkit-linear-gradient(315deg, #030a56 0%, #d74a91 100%);
 }
 
-.navvv > #nav-check {
-  display: none;
+.navbar .getstarted,
+.navbar .getstarted:focus {
+  padding: 10px 25px;
+  border: none !important;
+  outline: none !important;
+  margin-left: 30px;
+  border-radius: 4px;
+  line-height: 1;
+  color: #5f687b;
+  font-size: 16px;
+  font-weight: 500;
+  border: 1px solid #cdd1d9;
 }
 
-@media (max-width:950px) {
-  .navvv > .nav-links {
-    position: absolute;
-    display: block;
-    width: 100%;
-    background-color: #333;
-    height: 0px;
-    transition: all 0.3s ease-in;
-    overflow-y: hidden;
-    top: 50px;
-    left: 0px;
-    z-index: 2; /* Set a higher z-index value */
-   
-
+@media (max-width: 991px) {
+  .navbar .getstarted,
+  .navbar .getstarted:focus {
+    margin-left: 15px;
+  }
 }
-  .navvv > .nav-btn {
-    display: inline-block;
-    position: absolute;
-    right: 0px;
-    top: 0px;
-    z-index: 2; /* Set a higher z-index value */
-  }
-  .navvv > .nav-btn > label {
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-    padding: 13px;
-  }
-  .navvv > .nav-btn > label:hover,.nav  #nav-check:checked ~ .nav-btn > label {
-    background-color: rgba(0, 0, 0, 0.3);
-  }
-  .navvv > .nav-btn > label > span {
-    display: block;
-    width: 25px;
-    height: 10px;
-    border-top: 2px solid #eee;
-  }
-  .navvv > .nav-links {
-    position: absolute;
-    display: block;
-    width: 100%;
-    background-color: #333;
-    height: 0px;
-    transition: all 0.3s ease-in;
-    overflow-y: hidden;
-    top: 50px;
-    left: 0px;
-  }
-  .navvv > .nav-links > a {
-    display: block;
-    width: 100%;
-  }
-  .navvv > #nav-check:not(:checked) ~ .nav-links {
-    height: 0px;
-  }
-  .navvv > #nav-check:checked ~ .nav-links {
-    height: calc(100vh - 50px);
-    overflow-y: auto;
-  }
+
+.navbar .getstarted:hover,
+.navbar .getstarted:focus:hover {
+  background: -webkit-linear-gradient(315deg, #030a56 0%, #d74a91 100%);
+  color: #fff;
+  border-color: -webkit-linear-gradient(315deg, #030a56 0%, #d74a91 100%);
 }
