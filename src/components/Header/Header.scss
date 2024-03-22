@@ -1,9 +1,11 @@
-.container{
-margin-top: 50px !important;
-}
 
+
+.containeeer {
+  display: flex;
+  margin-left: 130px;
+  margin-top: 50px;
+}
 .masthead{
-  margin-top: 10px;
   margin-bottom: 20px;
   font-size:2vw !important; /* Adjust the percentage as needed */
   font-weight: 500 !important;
@@ -12,13 +14,33 @@ margin-top: 50px !important;
   -webkit-text-fill-color: transparent;
 }
 
+.left-section{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 150px; 
+}
+.left{
+  padding-right: 100px;
+}
 
+.right-section {
+  flex: 1;
+  padding-left:0px; /* Add padding to create space */
+}
 
 /* Other styles remain the same */
 
+.img-fluid{
+  width: 80%;
+  height: 100%;
 
 
-.btn {
+}
+
+
+.galaxy {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,7 +65,7 @@ margin-top: 50px !important;
   background-clip: content-box, border-box;
 }
 
-.container {
+.containeeer {
   display: flex im;
 }
 
@@ -55,8 +77,9 @@ margin-top: 50px !important;
   flex: 2;
 }
 .masthead-heading {
+  margin-top: 80px;
   margin-bottom: 20px;
-  font-size: 5vw !important; /* Adjust the percentage as needed */
+  font-size: 4vw !important; /* Adjust the percentage as needed */
   font-weight: 600 !important;
   background: -webkit-linear-gradient(315deg, #030a56 0%, #d74a91 100%);
   -webkit-background-clip: text;
@@ -77,7 +100,7 @@ margin-top: 50px !important;
 strong {
   z-index: 2;
   font-family: "Avalors Personal Use";
-  font-size: 24px;
+  font-size: 18px;
   letter-spacing: 5px;
   color: #ffffff;
   text-shadow: 0 0 4px white;
@@ -105,23 +128,23 @@ strong {
   background: rgba(142, 81, 234, 0.704);
 }
 
-.btn:hover #container-stars {
+.galaxy:hover #container-stars {
   z-index: 1;
   background-color: #212121;
 }
 
-.btn:hover {
+.galaxy:hover {
   transform: scale(1.1);
 }
 
-.btn:active {
+.galaxy:active {
   border: double 4px #fe53bb;
   background-origin: border-box;
   background-clip: content-box, border-box;
   animation: none;
 }
 
-.btn:active .circle {
+.galaxy:active .circle {
   background: #fe53bb;
 }
 
@@ -213,27 +236,3 @@ strong {
     box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
   }
 }
-
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 20px;
-}
-
-.left-section {
-  width: 100%;
-  max-width: 600px;
-  padding: 0 20px;
-  text-align: center;
-}
-
-.right-section {
-  width: 100%;
-  max-width: 300px;
-  padding: 0 20px;
-  margin-top: 20px;
-}
-
-
-/* Add more media queries as needed for smaller or larger screens */
