@@ -1,6 +1,39 @@
-import React from 'react';
+import  {React, useEffect, useState }  from 'react';
+import axios from "axios";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function RequestCard() {
+
+  const [orgreq, setOrgreq] = useState([]);
+  const [userToken, setUserToken] = useState("");
+
+
+    useEffect(() => {
+        async function fetchData() {
+          try {
+            const fetchedToken = localStorage.getItem("userToken");
+            setUserToken(fetchedToken);
+    
+            const config = {
+              headers: {
+                Authorization: `Bearer ${fetchedToken}`,
+              },
+            };
+    
+            const { data } = await axios.get(
+              "http://127.0.0.1:4000/api/admin/requests",
+              config
+            );
+    
+            setOrgreq(data.result);
+            console.log(data.result)
+          } catch (error) {
+            console.error("Error fetching users:", error);
+          }
+        }
+    
+        fetchData();
+      }, []);
     return (
         <div className="requests d-flex justify-content-evenly align-items-center flex-column p-5 m-5">
             <div id="card" className="pending-card card col-md-12 p-2">
