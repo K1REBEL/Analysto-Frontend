@@ -10,12 +10,13 @@ import Edit from "./pages/Admins/Edit";
 import Layout from "./components/layout/layout";
 import NotFound from "./components/NotFound/NotFound";
 import {jwtDecode} from 'jwt-decode';
-import Landing from "./pages/home/Landing";
+import Landing from "./pages/Home/Landing";
 import RequestAdmin from "./pages/request-admin/RequestAdmin";
 import BrandsItem from "./pages/employee/brandsItem";
 function App() {
 
   const [userData , setuserData ] = useState(null);
+  const [UserData , getuserData ] = useState(null);
   const [userRole , setuserRole ] = useState(null);
 
   function saveUserData(){
@@ -27,11 +28,12 @@ function App() {
     setuserRole(decodedToken.role);
   }
 
+
   let routers = createBrowserRouter ([
     {path:'/' ,element:<Layout/>,children:[
       {index:true , element:<Landing/>},
       {path:'/requestadmin', element:<RequestAdmin />} ,
-      {path:'/login/datalink', element:<DataLink/>},
+      {path:'/login/datalink', element:<DataLink saveUserData={saveUserData}/>},
       {path:'/login', element:<Login saveUserData={saveUserData} />} ,
       {path:'/Request' ,element:<Request />}, 
       {path:'/pass' ,element:<Pass saveUserData={saveUserData} setuserRole={setuserRole} userRole={userRole}/>} ,

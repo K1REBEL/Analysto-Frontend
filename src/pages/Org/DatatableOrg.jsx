@@ -13,6 +13,7 @@ function DatatableOrg({ saveUserData }) {
     pass: "",
   });
 
+  
   const getUserData = (eventinfo) => {
     let myUser = { ...user };
     myUser[eventinfo.target.name] = eventinfo.target.value;
@@ -61,15 +62,17 @@ function DatatableOrg({ saveUserData }) {
         }
       );
       const data = response.data;
-      console.log(data);
 
       if (data.message === "Data inserted successfully") {
         setUser({
-          name: "",
-          email: "",
-          password: "",
+          name:"",
+          email:"",
+          pass:"",
         });
 
+        console.log("User state after submission:", user); // Log the user state after submission
+
+        // Fetch updated employees list
         const updatedEmployeesResponse = await axios.get(
           "http://127.0.0.1:4000/api/org/empIndex",
           {
@@ -79,8 +82,9 @@ function DatatableOrg({ saveUserData }) {
           }
         );
 
+        // Update the employees state with the updated list
         setOrgEmpl(updatedEmployeesResponse.data.result);
-        saveUserData();
+        // saveUserData();
       }
     } catch (error) {
       console.error("Error occurred while sending employee data:", error);
@@ -89,10 +93,13 @@ function DatatableOrg({ saveUserData }) {
     }
   }
 
-  const handleSubmit = (e) => {
+  // Function to handle form submission
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    sendEmployeeDataToApi();
+    setIsLoading(true);
+    await sendEmployeeDataToApi();
   };
+  
 ///////////////////////////////////////////// delete employees ////////////////////////////
 
   async function deleteEmployee(id) {
@@ -146,8 +153,8 @@ function DatatableOrg({ saveUserData }) {
               type="password"
               className="form-control"
               placeholder="Password"
-              name="password"
-              value={user.password}
+              name="pass"
+              value={user.pass}
             />
           </div>
 
@@ -155,9 +162,9 @@ function DatatableOrg({ saveUserData }) {
             <button
               type="submit"
               className="btn btn-sm btn-success"
-              disabled={isLoading}
+            
             >
-              {isLoading ? "Adding..." : "Add User"}
+              add User
             </button>
           </div>
         </div>

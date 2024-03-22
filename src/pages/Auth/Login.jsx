@@ -30,7 +30,7 @@ export default function Login({saveUserData}) {
       const data = response.data;
       console.log(data);
       // console.log( data.emp.password_set);
-      console.log( data.orgUser.password_set);
+      // console.log( data.orgUser.password_set);
       
 
 
