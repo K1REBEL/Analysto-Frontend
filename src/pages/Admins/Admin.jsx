@@ -7,11 +7,11 @@ const Admin = () => {
   return (
     <div className='home'>
     <Sidebar />
-      <div className="adminContainer">
-        <Navbar />
+      {/* <div className="adminContainer">
+        <Navbar /> */}
         <div className="admin">
           <AdminTable/>
-        </div>
+      
       </div>
       </div>
     
