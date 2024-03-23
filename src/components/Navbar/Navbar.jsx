@@ -14,8 +14,8 @@ function Navbar({userData , logOut}) {
           <ul className="icons">
             <li><Link to ="/"className="nav-link scrollto active" href="#about">Home</Link></li>
             <li><a className="nav-link scrollto" href="#about">About</a></li>
-            <li><a className="nav-link scrollto" href="#services">Contact Us</a></li>
-            <li><a className="nav-link scrollto" href="#services">Request</a></li>
+            <li><a className="nav-link scrollto" href="#Contacts">Contact Us</a></li>
+            <li><a className="nav-link scrollto" href="#Request">Request</a></li>
             
             {userData ? (
               <li><button className="getstarted scrollto" onClick={logOut}>Logout</button></li>
