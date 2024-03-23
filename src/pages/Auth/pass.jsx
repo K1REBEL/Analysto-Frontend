@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios"; 
 import "../Auth/pass.scss";
 
-export default function Pass({  saveUserData, setuserRole, userRole}) {
+export default function Pass({ saveUserData, setuserRole, userRole }) {
   let navigate = useNavigate();
   const [error, setError] = useState("");
   const [isLoading, setisLoading] = useState(false);

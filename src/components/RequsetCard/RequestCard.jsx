@@ -50,9 +50,9 @@ function RequestCard() {
                         <div className="data d-flex p-2">
                             <div className="d-flex justify-content-end">
                                 <div className="data-name p-2">Niche:</div>
+                                <div className="data-value p-2 niche">ecommerce</div>
                             </div>
                             <div className="d-flex justify-content-start">
-                                <div className="data-value p-2 niche">ecommerce</div>
                             </div>
                         </div>
                         <div className="data d-flex p-2">

@@ -16,25 +16,23 @@ import BrandsItem from "./pages/employee/brandsItem";
 function App() {
 
   const [userData , setuserData ] = useState(null);
-  const [UserData , getuserData ] = useState(null);
   const [userRole , setuserRole ] = useState(null);
 
   function saveUserData(){
     let encodedToken = localStorage.getItem('userToken');
     let decodedToken = jwtDecode(encodedToken); //user info
-    console.log(decodedToken);
     setuserData(decodedToken);
-    console.log(decodedToken.role);
     setuserRole(decodedToken.role);
+    console.log(decodedToken);
+    console.log(decodedToken.role);
   }
 
-
   let routers = createBrowserRouter ([
-    {path:'/' ,element:<Layout/>,children:[
+    {path:'/' ,element:<Layout userData={userData}/>,children:[
       {index:true , element:<Landing/>},
-      {path:'/requestadmin', element:<RequestAdmin />} ,
-      {path:'/login/datalink', element:<DataLink saveUserData={saveUserData}/>},
-      {path:'/login', element:<Login saveUserData={saveUserData} />} ,
+      {path:'/requestadmin', element:<RequestAdmin />},
+      {path:'datalink', element:<DataLink saveUserData={saveUserData}/>},
+      {path:'/login', element:<Login saveUserData={saveUserData}  />} ,
       {path:'/Request' ,element:<Request />}, 
       {path:'/pass' ,element:<Pass saveUserData={saveUserData} setuserRole={setuserRole} userRole={userRole}/>} ,
       {path:'/card',element:<Card />} ,
