@@ -33,7 +33,7 @@ function App() {
     {path:'/' ,element:<Layout/>,children:[
       {index:true , element:<Landing/>},
       {path:'/requestadmin', element:<RequestAdmin />} ,
-      {path:'datalink', element:<DataLink saveUserData={saveUserData}/>},
+      {path:'/login/datalink', element:<DataLink saveUserData={saveUserData}/>},
       {path:'/login', element:<Login saveUserData={saveUserData} />} ,
       {path:'/Request' ,element:<Request />}, 
       {path:'/pass' ,element:<Pass saveUserData={saveUserData} setuserRole={setuserRole} userRole={userRole}/>} ,

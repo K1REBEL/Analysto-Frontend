@@ -4,6 +4,7 @@
   display: flex;
   margin-left: 130px;
   margin-top: 50px;
+  margin-bottom: 70px;
 }
 .masthead{
   margin-bottom: 20px;
@@ -21,14 +22,7 @@
   justify-content: center;
   padding-right: 150px; 
 }
-.left{
-  padding-right: 100px;
-}
 
-.right-section {
-  flex: 1;
-  padding-left:0px; /* Add padding to create space */
-}
 
 /* Other styles remain the same */
 
@@ -77,8 +71,8 @@
   flex: 2;
 }
 .masthead-heading {
-  margin-top: 80px;
-  margin-bottom: 20px;
+  margin-top: 150px;
+  margin-bottom: 30px;
   font-size: 4vw !important; /* Adjust the percentage as needed */
   font-weight: 600 !important;
   background: -webkit-linear-gradient(315deg, #030a56 0%, #d74a91 100%);

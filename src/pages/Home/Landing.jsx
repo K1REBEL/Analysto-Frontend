@@ -1,9 +1,9 @@
 import React from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Header from "../../components/Header/Header";
-// import Request from "../../pages/Auth/Request";
-// import Contacts from "../../components/Contacts/Contacts";
-// import Footer from "../../components/Footer/Footer";
+import Request from "../../pages/Auth/Request";
+import Contacts from "../../components/Contacts/Contacts";
+import Footer from "../../components/Footer/Footer";
 import About from "../../components/About/About";
 
 
@@ -15,15 +15,16 @@ function Landing() {
       <div>
         <Header />
       </div>
-      {/* <div>
-        <Request />
-      </div> */}
-      {/* <div>
+      
+      <div>
         <About />
-      </div> */}
+      </div>
+      <div>
+        <Request />
+      </div>
 
-      {/* <Contacts />
-      <Footer /> */}
+      <Contacts />
+      <Footer />  
     </div>
   );
 }

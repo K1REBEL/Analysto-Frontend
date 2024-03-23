@@ -1,5 +1,5 @@
 import React from "react";
-import RequestCard from "../../components/RequsetCard/RequestCard";
+import RequestCard from "../../components/RequsetCard/GetRequest";
 import "./RequestAdmin.scss"
 
 function RequestAdmin() {

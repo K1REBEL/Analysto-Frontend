@@ -54,13 +54,13 @@ function Contacts() {
       <div className='card-contacts'>
         <div className='row container my-1'>
           <h2 className='h1-responsive font-weight-bold text-center my-4 contact-heading'>
-            Contact us
+            Contact Us
           </h2>
           <p className='text-center w-responsive mx-auto mb-5 fw-semibold'>
             Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you within a matter of hours to help you.
           </p>
           <div className='col-md-12 mb-md-0 mb-5 d-flex'>
-            <form id='contact-form' name='contact-form' action='' method='POST' className='d-flex col-md-12' onSubmit={validForm}>
+            <form id='contact-form' name='contact-form' action='' className='d-flex col-md-12' onSubmit={validForm}>
               <div className='contacter-info d-flex flex-column align-items-center col-md-6 justify-content-start'>
                 <div className='w-100'>
                   <input type='text' id='name' name='name' className='form-control' placeholder='Your name'/>
