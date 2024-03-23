@@ -26,16 +26,17 @@
 
 /* Other styles remain the same */
 
-.img-fluid{
-  width: 80%;
-  height: 100%;
+ .img-fluid{
+
+margin-top: 100px;
 
 
-}
+ }
 
 
 .galaxy {
   display: flex;
+  text-decoration: none;
   justify-content: center;
   align-items: center;
   width: 16rem;
@@ -97,6 +98,7 @@ strong {
   font-size: 24px;
   letter-spacing: 5px;
   color: #ffffff;
+  text-decoration: none;
   text-shadow: 0 0 4px white;
 }
 
@@ -104,6 +106,7 @@ strong {
   position: absolute;
   display: flex;
   width: 12rem;
+  text-decoration: none;
 }
 
 .circle {

@@ -12,9 +12,9 @@ function About() {
           <div class="col-lg-6">
             <img src={logopic} class="img-fluidd" alt=""/>
           </div>
-          <div class="col-lg-6 pt-4 pt-lg-0 contentt">
+          <div class="col-lg-6 pt-4 pt-lg-0 content">
             <h3>Analysto team</h3>
-            <p className='para'>
+            <p>
               Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
               velit esse cillum dolore eu fugiat nulla pariatur.
             </p>

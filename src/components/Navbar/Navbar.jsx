@@ -10,7 +10,7 @@ function Navbar() {
         <nav id="navbar" className="navbar">
             <img className="logo" src={logo} alt="" />
           <ul className="icons">
-            <li><Link className="nav-link scrollto active" href="/">Home</Link></li>
+            <li><Link to ="/"className="nav-link scrollto active" href="#about">Home</Link></li>
             <li><a className="nav-link scrollto" href="#about">About</a></li>
             <li><a className="nav-link scrollto" href="#Request">Request</a></li>
             <li><a className="nav-link scrollto" href="#Contacts">Contact Us</a></li>
