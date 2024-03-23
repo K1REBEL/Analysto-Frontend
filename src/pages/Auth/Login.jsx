@@ -39,16 +39,16 @@ export default function Login({saveUserData}) {
         setisLoading(false);
         localStorage.setItem('userToken' , data.token);
         navigate("/admin");
-        saveUserData();
       }else if (data.message === "Organization found"){
         setisLoading(false);
         localStorage.setItem('userToken' , data.token);
+        // saveUserData();
         if ( data.orgUser.password_set === 0) {
           navigate("/pass");
         }else{
-          navigate("datalink")
+          navigate("/datalink")
         }
-        saveUserData();
+        saveUserData(data);
       }else if (data.message === "Employee found"){
         setisLoading(false);
         localStorage.setItem('userToken' , data.token);
@@ -57,7 +57,7 @@ export default function Login({saveUserData}) {
         }else{
           navigate("/card")
         }
-        saveUserData();
+        saveUserData(data);
       }else {
         setisLoading(false);
         setError(data.message);
