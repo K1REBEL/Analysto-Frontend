@@ -18,7 +18,8 @@ function Navbar({userData , logOut}) {
             <li><a className="nav-link scrollto" href="#Request">Request</a></li>
             
             {userData ? (
-              <li><button className="getstarted scrollto" onClick={logOut}>Logout</button></li>
+              // <li><button className="getstarted scrollto" onClick={logOut}>Logout</button></li>
+              <li><button className="getstarted scrollto" >Logout</button></li>
             ) : (
               <li><Link to="/login" className="getstarted scrollto">Login</Link></li>
             )}

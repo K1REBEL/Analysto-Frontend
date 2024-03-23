@@ -42,6 +42,7 @@ function App() {
       {path:'/pass' ,element:<ProtectedRoute><Pass saveUserData={saveUserData} setuserRole={setuserRole} userRole={userRole}/></ProtectedRoute>} ,
       {path:'/card',element:<ProtectedRoute><Card /></ProtectedRoute>} ,
       {path:'/admin', element:<ProtectedRoute><Admin /></ProtectedRoute>} ,
+      {path:'/edit', element:<ProtectedRoute><Edit /></ProtectedRoute>} ,
       {path:'/brand', element:<ProtectedRoute><BrandsItem /></ProtectedRoute>} ,
       {path:'*', element:<NotFound/>}
     ]}
