@@ -1,11 +1,9 @@
 import React from "react";
 import "../Admins/Edit.css"
-import Navbar from "../../components/Navbar/Navbar";
 
 const Edit = () => {
   return (
     <>
-    <Navbar/>
     <div className="container-fluid pt-4">
       <div className="row">
         <div className="col-md-6 offset-md-3">

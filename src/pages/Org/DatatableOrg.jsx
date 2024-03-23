@@ -124,7 +124,7 @@ function DatatableOrg({ saveUserData }) {
   }
 
   return (
-    <div>
+    <div class="table-wrap">
       <form onSubmit={handleSubmit}>
         <div className="field row mb-3">
           <div className="col">

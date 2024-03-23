@@ -3,7 +3,7 @@ import "./Navbar.scss";
 import { Link } from "react-router-dom";
 import logo from "../../img/logo.png";
 
-function Navbar({userData}) {
+function Navbar({userData , logOut}) {
   console.log(userData)
 
   return (
@@ -17,10 +17,11 @@ function Navbar({userData}) {
             <li><a className="nav-link scrollto" href="#services">Contact Us</a></li>
             <li><a className="nav-link scrollto" href="#services">Request</a></li>
             
-            {userData? <>
-              <li><a className="getstarted scrollto" href="#about">Logout</a></li>
-              </>:<><li><a className="getstarted scrollto" href="#about">Login</a></li></>
-            }
+            {userData ? (
+              <li><button className="getstarted scrollto" onClick={logOut}>Logout</button></li>
+            ) : (
+              <li><Link to="/login" className="getstarted scrollto">Login</Link></li>
+            )}
           </ul>
           <i className="bi bi-list mobile-nav-toggle"></i>
         </nav>

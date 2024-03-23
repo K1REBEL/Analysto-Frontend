@@ -4,6 +4,7 @@ import joi from "joi";
 import axios from "axios"; 
 import "../Auth/Login.scss";
 
+
 export default function Login({saveUserData}) {
   let navigate = useNavigate();
   const [errorList, seterrorList] = useState([]);
@@ -135,11 +136,7 @@ export default function Login({saveUserData}) {
               placeholder="Enter Password"
             />
             <button type="submit" className="btn">
-              {isLoading ? (
-                <i className="fas fa-spinner fa-spin"></i>
-              ) : (
-                "Login"
-              )}
+              Login
             </button>
           </form>
         </div>
