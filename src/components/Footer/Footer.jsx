@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import "./Footer.scss";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { FaPhoneAlt, FaComments, FaLinkedin, FaGithub } from "react-icons/fa";
 import { FaGooglePlusG, FaFacebookF, FaInstagram } from "react-icons/fa";
-import { FaArrowUp } from 'react-icons/fa';
+import { FaArrowUp } from "react-icons/fa";
 import logo2 from "../../img/Logo2.png";
 
 function Footer() {
@@ -22,16 +22,15 @@ function Footer() {
   };
 
   const handleButtonClick = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
-
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     scrollTop(); // Initial check
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [handleScroll]);
 
   return (
     <div className="footer-dev">
@@ -51,15 +50,13 @@ function Footer() {
           <div className="footer-content">
             <div className="footer-content-column">
               <div className="footer-logo">
-                <a className="footer-logo-link" href="#">
-                  <Link to="/" className="footer-logo-link">
-                    <img
-                      src={logo2}
-                      className="d-inline-block align-top"
-                      alt=""
-                    />
-                  </Link>
-                </a>
+                <Link to="/" className="footer-logo-link">
+                  <img
+                    src={logo2}
+                    className="d-inline-block align-top"
+                    alt=""
+                  />
+                </Link>
               </div>
               <button className="request-now-button">Request Now!</button>
             </div>
@@ -72,33 +69,44 @@ function Footer() {
                 </h3>
                 <ul id="menu-quick-links" className="footer-menu-list">
                   <li className="menu-item menu-item-type-custom menu-item-object-custom">
-                    <Link to="https://www.linkedin.com/in/kareem-ibraheem/">
-                      {" "}
-                      <span>kareem ibraheem</span>{" "}
+                    <Link
+                      to="https://www.linkedin.com/in/kareem-ibraheem/"
+                      target="_blank"
+                    >
+                      <span>kareem ibraheem</span>
+                    </Link>
+                  </li>
+
+                  <li className="menu-item menu-item-type-custom menu-item-object-custom">
+                    <Link
+                      to="https://www.linkedin.com/in/alaa-atef-59718a255/"
+                      target="_blank"
+                    >
+                      <span>Alaa Atef</span>
                     </Link>
                   </li>
                   <li className="menu-item menu-item-type-custom menu-item-object-custom">
-                    <Link to="https://www.linkedin.com/in/alaa-atef-59718a255/">
-                      {" "}
-                      <span>Alaa Atef</span>{" "}
+                    <Link
+                      to="https://www.linkedin.com/in/hoda-magdy-956431288?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                      target="_blank"
+                    >
+                      <span>Hoda Magdy</span>
                     </Link>
                   </li>
                   <li className="menu-item menu-item-type-custom menu-item-object-custom">
-                    <Link to="https://www.linkedin.com/in/hoda-magdy-956431288?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">
-                      {" "}
-                      <span>Hoda Magdy</span>{" "}
+                    <Link
+                      to="https://www.linkedin.com/in/youssefbadr1/"
+                      target="_blank"
+                    >
+                      <span>Youssef Badr</span>
                     </Link>
                   </li>
                   <li className="menu-item menu-item-type-custom menu-item-object-custom">
-                    <Link to="https://www.linkedin.com/in/youssefbadr1/">
-                      {" "}
-                      <span>Youssef Badr</span>{" "}
-                    </Link>
-                  </li>
-                  <li className="menu-item menu-item-type-custom menu-item-object-custom">
-                    <Link to="https://www.linkedin.com/in/gamal-sobhy-510693217/">
-                      {" "}
-                      <span>Gamal Sobhy</span>{" "}
+                    <Link
+                      to="https://www.linkedin.com/in/gamal-sobhy-510693217/"
+                      target="_blank"
+                    >
+                      <span>Gamal Sobhy</span>
                     </Link>
                   </li>
                 </ul>
@@ -107,7 +115,7 @@ function Footer() {
             <div className="footer-content-column">
               <div className="footer-call-to-action">
                 <h2 className="footer-call-to-action-title">
-                  {" "}
+              
                   <FaComments /> Let's Chat
                 </h2>
                 <p className="footer-call-to-action-description">
@@ -116,7 +124,7 @@ function Footer() {
               </div>
               <div className="footer-call-to-action">
                 <h2 className="footer-call-to-action-title">
-                  {" "}
+               
                   <FaPhoneAlt /> You Call Us
                 </h2>
                 <p className="footer-call-to-action-link-wrapper">
@@ -128,45 +136,43 @@ function Footer() {
             </div>
           </div>
           <ul className="social-links">
-  <li className="google">
-    <Link to="#" aria-label="Google Plus">
-      <FaGooglePlusG />
-    </Link>
-  </li>
-  <li className="facebook">
-    <Link to="#" aria-label="Facebook">
-      <FaFacebookF />
-    </Link>
-  </li>
-  <li className="instagram">
-    <Link to="#" aria-label="Instagram">
-      <FaInstagram />
-    </Link>
-  </li>
-  <li className="twitter">
-    <Link to="#" aria-label="Twitter">
-      <FaGithub />
-    </Link>
-  </li>
-</ul>
-
+            <li className="google">
+              <Link to="#" aria-label="Google Plus">
+                <FaGooglePlusG />
+              </Link>
+            </li>
+            <li className="facebook">
+              <Link to="#" aria-label="Facebook">
+                <FaFacebookF />
+              </Link>
+            </li>
+            <li className="instagram">
+              <Link to="#" aria-label="Instagram">
+                <FaInstagram />
+              </Link>
+            </li>
+            <li className="twitter">
+              <Link to="#" aria-label="Twitter">
+                <FaGithub />
+              </Link>
+            </li>
+          </ul>
 
           <div className="footer-copyright">
             <div className="footer-copyright-wrapper">
               <p className="footer-copyright-text">
-                <a className="footer-copyright-link" href="#" target="_self">
                   ©2024. | Analysto | All rights reserved.
-                </a>
+                
               </p>
             </div>
           </div>
         </footer>
         <button
-      className={`backToTopBtn ${showButton ? 'active' : ''}`}
-      onClick={handleButtonClick}
-    >
-      <FaArrowUp />
-    </button>
+          className={`backToTopBtn ${showButton ? "active" : ""}`}
+          onClick={handleButtonClick}
+        >
+          <FaArrowUp />
+        </button>
       </div>
     </div>
   );
