@@ -3,6 +3,10 @@ import "./Header.scss";
 import wel from "../../img/about.jpg";
 
 function Header() {
+
+
+    
+    
   return (
     <div className="containeeer">
       <div className="row">
@@ -25,7 +29,7 @@ function Header() {
           </div>
         </div>
         <div className="col-lg-6 col-md-6 col-sm-12">
-          <img src={wel} alt="Your Image" className="img-fluid" />
+        <img src={wel} alt="Welcome to Analysto" className="img-fluid" />
         </div>
       </div>
     </div>

@@ -50,7 +50,7 @@ export default function Pass({ saveUserData, setuserRole, userRole }) {
       if (data.message === "Password reset!") {
         saveUserData();
         if (userRole === 'organization') {
-          navigate("/datalink");
+          navigate("datalink");
         } else if (userRole === 'employee') {
           navigate("/card");
         }

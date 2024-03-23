@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "./brandItem.scss";
 import Navbar from "../../components/Navbar/Navbar";
 import amazon from "../../img/amazon.png";
 import noon from "../../img/noon.png";
 import tech from "../../img/b-tech.png";
 import jumia from "../../img/jumia.jpg";
 
-import "./brandItem.scss";
 
 const BrandsItem = () => {
   const [activeTab, setActiveTab] = useState(1);

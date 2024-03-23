@@ -11,7 +11,7 @@ const DataLink = () => {
         {/* <Navbar /> */}
        <div className="widgets">
         <DatatableOrg />
-       </div>
+      
       </div>
     </div> 
   )

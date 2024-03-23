@@ -4,7 +4,23 @@
   display: flex;
   margin-left: 130px;
   margin-top: 50px;
+  margin-bottom: 70px;
+  animation: fadeIn 1s ease forwards;
 }
+
+
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .masthead{
   margin-bottom: 20px;
   font-size:2vw !important; /* Adjust the percentage as needed */
@@ -21,27 +37,21 @@
   justify-content: center;
   padding-right: 150px; 
 }
-.left{
-  padding-right: 100px;
-}
 
-.right-section {
-  flex: 1;
-  padding-left:0px; /* Add padding to create space */
-}
 
 /* Other styles remain the same */
 
-.img-fluid{
-  width: 80%;
-  height: 100%;
+ .img-fluid{
+
+margin-top: 100px;
 
 
-}
+ }
 
 
 .galaxy {
   display: flex;
+  text-decoration: none;
   justify-content: center;
   align-items: center;
   width: 16rem;
@@ -77,8 +87,8 @@
   flex: 2;
 }
 .masthead-heading {
-  margin-top: 80px;
-  margin-bottom: 20px;
+  margin-top: 150px;
+  margin-bottom: 30px;
   font-size: 4vw !important; /* Adjust the percentage as needed */
   font-weight: 600 !important;
   background: -webkit-linear-gradient(315deg, #030a56 0%, #d74a91 100%);
@@ -100,9 +110,10 @@
 strong {
   z-index: 2;
   font-family: "Avalors Personal Use";
-  font-size: 18px;
+  font-size: 24px;
   letter-spacing: 5px;
   color: #ffffff;
+  text-decoration: none;
   text-shadow: 0 0 4px white;
 }
 
@@ -110,6 +121,7 @@ strong {
   position: absolute;
   display: flex;
   width: 12rem;
+  text-decoration: none;
 }
 
 .circle {
