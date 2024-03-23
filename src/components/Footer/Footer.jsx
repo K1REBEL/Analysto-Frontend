@@ -1,12 +1,38 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 import "./Footer.scss";
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import { FaPhoneAlt, FaComments, FaLinkedin, FaGithub } from "react-icons/fa";
-import logo2 from "../../img/Logo2.png";
 import { FaGooglePlusG, FaFacebookF, FaInstagram } from "react-icons/fa";
-
+import { FaArrowUp } from 'react-icons/fa';
+import logo2 from "../../img/Logo2.png";
 
 function Footer() {
+  const [showButton, setShowButton] = useState(false);
+
+  const scrollTop = () => {
+    if (window.scrollY > 500) {
+      setShowButton(true);
+    } else {
+      setShowButton(false);
+    }
+  };
+
+  const handleScroll = () => {
+    scrollTop();
+  };
+
+  const handleButtonClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    scrollTop(); // Initial check
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <div className="footer-dev">
       <div className="pg-footer">
@@ -26,11 +52,13 @@ function Footer() {
             <div className="footer-content-column">
               <div className="footer-logo">
                 <a className="footer-logo-link" href="#">
-                  <img
-                    src={logo2}
-                    className="d-inline-block align-top"
-                    alt=""
-                  />
+                  <Link to="/" className="footer-logo-link">
+                    <img
+                      src={logo2}
+                      className="d-inline-block align-top"
+                      alt=""
+                    />
+                  </Link>
                 </a>
               </div>
               <button className="request-now-button">Request Now!</button>
@@ -38,7 +66,10 @@ function Footer() {
 
             <div className="footer-content-column">
               <div className="footer-menu text-center">
-                <h3 className="footer-menu-name"><FaLinkedin />Analysto Team on Linkedin</h3>
+                <h3 className="footer-menu-name">
+                  <FaLinkedin />
+                  Analysto Team on Linkedin
+                </h3>
                 <ul id="menu-quick-links" className="footer-menu-list">
                   <li className="menu-item menu-item-type-custom menu-item-object-custom">
                     <Link to="https://www.linkedin.com/in/kareem-ibraheem/">
@@ -89,22 +120,36 @@ function Footer() {
                   <FaPhoneAlt /> You Call Us
                 </h2>
                 <p className="footer-call-to-action-link-wrapper">
-                  <a
-                    className="footer-call-to-action-link"
-                    target="_self"
-                  >
-                      0124-64XXXX
+                  <a className="footer-call-to-action-link" target="_self">
+                    0124-64XXXX
                   </a>
                 </p>
               </div>
             </div>
           </div>
-          <ul class="social-links">
-  <li class="google"><FaGooglePlusG /></li>
-  <li class="facebook"><FaFacebookF /></li>
-  <li class="instagram"><FaInstagram /></li>
-  <li class="twitter"><FaGithub /></li>
+          <ul className="social-links">
+  <li className="google">
+    <Link to="#" aria-label="Google Plus">
+      <FaGooglePlusG />
+    </Link>
+  </li>
+  <li className="facebook">
+    <Link to="#" aria-label="Facebook">
+      <FaFacebookF />
+    </Link>
+  </li>
+  <li className="instagram">
+    <Link to="#" aria-label="Instagram">
+      <FaInstagram />
+    </Link>
+  </li>
+  <li className="twitter">
+    <Link to="#" aria-label="Twitter">
+      <FaGithub />
+    </Link>
+  </li>
 </ul>
+
 
           <div className="footer-copyright">
             <div className="footer-copyright-wrapper">
@@ -116,6 +161,12 @@ function Footer() {
             </div>
           </div>
         </footer>
+        <button
+      className={`backToTopBtn ${showButton ? 'active' : ''}`}
+      onClick={handleButtonClick}
+    >
+      <FaArrowUp />
+    </button>
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ import Footer from "../../components/Footer/Footer";
 import About from "../../components/About/About";
 
 
+
 function Landing() {
   return (
     <div>
@@ -24,7 +25,8 @@ function Landing() {
       </div>
 
       <Contacts />
-      <Footer />  
+      <Footer /> 
+      
     </div>
   );
 }
