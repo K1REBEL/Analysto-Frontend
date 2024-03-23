@@ -1,19 +1,23 @@
-// Define breakpoints
+
 $break-sm: 576px;
 $break-md: 768px;
 $break-lg: 992px;
 $break-xl: 1200px;
 
-// Mixin for media query
+
 @mixin respond-to($breakpoint) {
   @media (min-width: $breakpoint) {
     @content;
   }
 }
 
-// Main container styles
 .container-fluid {
   padding: 0 15px;
+  margin-top: 90px;
+  
+  @include respond-to($break-md) {
+    padding: 0 30px;
+  }
 
   @include respond-to($break-md) {
     padding: 0 30px;
@@ -58,21 +62,16 @@ $break-xl: 1200px;
 
 
 .brand-image {
-  width: 200px; /* Set your desired width */
-  height: 110px; /* Set your desired height */
+  width: 200px; 
+  height: 110px; 
   border-radius: 30px;
   overflow: hidden;
   position: relative;
   
  
 }
-.brand-image {
-  border: 2px solid rgb(222, 222, 226); /* Set your desired active image style */
-}
 
-.brand-image:hover {
-  border-color: rgb(173, 160, 170); /* Set your desired hover color */
-}
+
 
 .brand-image {
   cursor: pointer;
@@ -88,10 +87,6 @@ $break-xl: 1200px;
   box-sizing: border-box;
 }
 
-body {
-  font-family: "Nunito", sans-serif;
-  color: #384047;
-}
 
 table {
   max-width: 960px;
@@ -250,13 +245,6 @@ tfoot td {
   }
 }
 
-.nav-item.active a {
-  background-color: rgba(162, 6, 173, 0.131);
-  color: white;
-  border-radius: 30px;
-}
 
-.nav-item.active img {
-  border: 2px solid rgb(201, 201, 211);
-}
+
 

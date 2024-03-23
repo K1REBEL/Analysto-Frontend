@@ -5,7 +5,7 @@ import Admin from "./pages/Admins/Admin";
 import Login from "./pages/Auth/Login";
 import Request from "./pages/Auth/Request";
 import Pass from "./pages/Auth/pass";
-import Card from "./pages/employee/card";
+import Card from "./components/employee/card";
 import Edit from "./pages/Admins/Edit";
 import Layout from "./components/layout/layout";
 import NotFound from "./components/NotFound/NotFound";
