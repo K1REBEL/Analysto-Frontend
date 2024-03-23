@@ -7,13 +7,12 @@ const DataLink = () => {
   return (
     <div className='DataLink'>
         <Sidebar />
-      <div className="DataLinkContainer">
-        {/* <Navbar /> */}
+
        <div className="widgets">
         <DatatableOrg />
-      
       </div>
-    </div> 
+      </div>
+    
   )
 
   
