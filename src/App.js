@@ -11,7 +11,7 @@ import Layout from "./components/layout/layout";
 import NotFound from "./components/NotFound/NotFound";
 import {jwtDecode} from 'jwt-decode';
 import Landing from "./pages/Home/Landing";
-import BrandsItem from "./pages/employee/brandsItem";
+import BrandsItem from "./components/employee/brandsItem";
 import ProtectedRoute from "./components/protectedRoute/protectedRoute";
 function App() {
 
@@ -38,13 +38,13 @@ function App() {
     {path:'/' ,element:<Layout setuserData={setuserData} userData={userData}/>,children:[
       {index:true , element:<Landing/>},
       {path:'/login', element:<Login saveUserData={saveUserData}  />} ,
-      {path:'datalink', element:<ProtectedRoute><DataLink saveUserData={saveUserData}/></ProtectedRoute>},
-      {path:'/Request' ,element:<ProtectedRoute><Request /></ProtectedRoute>}, 
-      {path:'/pass' ,element:<ProtectedRoute><Pass saveUserData={saveUserData} setuserRole={setuserRole} userRole={userRole}/></ProtectedRoute>} ,
-      {path:'/card',element:<ProtectedRoute><Card /></ProtectedRoute>} ,
-      {path:'/admin', element:<ProtectedRoute><Admin /></ProtectedRoute>} ,
-      {path:'/edit', element:<ProtectedRoute><Edit /></ProtectedRoute>} ,
-      {path:'/brand', element:<ProtectedRoute><BrandsItem /></ProtectedRoute>} ,
+      {path:'datalink', element:<DataLink saveUserData={saveUserData}/>},
+      {path:'/Request' ,element:<Request />}, 
+      {path:'/pass' ,element:<Pass saveUserData={saveUserData} setuserRole={setuserRole} userRole={userRole}/>} ,
+      {path:'/card',element:<Card />} ,
+      {path:'/admin', element:<Admin />} ,
+      {path:'/edit', element:<Edit />} ,
+      {path:'/brand', element:<BrandsItem />} ,
       {path:'*', element:<NotFound/>}
     ]}
   ])
