@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+
 import "./brandItem.scss";
 import Navbar from "../../components/Navbar/Navbar";
 import amazon from "../../img/amazon.png";
@@ -6,9 +8,10 @@ import noon from "../../img/noon.png";
 import tech from "../../img/b-tech.png";
 import jumia from "../../img/jumia.jpg";
 
-const BrandsItem = () => {
+function BrandsItem () {
   const [activeTab, setActiveTab] = useState(1);
   const [activeImage, setActiveImage] = useState(null);
+
 
   const handleTabClick = (tabIndex, image) => {
     setActiveTab(tabIndex);
@@ -16,6 +19,50 @@ const BrandsItem = () => {
       prevActiveImage === image ? null : image
     );
   };
+
+  /////////////////////////////////
+  const [product, setproduct] = useState([]);
+  const [userToken, setUserToken] = useState("");
+  const [user, setUser] = useState({
+  
+  });
+
+  
+  const getUserData = (eventinfo) => {
+    let myUser = { ...user };
+    myUser[eventinfo.target.name] = eventinfo.target.value;
+    setUser(myUser);
+    console.log(myUser);
+  };
+
+  /////////////////////////////////////get Amazone/////////////////////////
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const fetchedToken = localStorage.getItem("userToken");
+        setUserToken(fetchedToken);
+
+        const config = {
+          headers: {
+            Authorization: `Bearer ${fetchedToken}`,
+          },
+        };
+
+        const { data } = await axios.get(
+          "http://127.0.0.1:5000/amazon",
+          config
+        );
+
+        setproduct(data.result);
+        console.log(data.result);
+      } catch (error) {
+        console.error("Error fetching users:", error);
+      }
+    }
+
+    fetchData();
+  }, []);
+    /////////////////////////////////////get Amazone/////////////////////////
 
   return (
     <div className="container-fluid">

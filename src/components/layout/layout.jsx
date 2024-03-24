@@ -5,17 +5,17 @@ import Navbar from '../Navbar/Navbar';
 function Layout({userData , setuserData}){
     console.log(userData)
 
-    // let navigate  = useNavigate();
-    // function logOut()
-    //  {
-    //     localStorage.removeItem('userToken');
-    //     setuserData(null);
-    //     navigate('/login');
-    // }
+    let navigate  = useNavigate();
+    function logOut()
+     {
+        localStorage.removeItem('userToken');
+        setuserData(null);
+        navigate('/login');
+    }
     return (
         <>
-        {/* <Navbar logOut={logOut} userData={userData}/> */}
-        <Navbar userData={userData}/>
+        <Navbar logOut={logOut} userData={userData}/>
+        {/* <Navbar userData={userData}/> */}
         <Outlet></Outlet>
         </>
     );
