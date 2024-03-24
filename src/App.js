@@ -11,6 +11,7 @@ import NotFound from "./components/NotFound/NotFound";
 import {jwtDecode} from 'jwt-decode';
 import Landing from "./pages/home/Landing";
 import BrandsItem from "./components/employee/brandsItem";
+// import RequestCard from "./components/RequsetCard/RequestCard";
 // import ProtectedRoute from "./components/protectedRoute/protectedRoute";
 import GetRequest from "./components/RequsetCard/GetRequest";
 function App() {
@@ -44,7 +45,6 @@ function App() {
       {path:'/card',element:<Card />} ,
       {path:'/admin', element:<Admin />} ,
       {path:'/brand', element:<BrandsItem />} ,
-      {path : '/GetRequest', element:<GetRequest/>} ,
       {path:'*', element:<NotFound/>}
     ]}
   ])
