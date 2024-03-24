@@ -6,11 +6,9 @@ import noon from "../../img/noon.png";
 import tech from "../../img/b-tech.png";
 import jumia from "../../img/jumia.jpg";
 
-
 const BrandsItem = () => {
   const [activeTab, setActiveTab] = useState(1);
   const [activeImage, setActiveImage] = useState(null);
- 
 
   const handleTabClick = (tabIndex, image) => {
     setActiveTab(tabIndex);
@@ -19,21 +17,17 @@ const BrandsItem = () => {
     );
   };
 
- 
-  
-
   return (
     <div className="container-fluid">
       <div className="row">
         <div className="col-12">
           <Navbar />
-        
         </div>
       </div>
       {/*======================= tabs =================*/}
       <div className="row">
-      <div className="col-md-3 d-flex flex-wrap">
-      <ul className="nav nav-tabs flex-column" role="tablist">
+        <div className="col-md-3 d-flex flex-wrap">
+          <ul className="nav nav-tabs flex-column" role="tablist">
             <li
               className={`nav-item ${activeTab === 1 ? "active" : ""}`}
               onClick={() => handleTabClick(1, amazon)}
@@ -110,34 +104,53 @@ const BrandsItem = () => {
             >
               <div className="row">
                 <div className="col">
+                  <button className="btn btn-primary" type="submit">
+                    Add URL
+                  </button>
                   <div className="container">
                     <div className="row justify-content-center">
-                      <table className="tables">
+                      <table class="table table-hover">
                         <thead>
                           <tr>
-                            <th>ASIN</th>
-                            <th>
-                              URLs <button type="submit" class="button">Add URL</button>
-                            </th>
+                            <th scope="col">ASIN</th>
+                            <th scope="col">URLs</th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
-                            <td> B0788C6Z99</td>
-                            <td className="link">
+                            <th scope="row">B0788C6Z99</th>
+                            <td>
                               https://www.amazon.com/Acer-Predator-Utility-Backpack-Notebook/dp/B0788C6Z99?ref_=Oct_DLandingS_D_41bb447c_3&th=1
                             </td>
                           </tr>
                           <tr>
-                            <td>B07CMS5Q6P</td>
-                            <td className="link">
-                              https://www.amazon.com/Logitech-LIGHTSPEED-Wireless-Gaming-Mouse/dp/B07CMS5Q6P/ref=pd_bxgy_img_d_sccl_1/144-6623953-4066614?pd_rd_w=I56H8&content-id=amzn1.sym.2b132e63-5dcd-4ba1-be9f-9e044543d59f&pf_rd_p=2b132e63-5dcd-4ba1-be9f-9e044543d59f&pf_rd_r=TCTCB71RANC548CD366J&pd_rd_wg=I51zd&pd_rd_r=b558c6b3-c6b9-4d08-a43d-85725dd8d96f&pd_rd_i=B07CMS5Q6P&th=1
+                            <th scope="row">B0788C6Z99</th>
+                            <td>
+                              https://www.amazon.com/Acer-Predator-Utility-Backpack-Notebook/dp/B0788C6Z99?ref_=Oct_DLandingS_D_41bb447c_3&th=1
                             </td>
-                          </tr>
+                          </tr>{" "}
                           <tr>
-                            <td>B08KKBSDTY</td>
-                            <td className="link">
-                              https://www.amazon.com/dp/B08KKBSDTY?ref_=posts&th=1
+                            <th scope="row">B0788C6Z99</th>
+                            <td>
+                              https://www.amazon.com/Acer-Predator-Utility-Backpack-Notebook/dp/B0788C6Z99?ref_=Oct_DLandingS_D_41bb447c_3&th=1
+                            </td>
+                          </tr>{" "}
+                          <tr>
+                            <th scope="row">B0788C6Z99</th>
+                            <td>
+                              https://www.amazon.com/Acer-Predator-Utility-Backpack-Notebook/dp/B0788C6Z99?ref_=Oct_DLandingS_D_41bb447c_3&th=1
+                            </td>
+                          </tr>{" "}
+                          <tr>
+                            <th scope="row">B0788C6Z99</th>
+                            <td>
+                              https://www.amazon.com/Acer-Predator-Utility-Backpack-Notebook/dp/B0788C6Z99?ref_=Oct_DLandingS_D_41bb447c_3&th=1
+                            </td>
+                          </tr>{" "}
+                          <tr>
+                            <th scope="row">B0788C6Z99</th>
+                            <td>
+                              https://www.amazon.com/Acer-Predator-Utility-Backpack-Notebook/dp/B0788C6Z99?ref_=Oct_DLandingS_D_41bb447c_3&th=1
                             </td>
                           </tr>
                         </tbody>

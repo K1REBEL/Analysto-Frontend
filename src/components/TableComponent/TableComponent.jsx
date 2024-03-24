@@ -6,7 +6,6 @@ function TableComponent() {
     <thead>
       <tr>
         <th scope="col">SKUs</th>
-        <th scope="col">Proudects</th>
         <th scope="col">Category</th>
         <th scope="col">Action</th>
       </tr>
@@ -14,7 +13,6 @@ function TableComponent() {
     <tbody>
       <tr>
         <th scope="row">B0788C6Z9</th>
-        <td>Proudect 1</td>
         <td>Air Fryer</td>
         <td>
           <button className="btn btn-primary">config</button>
@@ -24,7 +22,6 @@ function TableComponent() {
       </tr>
       <tr>
         <th scope="row">B0788C6Z9</th>
-        <td>Proudect 1</td>
         <td>Air Fryer</td>
         <td>
           <button className="btn btn-primary">config</button>
@@ -34,7 +31,6 @@ function TableComponent() {
       </tr>
       <tr>
         <th scope="row">B0788C6Z9</th>
-        <td>Proudect 1</td>
         <td>Air Fryer</td>
         <td>
           <button className="btn btn-primary">config</button>
@@ -44,7 +40,6 @@ function TableComponent() {
       </tr>
       <tr>
         <th scope="row">B0788C6Z9</th>
-        <td>Proudect 1</td>
         <td>Air Fryer</td>
         <td>
           <button className="btn btn-primary">config</button>
@@ -54,7 +49,6 @@ function TableComponent() {
       </tr>
       <tr>
         <th scope="row">B0788C6Z9</th>
-        <td>Proudect 1</td>
         <td>Air Fryer</td>
         <td>
           <button className="btn btn-primary">config</button>
@@ -63,7 +57,6 @@ function TableComponent() {
         </td>
       </tr> <tr>
         <th scope="row">B0788C6Z9</th>
-        <td>Proudect 1</td>
         <td>Air Fryer</td>
         <td>
           <button className="btn btn-primary">config</button>
@@ -72,7 +65,6 @@ function TableComponent() {
         </td>
       </tr> <tr>
         <th scope="row">B0788C6Z9</th>
-        <td>Proudect 1</td>
         <td>Air Fryer</td>
         <td>
           <button className="btn btn-primary">config</button>
