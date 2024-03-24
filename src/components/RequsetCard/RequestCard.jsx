@@ -90,6 +90,13 @@ function RequestCard() {
                             </div>
                         </div>
                     </div>
+                    <div className="buttons-to-right d-block">
+                        <button className="btn btn-success">Accept</button>
+                        <button className="btn btn-success">Edit</button>
+                        <button className="btn btn-primary">Reject</button>
+                      </div>
+                    
+
                     <div className="column3 col-md-2 d-flex p-2 justify-content-start align-items-end flex-column gap-5">
                         <div style={{ alignSelf: 'end' }} className="me-5">
                             <button id="edit-button" className="ms-1 edit-button">Edit & Accept</button>
