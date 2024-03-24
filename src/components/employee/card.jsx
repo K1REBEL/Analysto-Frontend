@@ -6,7 +6,6 @@ import imag1 from "../../img/samsung.svg";
 import imag2 from "../../img/logo-lg.svg";
 import imag3 from "../../img/beko-2.svg";
 import imag4 from "../../img/bosch.svg";
-import imag5 from "../../img/imag5.svg";
 
 const Card = () => {
   const [activeTab, setActiveTab] = useState(1);
