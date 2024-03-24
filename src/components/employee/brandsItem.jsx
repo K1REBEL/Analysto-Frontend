@@ -9,7 +9,6 @@ import jumia from "../../img/jumia.jpg";
 const BrandsItem = () => {
   const [activeTab, setActiveTab] = useState(1);
   const [activeImage, setActiveImage] = useState(null);
-  
 
   const handleTabClick = (tabIndex, image) => {
     setActiveTab(tabIndex);
@@ -105,11 +104,22 @@ const BrandsItem = () => {
             >
               <div className="row">
                 <div className="col-md-8">
-               
                   <div className="container">
-                    <div className="row justify-content-end">
-                      <div className="col-auto">
-                        <button className="btn btn-primary" type="submit">
+                    <div className="row mb-3">
+                      <div className="col d-flex">
+                        <input
+                          type="text"
+                          className="input flex"
+                          placeholder="Enter Full Name"
+                          name="name"
+                        />
+                          <input
+                          type="text"
+                          className="input flex"
+                          placeholder="Enter Full Name"
+                          name="name"
+                        />
+                        <button className="btn btn-primary ml-2">
                           Add URL
                         </button>
                       </div>
@@ -130,13 +140,13 @@ const BrandsItem = () => {
                             </td>
                           </tr>
                           <tr>
-                          <td scope="row">B0788C6Z99</td>
+                            <td scope="row">B0788C6Z99</td>
                             <td>
                               https://www.amazon.com/Acer-Predator-Utility-Backpack-Notebook/dp/B0788C6Z99?ref_=Oct_DLandingS_D_41bb447c_3&th=1
                             </td>
                           </tr>
                           <tr>
-                          <td scope="row">B0788C6Z99</td>
+                            <td scope="row">B0788C6Z99</td>
                             <td>
                               https://www.amazon.com/Acer-Predator-Utility-Backpack-Notebook/dp/B0788C6Z99?ref_=Oct_DLandingS_D_41bb447c_3&th=1
                             </td>
@@ -146,34 +156,47 @@ const BrandsItem = () => {
                     </div>
                   </div>
                 </div>
-              
-              <div className="col-md-4">
-                <div className="sku-box">
-                  <p>SKU: B0788C6Z99</p>
-                  <p>Product: Backpack</p>
-                  <p>Category: Electronics</p>
+
+                <div className="col-md-4">
+                  <div className="sku-box">
+                    <p>SKU: B0788C6Z99</p>
+                    <p>Product: Backpack</p>
+                    <p>Category: Electronics</p>
+                  </div>
                 </div>
-              
-            </div>
               </div>
             </div>
-            <div className={`tab-pane ${activeTab === 2 ? "active" : ""}`}
+            <div
+              className={`tab-pane ${activeTab === 2 ? "active" : ""}`}
               id="profile"
             >
-             
               {/*======================= tabs noon =================*/}
 
               <div className="row">
                 <div className="col-md-8">
-               
                   <div className="container">
                     <div className="row justify-content-end">
-                      <div className="col-auto">
-                        <button className="btn btn-primary" type="submit">
+                    <div className="row mb-3">
+                      <div className="col d-flex">
+                        <input
+                          type="text"
+                          className="input flex"
+                          placeholder="Enter Full Name"
+                          name="name"
+                        />
+                          <input
+                          type="text"
+                          className="input flex"
+                          placeholder="Enter Full Name"
+                          name="name"
+                        />
+                        <button className="btn btn-primary ml-2">
                           Add URL
                         </button>
                       </div>
                     </div>
+                    </div>
+                    
                     <div className="row justify-content-center">
                       <table className="table table-hover">
                         <thead>
@@ -190,13 +213,13 @@ const BrandsItem = () => {
                             </td>
                           </tr>
                           <tr>
-                          <td scope="row">B0788C6Z99</td>
+                            <td scope="row">B0788C6Z99</td>
                             <td>
                               https://www.amazon.com/Acer-Predator-Utility-Backpack-Notebook/dp/B0788C6Z99?ref_=Oct_DLandingS_D_41bb447c_3&th=1
                             </td>
                           </tr>
                           <tr>
-                          <td scope="row">B0788C6Z99</td>
+                            <td scope="row">B0788C6Z99</td>
                             <td>
                               https://www.amazon.com/Acer-Predator-Utility-Backpack-Notebook/dp/B0788C6Z99?ref_=Oct_DLandingS_D_41bb447c_3&th=1
                             </td>
@@ -206,15 +229,14 @@ const BrandsItem = () => {
                     </div>
                   </div>
                 </div>
-              
-              <div className="col-md-4">
-                <div className="sku-box">
-                  <p>SKU: B0788C6Z99</p>
-                  <p>Product: Backpack</p>
-                  <p>Category: Electronics</p>
+
+                <div className="col-md-4">
+                  <div className="sku-box">
+                    <p>SKU: B0788C6Z99</p>
+                    <p>Product: Backpack</p>
+                    <p>Category: Electronics</p>
+                  </div>
                 </div>
-              
-            </div>
               </div>
             </div>
             <div
@@ -224,11 +246,22 @@ const BrandsItem = () => {
               {/*======================= tabs b-tech =================*/}
               <div className="row">
                 <div className="col-md-8">
-               
                   <div className="container">
-                    <div className="row justify-content-end">
-                      <div className="col-auto">
-                        <button className="btn btn-primary" type="submit">
+                  <div className="row mb-3">
+                      <div className="col d-flex">
+                        <input
+                          type="text"
+                          className="input flex"
+                          placeholder="Enter Full Name"
+                          name="name"
+                        />
+                          <input
+                          type="text"
+                          className="input flex"
+                          placeholder="Enter Full Name"
+                          name="name"
+                        />
+                        <button className="btn btn-primary ml-2">
                           Add URL
                         </button>
                       </div>
@@ -237,13 +270,11 @@ const BrandsItem = () => {
                       <table className="table table-hover">
                         <thead>
                           <tr>
-                          
                             <th scope="col">URLs</th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
-                           
                             <td>
                               https://www.amazon.com/Acer-Predator-Utility-Backpack-Notebook/dp/B0788C6Z99?ref_=Oct_DLandingS_D_41bb447c_3&th=1
                             </td>
@@ -263,28 +294,38 @@ const BrandsItem = () => {
                     </div>
                   </div>
                 </div>
-              
-              <div className="col-md-4">
-                <div className="sku-box">
-                  <p>SKU: B0788C6Z99</p>
-                  <p>Product: Backpack</p>
-                  <p>Category: Electronics</p>
+
+                <div className="col-md-4">
+                  <div className="sku-box">
+                    <p>SKU: B0788C6Z99</p>
+                    <p>Product: Backpack</p>
+                    <p>Category: Electronics</p>
+                  </div>
                 </div>
-              
-            </div>
               </div>
             </div>
             <div
               className={`tab-pane ${activeTab === 4 ? "active" : ""}`}
               id="settings"
             >
-           <div className="row">
+              <div className="row">
                 <div className="col-md-8">
-               
                   <div className="container">
-                    <div className="row justify-content-end">
-                      <div className="col-auto">
-                        <button className="btn btn-primary" type="submit">
+                  <div className="row mb-3">
+                      <div className="col d-flex">
+                        <input
+                          type="text"
+                          className="input flex"
+                          placeholder="Enter Full Name"
+                          name="name"
+                        />
+                          <input
+                          type="text"
+                          className="input flex"
+                          placeholder="Enter Full Name"
+                          name="name"
+                        />
+                        <button className="btn btn-primary ml-2">
                           Add URL
                         </button>
                       </div>
@@ -305,13 +346,13 @@ const BrandsItem = () => {
                             </td>
                           </tr>
                           <tr>
-                          <td scope="row">B0788C6Z99</td>
+                            <td scope="row">B0788C6Z99</td>
                             <td>
                               https://www.amazon.com/Acer-Predator-Utility-Backpack-Notebook/dp/B0788C6Z99?ref_=Oct_DLandingS_D_41bb447c_3&th=1
                             </td>
                           </tr>
                           <tr>
-                          <td scope="row">B0788C6Z99</td>
+                            <td scope="row">B0788C6Z99</td>
                             <td>
                               https://www.amazon.com/Acer-Predator-Utility-Backpack-Notebook/dp/B0788C6Z99?ref_=Oct_DLandingS_D_41bb447c_3&th=1
                             </td>
@@ -321,18 +362,17 @@ const BrandsItem = () => {
                     </div>
                   </div>
                 </div>
-              
-              <div className="col-md-4">
-                <div className="sku-box">
-                  <p>SKU: B0788C6Z99</p>
-                  <p>Product: Backpack</p>
-                  <p>Category: Electronics</p>
+
+                <div className="col-md-4">
+                  <div className="sku-box">
+                    <p>SKU: B0788C6Z99</p>
+                    <p>Product: Backpack</p>
+                    <p>Category: Electronics</p>
+                  </div>
                 </div>
-              
-            </div>
               </div>
+            </div>
           </div>
-        </div>
         </div>
       </div>
     </div>
