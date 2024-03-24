@@ -6,14 +6,14 @@ import Login from "./pages/Auth/Login";
 import Request from "./pages/Auth/Request";
 import Pass from "./pages/Auth/pass";
 import Card from "./components/employee/card";
-import Edit from "./pages/Admins/Edit";
 import Layout from "./components/layout/layout";
 import NotFound from "./components/NotFound/NotFound";
 import {jwtDecode} from 'jwt-decode';
-import Landing from "./pages/Home/Landing";
+import Landing from "./pages/home/Landing";
 import BrandsItem from "./components/employee/brandsItem";
-import RequestCard from "./components/RequsetCard/RequestCard";
+// import RequestCard from "./components/RequsetCard/RequestCard";
 // import ProtectedRoute from "./components/protectedRoute/protectedRoute";
+import GetRequest from "./components/RequsetCard/GetRequest";
 function App() {
 
 
@@ -44,9 +44,7 @@ function App() {
       {path:'/pass' ,element:<Pass saveUserData={saveUserData} setuserRole={setuserRole} userRole={userRole}/>} ,
       {path:'/card',element:<Card />} ,
       {path:'/admin', element:<Admin />} ,
-      {path:'/edit', element:<Edit />} ,
       {path:'/brand', element:<BrandsItem />} ,
-      {path:'/requestcard', element:<RequestCard/>} ,
       {path:'*', element:<NotFound/>}
     ]}
   ])
