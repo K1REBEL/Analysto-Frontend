@@ -5,10 +5,11 @@ import amazon from "../../img/amazon.png";
 import noon from "../../img/noon.png";
 import tech from "../../img/b-tech.png";
 import jumia from "../../img/jumia.jpg";
-
 const BrandsItem = () => {
   const [activeTab, setActiveTab] = useState(1);
   const [activeImage, setActiveImage] = useState(null);
+  const [inputRowCount, setInputRowCount] = useState(0);
+  const [urls, setUrls] = useState([]);
 
   const handleTabClick = (tabIndex, image) => {
     setActiveTab(tabIndex);
@@ -17,13 +18,33 @@ const BrandsItem = () => {
     );
   };
 
+  const handleAddUrlClick = () => {
+    setInputRowCount(inputRowCount + 1);
+    setUrls((prevUrls) => [...prevUrls, ""]);
+  };
+
+  const handleUrlChange = (index, value) => {
+    setUrls((prevUrls) => {
+      const newUrls = [...prevUrls];
+      newUrls[index] = value;
+      return newUrls;
+    });
+  };
+
+  const handleSaveUrlClick = (index) => {
+    // Convert input field to text or paragraph
+    // You can decide how to handle this conversion based on your requirements
+    // For example, you can directly update the urls state to replace the input value with a text or paragraph element
+    const newUrls = [...urls];
+    newUrls[index] = <p>{newUrls[index]}</p>; // Convert to paragraph
+    setUrls(newUrls);
+  };
+
+
+
   return (
     <div className="container-fluid">
-      <div className="row">
-        <div className="col-12">
-          <Navbar />
-        </div>
-      </div>
+    
       {/*======================= tabs =================*/}
       <div className="row">
         <div className="col-md-3 d-flex flex-wrap">
@@ -106,52 +127,43 @@ const BrandsItem = () => {
                 <div className="col-md-8">
                   <div className="container">
                     <div className="row mb-3">
-                      <div className="col d-flex">
-                        <input
-                          type="text"
-                          className="input flex"
-                          placeholder="Enter Full Name"
-                          name="name"
-                        />
-                          <input
-                          type="text"
-                          className="input flex"
-                          placeholder="Enter Full Name"
-                          name="name"
-                        />
+                      <div className="col d-flex justify-content-end">
                         <button className="btn btn-primary ml-2">
-                          Add URL
+                          Add Url
                         </button>
                       </div>
                     </div>
                     <div className="row justify-content-center">
                       <table className="table table-hover">
-                        <thead>
+                       <thead>
                           <tr>
                             <th scope="col">ASIN</th>
                             <th scope="col">URLs</th>
                           </tr>
                         </thead>
-                        <tbody>
-                          <tr>
-                            <td scope="row">B0788C6Z99</td>
-                            <td>
-                              https://www.amazon.com/Acer-Predator-Utility-Backpack-Notebook/dp/B0788C6Z99?ref_=Oct_DLandingS_D_41bb447c_3&th=1
-                            </td>
-                          </tr>
-                          <tr>
-                            <td scope="row">B0788C6Z99</td>
-                            <td>
-                              https://www.amazon.com/Acer-Predator-Utility-Backpack-Notebook/dp/B0788C6Z99?ref_=Oct_DLandingS_D_41bb447c_3&th=1
-                            </td>
-                          </tr>
-                          <tr>
-                            <td scope="row">B0788C6Z99</td>
-                            <td>
-                              https://www.amazon.com/Acer-Predator-Utility-Backpack-Notebook/dp/B0788C6Z99?ref_=Oct_DLandingS_D_41bb447c_3&th=1
-                            </td>
-                          </tr>
-                        </tbody>
+                       <tbody>
+                  {urls.map((url, index) => (
+                    <tr key={index}>
+                      <td scope="row">B0788C6Z99</td>
+                      <td>
+                        {editMode[index] ? (
+                          <TextField
+                            value={url}
+                            onChange={(e) => handleUrlChange(index, e.target.value)}
+                            variant="outlined"
+                          />
+                        ) : (
+                          <p>{url}</p>
+                        )}
+                        {editMode[index] && (
+                          <IconButton onClick={() => handleSaveClick(index)}>
+                            <SaveIcon />
+                          </IconButton>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
                       </table>
                     </div>
                   </div>
@@ -176,27 +188,16 @@ const BrandsItem = () => {
                 <div className="col-md-8">
                   <div className="container">
                     <div className="row justify-content-end">
-                    <div className="row mb-3">
-                      <div className="col d-flex">
-                        <input
-                          type="text"
-                          className="input flex"
-                          placeholder="Enter Full Name"
-                          name="name"
-                        />
-                          <input
-                          type="text"
-                          className="input flex"
-                          placeholder="Enter Full Name"
-                          name="name"
-                        />
-                        <button className="btn btn-primary ml-2">
-                          Add URL
-                        </button>
+                      <div className="row mb-3">
+                        <div className="col d-flex justify-content-end">
+                         
+                          <button className="btn btn-primary ml-2">
+                            Add URL
+                          </button>
+                        </div>
                       </div>
                     </div>
-                    </div>
-                    
+
                     <div className="row justify-content-center">
                       <table className="table table-hover">
                         <thead>
@@ -247,20 +248,10 @@ const BrandsItem = () => {
               <div className="row">
                 <div className="col-md-8">
                   <div className="container">
-                  <div className="row mb-3">
-                      <div className="col d-flex">
-                        <input
-                          type="text"
-                          className="input flex"
-                          placeholder="Enter Full Name"
-                          name="name"
-                        />
-                          <input
-                          type="text"
-                          className="input flex"
-                          placeholder="Enter Full Name"
-                          name="name"
-                        />
+                    <div className="row mb-3">
+                      <div className="col d-flex justify-content-end">
+                       
+
                         <button className="btn btn-primary ml-2">
                           Add URL
                         </button>
@@ -311,20 +302,9 @@ const BrandsItem = () => {
               <div className="row">
                 <div className="col-md-8">
                   <div className="container">
-                  <div className="row mb-3">
-                      <div className="col d-flex">
-                        <input
-                          type="text"
-                          className="input flex"
-                          placeholder="Enter Full Name"
-                          name="name"
-                        />
-                          <input
-                          type="text"
-                          className="input flex"
-                          placeholder="Enter Full Name"
-                          name="name"
-                        />
+                    <div className="row mb-3">
+                      <div className="col d-flex justify-content-end">
+                      
                         <button className="btn btn-primary ml-2">
                           Add URL
                         </button>

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./card.scss";
-import Navbar from "../../components/Navbar/Navbar";
 import imag1 from "../../img/beko-2.svg";
 import imag2 from "../../img/samsung.svg";
 import imag3 from "../../img/cdnlogo.com_zanussi.svg";
@@ -10,6 +9,19 @@ import imag5 from "../../img/imag5.svg";
 const Card = () => {
   const [activeTab, setActiveTab] = useState(1);
   const [activeImage, setActiveImage] = useState(null);
+  const [showInputRow, setShowInputRow] = useState(false);
+  const [inputRowCount, setInputRowCount] = useState(0);
+  const [editMode, setEditMode] = useState({});
+  const [inputValues, setInputValues] = useState({});
+  const [inputValues2, setInputValues2] = useState({});
+
+  const handleAddProductClick = () => {
+    setShowInputRow(true);
+    setInputRowCount(inputRowCount + 1);
+    setEditMode({ ...editMode, [inputRowCount]: true });
+    setInputValues({ ...inputValues, [inputRowCount]: "" });
+    setInputValues2({ ...inputValues2, [inputRowCount]: "" });
+  };
 
   const handleTabClick = (tabIndex, image) => {
     setActiveTab(tabIndex);
@@ -20,7 +32,6 @@ const Card = () => {
 
   return (
     <div className="container-fluid">
-      
       {/*======================= tabs =================*/}
       <div className="row">
         <div className="col-md-3 d-flex flex-wrap">
@@ -115,6 +126,16 @@ const Card = () => {
               className={`tab-pane ${activeTab === 1 ? "active" : ""}`}
               id="home"
             >
+              <div className="row mb-3">
+                <div className="col d-flex justify-content-end">
+                  <button
+                    className="btn btn-primary ml-2"
+                    onClick={handleAddProductClick}
+                  >
+                    Add Proudect
+                  </button>
+                </div>
+              </div>
               <table class="table table-hover">
                 <thead>
                   <tr>
@@ -125,38 +146,62 @@ const Card = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">B0788C6Z9</th>
-                    <td>Air Fryer</td>
-                    <td>
-                      <button className="btn btn-primary">config</button>
-                      <button className="btn btn-danger">Delete</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">B0788C6Z9</th>
-                    <td>Air Fryer</td>
-                    <td>
-                      <button className="btn btn-primary">config</button>
-                      <button className="btn btn-danger">Delete</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">B0788C6Z9</th>
-                    <td>Air Fryer</td>
-                    <td>
-                      <button className="btn btn-primary">config</button>
-                      <button className="btn btn-danger">Delete</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">B0788C6Z9</th>
-                    <td>Air Fryer</td>
-                    <td>
-                      <button className="btn btn-primary">config</button>
-                      <button className="btn btn-danger">Delete</button>
-                    </td>
-                  </tr>
+                  {showInputRow &&
+                    Array.from({ length: inputRowCount }, (_, index) => (
+                      <tr key={index}>
+                        <td>
+                          {editMode[index] ? (
+                            <input
+                              type="text"
+                              className="form-control"
+                              value={inputValues[index]}
+                              onChange={(e) =>
+                                setInputValues({
+                                  ...inputValues,
+                                  [index]: e.target.value,
+                                })
+                              }
+                            />
+                          ) : (
+                            <p>{inputValues[index]}</p>
+                          )}
+                        </td>
+                        <td>
+                          {editMode[index] ? (
+                            <input
+                              type="text"
+                              className="form-control"
+                              value={inputValues2[index]}
+                              onChange={(e) =>
+                                setInputValues2({
+                                  ...inputValues2,
+                                  [index]: e.target.value,
+                                })
+                              }
+                            />
+                          ) : (
+                            <p>{inputValues2[index]}</p>
+                          )}
+                        </td>
+                        <td>
+                          <button
+                            className="btn btn-primary"
+                            onClick={() => {
+                              setEditMode({
+                                ...editMode,
+                                [index]: !editMode[index],
+                              });
+                              if (!editMode[index]) {
+                                // Save logic here
+                              }
+                            }}
+                          >
+                            {editMode[index] ? "Save" : "Config"}
+                          </button>
+                          <button className="btn btn-danger">Delete</button>
+                        </td>
+                      </tr>
+                    ))}
                 </tbody>
               </table>
             </div>
@@ -166,54 +211,84 @@ const Card = () => {
             >
               {/*======================= tabs noon =================*/}
 
-              <div className="row">
-                <div className="container">
-                  <table class="table table-hover">
-                    <thead>
-                      <tr>
-                        <th scope="col">SKUs</th>
-
-                        <th scope="col">Category</th>
-                        <th scope="col">Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">B0788C6Z9</th>
-                        <td>Air Fryer</td>
-                        <td>
-                          <button className="btn btn-primary">config</button>
-                          <button className="btn btn-danger">Delete</button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">B0788C6Z9</th>
-                        <td>Air Fryer</td>
-                        <td>
-                          <button className="btn btn-primary">config</button>
-                          <button className="btn btn-danger">Delete</button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">B0788C6Z9</th>
-                        <td>Air Fryer</td>
-                        <td>
-                          <button className="btn btn-primary">config</button>
-                          <button className="btn btn-danger">Delete</button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">B0788C6Z9</th>
-                        <td>Air Fryer</td>
-                        <td>
-                          <button className="btn btn-primary">config</button>
-                          <button className="btn btn-danger">Delete</button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
+              <div className="row mb-3">
+                <div className="col d-flex justify-content-end">
+                  <button
+                    className="btn btn-primary ml-2"
+                    onClick={handleAddProductClick}
+                  >
+                    Add Proudect
+                  </button>
                 </div>
               </div>
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">SKUs</th>
+
+                    <th scope="col">Category</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {showInputRow &&
+                    Array.from({ length: inputRowCount }, (_, index) => (
+                      <tr key={index}>
+                        <td>
+                          {editMode[index] ? (
+                            <input
+                              type="text"
+                              className="form-control"
+                              value={inputValues[index]}
+                              onChange={(e) =>
+                                setInputValues({
+                                  ...inputValues,
+                                  [index]: e.target.value,
+                                })
+                              }
+                            />
+                          ) : (
+                            <p>{inputValues[index]}</p>
+                          )}
+                        </td>
+                        <td>
+                          {editMode[index] ? (
+                            <input
+                              type="text"
+                              className="form-control"
+                              value={inputValues2[index]}
+                              onChange={(e) =>
+                                setInputValues2({
+                                  ...inputValues2,
+                                  [index]: e.target.value,
+                                })
+                              }
+                            />
+                          ) : (
+                            <p>{inputValues2[index]}</p>
+                          )}
+                        </td>
+                        <td>
+                          <button
+                            className="btn btn-primary"
+                            onClick={() => {
+                              setEditMode({
+                                ...editMode,
+                                [index]: !editMode[index],
+                              });
+                              if (!editMode[index]) {
+                                // Save logic here
+                              }
+                            }}
+                          >
+                            {editMode[index] ? "Save" : "Config"}
+                          </button>
+                          <button className="btn btn-danger">Delete</button>
+                        </td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
             </div>
             <div
               className={`tab-pane ${activeTab === 3 ? "active" : ""}`}
@@ -221,108 +296,168 @@ const Card = () => {
             >
               {/*======================= tabs b-tech =================*/}
 
-              <div className="row">
-                <div className="container">
-                  <table class="table table-hover">
-                    <thead>
-                      <tr>
-                        <th scope="col">SKUs</th>
-
-                        <th scope="col">Category</th>
-                        <th scope="col">Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">B0788C6Z9</th>
-                        <td>Air Fryer</td>
-                        <td>
-                          <button className="btn btn-primary">config</button>
-                          <button className="btn btn-danger">Delete</button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">B0788C6Z9</th>
-                        <td>Air Fryer</td>
-                        <td>
-                          <button className="btn btn-primary">config</button>
-                          <button className="btn btn-danger">Delete</button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">B0788C6Z9</th>
-                        <td>Air Fryer</td>
-                        <td>
-                          <button className="btn btn-primary">config</button>
-                          <button className="btn btn-danger">Delete</button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">B0788C6Z9</th>
-                        <td>Air Fryer</td>
-                        <td>
-                          <button className="btn btn-primary">config</button>
-                          <button className="btn btn-danger">Delete</button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
+              <div className="row mb-3">
+                <div className="col d-flex justify-content-end">
+                  <button
+                    className="btn btn-primary ml-2"
+                    onClick={handleAddProductClick}
+                  >
+                    Add Proudect
+                  </button>
                 </div>
               </div>
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">SKUs</th>
+
+                    <th scope="col">Category</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {showInputRow &&
+                    Array.from({ length: inputRowCount }, (_, index) => (
+                      <tr key={index}>
+                        <td>
+                          {editMode[index] ? (
+                            <input
+                              type="text"
+                              className="form-control"
+                              value={inputValues[index]}
+                              onChange={(e) =>
+                                setInputValues({
+                                  ...inputValues,
+                                  [index]: e.target.value,
+                                })
+                              }
+                            />
+                          ) : (
+                            <p>{inputValues[index]}</p>
+                          )}
+                        </td>
+                        <td>
+                          {editMode[index] ? (
+                            <input
+                              type="text"
+                              className="form-control"
+                              value={inputValues2[index]}
+                              onChange={(e) =>
+                                setInputValues2({
+                                  ...inputValues2,
+                                  [index]: e.target.value,
+                                })
+                              }
+                            />
+                          ) : (
+                            <p>{inputValues2[index]}</p>
+                          )}
+                        </td>
+                        <td>
+                          <button
+                            className="btn btn-primary"
+                            onClick={() => {
+                              setEditMode({
+                                ...editMode,
+                                [index]: !editMode[index],
+                              });
+                              if (!editMode[index]) {
+                                // Save logic here
+                              }
+                            }}
+                          >
+                            {editMode[index] ? "Save" : "Config"}
+                          </button>
+                          <button className="btn btn-danger">Delete</button>
+                        </td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
             </div>
             <div
               className={`tab-pane ${activeTab === 4 ? "active" : ""}`}
               id="settings"
             >
               <div className="row">
-                <div className="row">
-                  <div className="col">
-                    <table class="table table-hover">
-                      <thead>
-                        <tr>
-                          <th scope="col">SKUs</th>
-
-                          <th scope="col">Category</th>
-                          <th scope="col">Action</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row">B0788C6Z9</th>
-                          <td>Air Fryer</td>
-                          <td>
-                            <button className="btn btn-primary">config</button>
-                            <button className="btn btn-danger">Delete</button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <th scope="row">B0788C6Z9</th>
-                          <td>Air Fryer</td>
-                          <td>
-                            <button className="btn btn-primary">config</button>
-                            <button className="btn btn-danger">Delete</button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <th scope="row">B0788C6Z9</th>
-                          <td>Air Fryer</td>
-                          <td>
-                            <button className="btn btn-primary">config</button>
-                            <button className="btn btn-danger">Delete</button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <th scope="row">B0788C6Z9</th>
-                          <td>Air Fryer</td>
-                          <td>
-                            <button className="btn btn-primary">config</button>
-                            <button className="btn btn-danger">Delete</button>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
+                <div className="row mb-3">
+                  <div className="col d-flex justify-content-end">
+                    <button
+                      className="btn btn-primary ml-2"
+                      onClick={handleAddProductClick}
+                    >
+                      Add Proudect
+                    </button>
                   </div>
                 </div>
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">SKUs</th>
+
+                      <th scope="col">Category</th>
+                      <th scope="col">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {showInputRow &&
+                      Array.from({ length: inputRowCount }, (_, index) => (
+                        <tr key={index}>
+                          <td>
+                            {editMode[index] ? (
+                              <input
+                                type="text"
+                                className="form-control"
+                                value={inputValues[index]}
+                                onChange={(e) =>
+                                  setInputValues({
+                                    ...inputValues,
+                                    [index]: e.target.value,
+                                  })
+                                }
+                              />
+                            ) : (
+                              <p>{inputValues[index]}</p>
+                            )}
+                          </td>
+                          <td>
+                            {editMode[index] ? (
+                              <input
+                                type="text"
+                                className="form-control"
+                                value={inputValues2[index]}
+                                onChange={(e) =>
+                                  setInputValues2({
+                                    ...inputValues2,
+                                    [index]: e.target.value,
+                                  })
+                                }
+                              />
+                            ) : (
+                              <p>{inputValues2[index]}</p>
+                            )}
+                          </td>
+                          <td>
+                            <button
+                              className="btn btn-primary"
+                              onClick={() => {
+                                setEditMode({
+                                  ...editMode,
+                                  [index]: !editMode[index],
+                                });
+                                if (!editMode[index]) {
+                                  // Save logic here
+                                }
+                              }}
+                            >
+                              {editMode[index] ? "Save" : "Config"}
+                            </button>
+                            <button className="btn btn-danger">Delete</button>
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>

@@ -3,6 +3,7 @@ import { FaUser } from "react-icons/fa";
 import { MdDashboard } from "react-icons/md";
 import { MdLogout } from "react-icons/md";
 import { FaHouse } from "react-icons/fa6";
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 import { Link } from "react-router-dom";
 
 export default function Sidebar() {
@@ -20,9 +21,15 @@ export default function Sidebar() {
               <span>Dashboard</span>
             </li>
             <li>
-              <Link to="/">
+              <Link style={{ textDecoration: 'none' }} to="/">
                 <FaHouse  className="icon" />
-                <span>Over view</span>
+                <span>Home</span>
+              </Link>
+            </li>
+            <li>
+              <Link style={{ textDecoration: 'none' }} to="/Request">
+                <AddCircleIcon  className="icon" />
+                <span>Send Request</span>
               </Link>
             </li>
 

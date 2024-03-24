@@ -160,9 +160,10 @@ export default function Login({ saveUserData }) {
                 ) : (
                   ""
                 )}
-            <button type="submit" className="btn">
-              Login
-            </button>
+           <button type="submit" className="btnn" style={{ border: '1px solid #e9ecef', padding: '0.9em 1em' }}>
+  Login
+</button>
+
           </form>
         </div>
       </div>
