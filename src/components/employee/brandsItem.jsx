@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+
 import "./brandItem.scss";
 import Navbar from "../../components/Navbar/Navbar";
 import amazon from "../../img/amazon.png";
@@ -41,6 +43,74 @@ const BrandsItem = () => {
   };
 
 
+
+  const handleAddUrlClick = () => {
+    setInputRowCount(inputRowCount + 1);
+    setUrls((prevUrls) => [...prevUrls, ""]);
+  };
+
+  const handleUrlChange = (index, value) => {
+    setUrls((prevUrls) => {
+      const newUrls = [...prevUrls];
+      newUrls[index] = value;
+      return newUrls;
+    });
+  };
+
+  const handleSaveUrlClick = (index) => {
+    // Convert input field to text or paragraph
+    // You can decide how to handle this conversion based on your requirements
+    // For example, you can directly update the urls state to replace the input value with a text or paragraph element
+    const newUrls = [...urls];
+    newUrls[index] = <p>{newUrls[index]}</p>; // Convert to paragraph
+    setUrls(newUrls);
+  };
+
+
+
+  /////////////////////////////////
+  const [product, setproduct] = useState([]);
+  const [userToken, setUserToken] = useState("");
+  const [user, setUser] = useState({
+  
+  });
+
+  
+  const getUserData = (eventinfo) => {
+    let myUser = { ...user };
+    myUser[eventinfo.target.name] = eventinfo.target.value;
+    setUser(myUser);
+    console.log(myUser);
+  };
+
+  /////////////////////////////////////get Amazone/////////////////////////
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const fetchedToken = localStorage.getItem("userToken");
+        setUserToken(fetchedToken);
+
+        const config = {
+          headers: {
+            Authorization: `Bearer ${fetchedToken}`,
+          },
+        };
+
+        const { data } = await axios.get(
+          "http://127.0.0.1:5000/amazon",
+          config
+        );
+
+        setproduct(data.result);
+        console.log(data.result);
+      } catch (error) {
+        console.error("Error fetching users:", error);
+      }
+    }
+
+    fetchData();
+  }, []);
+    /////////////////////////////////////get Amazone/////////////////////////
 
   return (
     <div className="container-fluid">

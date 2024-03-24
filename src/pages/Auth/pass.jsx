@@ -52,7 +52,7 @@ export default function Pass({ saveUserData, setuserRole, userRole }) {
         if (userRole === 'organization') {
           navigate("datalink");
         } else if (userRole === 'employee') {
-          navigate("/card");
+          navigate("card");
         }
         setuserRole();
       } else {
