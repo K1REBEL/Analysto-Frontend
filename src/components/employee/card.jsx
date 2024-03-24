@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "./card.scss";
 import Navbar from "../../components/Navbar/Navbar";
 import TableComponent from "../../components/TableComponent/TableComponent";
@@ -8,7 +9,50 @@ import imag3 from "../../img/beko-2.svg";
 import imag4 from "../../img/bosch.svg";
 import imag5 from "../../img/imag5.svg";
 
-const Card = () => {
+
+function  Card ({ saveUserData }) {
+  const [product, setproduct] = useState([]);
+  const [userToken, setUserToken] = useState("");
+  const [user, setUser] = useState({
+  
+  });
+
+  
+  const getUserData = (eventinfo) => {
+    let myUser = { ...user };
+    myUser[eventinfo.target.name] = eventinfo.target.value;
+    setUser(myUser);
+    console.log(myUser);
+  };
+  ////////////////////////////////////////////
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const fetchedToken = localStorage.getItem("userToken");
+        setUserToken(fetchedToken);
+
+        const config = {
+          headers: {
+            Authorization: `Bearer ${fetchedToken}`,
+          },
+        };
+
+        const { data } = await axios.get(
+          "http://127.0.0.1:4000/api/products",
+          config
+        );
+
+        setproduct(data.result);
+        console.log(data.result);
+      } catch (error) {
+        console.error("Error fetching users:", error);
+      }
+    }
+
+    fetchData();
+  }, []);
+  /////////////////////////////////////////////////////////////////////////
   const [activeTab, setActiveTab] = useState(1);
 
   const handleTabClick = (tabIndex) => {
