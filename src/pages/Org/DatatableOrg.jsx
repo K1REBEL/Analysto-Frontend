@@ -13,14 +13,13 @@ function DatatableOrg({ saveUserData }) {
     pass: "",
   });
 
-  
   const getUserData = (eventinfo) => {
     let myUser = { ...user };
     myUser[eventinfo.target.name] = eventinfo.target.value;
     setUser(myUser);
     console.log(myUser);
   };
-  ////////////////////////////////////////// get employees /////////////////////////////////////
+
   useEffect(() => {
     async function fetchData() {
       try {
@@ -46,7 +45,6 @@ function DatatableOrg({ saveUserData }) {
 
     fetchData();
   }, []);
-  //////////////////////////////////////////// add employees ///////////////////////////////////
 
   async function sendEmployeeDataToApi() {
     try {
@@ -65,14 +63,13 @@ function DatatableOrg({ saveUserData }) {
 
       if (data.message === "Data inserted successfully") {
         setUser({
-          name:"",
-          email:"",
-          pass:"",
+          name: "",
+          email: "",
+          pass: "",
         });
 
-        console.log("User state after submission:", user); // Log the user state after submission
+        console.log("User state after submission:", user);
 
-        // Fetch updated employees list
         const updatedEmployeesResponse = await axios.get(
           "http://127.0.0.1:4000/api/org/empIndex",
           {
@@ -82,9 +79,7 @@ function DatatableOrg({ saveUserData }) {
           }
         );
 
-        // Update the employees state with the updated list
         setOrgEmpl(updatedEmployeesResponse.data.result);
-        // saveUserData();
       }
     } catch (error) {
       console.error("Error occurred while sending employee data:", error);
@@ -93,14 +88,11 @@ function DatatableOrg({ saveUserData }) {
     }
   }
 
-  // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     await sendEmployeeDataToApi();
   };
-  
-///////////////////////////////////////////// delete employees ////////////////////////////
 
   async function deleteEmployee(id) {
     try {
@@ -124,9 +116,12 @@ function DatatableOrg({ saveUserData }) {
   }
 
   return (
-    <div class="table-wrap">
+    <div className="datatable-org">
+      <br />
+      <br />
       <form onSubmit={handleSubmit}>
-        <div className="field row mb-3">
+        <h2>Employees Table</h2>
+        <div className="row mb-3">
           <div className="col">
             <input
               onChange={getUserData}
@@ -157,45 +152,42 @@ function DatatableOrg({ saveUserData }) {
               value={user.pass}
             />
           </div>
-
-          <div className="col-4">
-            <button
-              type="submit"
-              className="btn btn-sm btn-success"
-            
-            >
-              add User
+          <div className="col-2">
+            <button type="submit" className="btn btn-success">
+              Add User
             </button>
           </div>
         </div>
       </form>
 
-      <table className="table align-middle border mb-0 bg-white">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {orgEmpl.map((item, index) => (
-            <tr key={index}>
-              <td>{item.name}</td>
-              <td>{item.email}</td>
-              <td>
-                <button
-                  type="button"
-                  className="btn btn-danger btn-sm"
-                  onClick={() => deleteEmployee(item.id)}
-                >
-                  Delete
-                </button>
-              </td>
+      <div className="table-container">
+        <table className="table table-bordered">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Action</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {orgEmpl.map((item, index) => (
+              <tr key={index}>
+                <td>{item.name}</td>
+                <td>{item.email}</td>
+                <td>
+                  <button
+                    type="button"
+                    className="btn btn-danger"
+                    onClick={() => deleteEmployee(item.id)}
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

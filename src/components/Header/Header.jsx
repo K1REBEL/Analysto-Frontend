@@ -16,8 +16,8 @@ function Header() {
               Welcome To Analysto!
             </div>
             <div className="masthead">It's Nice To Meet You</div>
-            <button className="galaxy" type="button">
-              <strong>Get Start</strong>
+            <a className="nav-link scrollto" href="#Request"> <button className="galaxy" type="button">
+             <strong>Get Start</strong> 
               <div id="container-stars">
                 <div id="stars"></div>
               </div>
@@ -25,7 +25,7 @@ function Header() {
                 <div className="circle"></div>
                 <div className="circle"></div>
               </div>
-            </button>
+            </button></a>
           </div>
         </div>
         <div className="col-lg-6 col-md-6 col-sm-12">

@@ -4,13 +4,13 @@ import "./Admin.scss";
 
 const Admin = () => {
   return (
-    <div className='home'>
-    <Sidebar />
-        <div className="admin">
-          <AdminTable/>
-      
+    <div className='D'>
+        <Sidebar />
+       <div className="wi">
+        <AdminTable />
       </div>
       </div>
+     
     
   );
 };

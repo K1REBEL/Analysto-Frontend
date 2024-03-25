@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../Org/DatatableOrg.scss";
+import "./AdminTable.scss";
 
 function AdminTable({ saveUserData }) {
   const [adminOrg, setadminOrg] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [userToken, setUserToken] = useState("");
   const [user, setUser] = useState({
-    id:"",
+    id: "",
     name: "",
     email: "",
     niche: "",
     region: "",
     phone: "",
   });
-  
 
   useEffect(() => {
     async function fetchData() {
@@ -48,8 +47,7 @@ function AdminTable({ saveUserData }) {
       let endpoint;
       if (isChecked === false) {
         endpoint = `http://127.0.0.1:4000/api/org/freeze/${id}`;
-      } else if(isChecked === true)
-      {
+      } else if (isChecked === true) {
         endpoint = `http://127.0.0.1:4000/api/org/restore/${id}`;
       }
       console.log(isChecked);
@@ -58,15 +56,15 @@ function AdminTable({ saveUserData }) {
           Authorization: `Bearer ${userToken}`,
         },
       };
-  console.log(id);
+      console.log(id);
       await axios.patch(endpoint, null, config);
-  
+
       // Fetch updated organization data
       const { data } = await axios.get(
         "http://127.0.0.1:4000/api/admin/orgIndex",
         config
       );
-  
+
       // Update adminOrg state with the updated organization data
       setadminOrg(data.result);
       console.log(data.result);
@@ -74,11 +72,13 @@ function AdminTable({ saveUserData }) {
       console.error("Error toggling switch:", error);
     }
   };
-  
 
   return (
     <div>
-      <table className="table align-middle border mb-0 bg-white">
+      <table
+        className="table align-middle border mb-0 bg-white"
+        style={{ marginTop: "140px" }}
+      >
         <thead>
           <tr>
             <th>Name</th>

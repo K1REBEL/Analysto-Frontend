@@ -7,12 +7,11 @@ import amazon from "../../img/amazon.png";
 import noon from "../../img/noon.png";
 import tech from "../../img/b-tech.png";
 import jumia from "../../img/jumia.jpg";
-
-function BrandsItem () {
+const BrandsItem = () => {
   const [activeTab, setActiveTab] = useState(1);
   const [activeImage, setActiveImage] = useState(null);
-  
-
+  const [inputRowCount, setInputRowCount] = useState(0);
+  const [urls, setUrls] = useState([]);
 
   const handleTabClick = (tabIndex, image) => {
     setActiveTab(tabIndex);
@@ -20,6 +19,54 @@ function BrandsItem () {
       prevActiveImage === image ? null : image
     );
   };
+
+  const handleAddUrlClick = () => {
+    setInputRowCount(inputRowCount + 1);
+    setUrls((prevUrls) => [...prevUrls, ""]);
+  };
+
+  const handleUrlChange = (index, value) => {
+    setUrls((prevUrls) => {
+      const newUrls = [...prevUrls];
+      newUrls[index] = value;
+      return newUrls;
+    });
+  };
+
+  const handleSaveUrlClick = (index) => {
+    // Convert input field to text or paragraph
+    // You can decide how to handle this conversion based on your requirements
+    // For example, you can directly update the urls state to replace the input value with a text or paragraph element
+    const newUrls = [...urls];
+    newUrls[index] = <p>{newUrls[index]}</p>; // Convert to paragraph
+    setUrls(newUrls);
+  };
+
+
+
+  const handleAddUrlClick = () => {
+    setInputRowCount(inputRowCount + 1);
+    setUrls((prevUrls) => [...prevUrls, ""]);
+  };
+
+  const handleUrlChange = (index, value) => {
+    setUrls((prevUrls) => {
+      const newUrls = [...prevUrls];
+      newUrls[index] = value;
+      return newUrls;
+    });
+  };
+
+  const handleSaveUrlClick = (index) => {
+    // Convert input field to text or paragraph
+    // You can decide how to handle this conversion based on your requirements
+    // For example, you can directly update the urls state to replace the input value with a text or paragraph element
+    const newUrls = [...urls];
+    newUrls[index] = <p>{newUrls[index]}</p>; // Convert to paragraph
+    setUrls(newUrls);
+  };
+
+
 
   /////////////////////////////////
   const [product, setproduct] = useState([]);
@@ -67,11 +114,7 @@ function BrandsItem () {
 
   return (
     <div className="container-fluid">
-      <div className="row">
-        <div className="col-12">
-          <Navbar />
-        </div>
-      </div>
+    
       {/*======================= tabs =================*/}
       <div className="row">
         <div className="col-md-3 d-flex flex-wrap">
@@ -152,75 +195,79 @@ function BrandsItem () {
             >
               <div className="row">
                 <div className="col-md-8">
-               
                   <div className="container">
-                    <div className="row justify-content-end">
-                      <div className="col-auto">
-                        <button className="btn btn-primary" type="submit">
-                          Add URL
+                    <div className="row mb-3">
+                      <div className="col d-flex justify-content-end">
+                        <button className="btn btn-primary ml-2">
+                          Add Url
                         </button>
                       </div>
                     </div>
                     <div className="row justify-content-center">
                       <table className="table table-hover">
-                        <thead>
+                       <thead>
                           <tr>
                             <th scope="col">ASIN</th>
                             <th scope="col">URLs</th>
                           </tr>
                         </thead>
-                        <tbody>
-                          <tr>
-                            <td scope="row">B0788C6Z99</td>
-                            <td>
-                              https://www.amazon.com/Acer-Predator-Utility-Backpack-Notebook/dp/B0788C6Z99?ref_=Oct_DLandingS_D_41bb447c_3&th=1
-                            </td>
-                          </tr>
-                          <tr>
-                          <td scope="row">B0788C6Z99</td>
-                            <td>
-                              https://www.amazon.com/Acer-Predator-Utility-Backpack-Notebook/dp/B0788C6Z99?ref_=Oct_DLandingS_D_41bb447c_3&th=1
-                            </td>
-                          </tr>
-                          <tr>
-                          <td scope="row">B0788C6Z99</td>
-                            <td>
-                              https://www.amazon.com/Acer-Predator-Utility-Backpack-Notebook/dp/B0788C6Z99?ref_=Oct_DLandingS_D_41bb447c_3&th=1
-                            </td>
-                          </tr>
-                        </tbody>
+                       <tbody>
+                  {urls.map((url, index) => (
+                    <tr key={index}>
+                      <td scope="row">B0788C6Z99</td>
+                      <td>
+                        {editMode[index] ? (
+                          <TextField
+                            value={url}
+                            onChange={(e) => handleUrlChange(index, e.target.value)}
+                            variant="outlined"
+                          />
+                        ) : (
+                          <p>{url}</p>
+                        )}
+                        {editMode[index] && (
+                          <IconButton onClick={() => handleSaveClick(index)}>
+                            <SaveIcon />
+                          </IconButton>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
                       </table>
                     </div>
                   </div>
                 </div>
-              
-              <div className="col-md-4">
-                <div className="sku-box">
-                  <p>SKU: B0788C6Z99</p>
-                  <p>Product: Backpack</p>
-                  <p>Category: Electronics</p>
+
+                <div className="col-md-4">
+                  <div className="sku-box">
+                    <p>SKU: B0788C6Z99</p>
+                    <p>Product: Backpack</p>
+                    <p>Category: Electronics</p>
+                  </div>
                 </div>
-              
-            </div>
               </div>
             </div>
-            <div className={`tab-pane ${activeTab === 2 ? "active" : ""}`}
+            <div
+              className={`tab-pane ${activeTab === 2 ? "active" : ""}`}
               id="profile"
             >
-             
               {/*======================= tabs noon =================*/}
 
               <div className="row">
                 <div className="col-md-8">
-               
                   <div className="container">
                     <div className="row justify-content-end">
-                      <div className="col-auto">
-                        <button className="btn btn-primary" type="submit">
-                          Add URL
-                        </button>
+                      <div className="row mb-3">
+                        <div className="col d-flex justify-content-end">
+                         
+                          <button className="btn btn-primary ml-2">
+                            Add URL
+                          </button>
+                        </div>
                       </div>
                     </div>
+
                     <div className="row justify-content-center">
                       <table className="table table-hover">
                         <thead>
@@ -237,13 +284,13 @@ function BrandsItem () {
                             </td>
                           </tr>
                           <tr>
-                          <td scope="row">B0788C6Z99</td>
+                            <td scope="row">B0788C6Z99</td>
                             <td>
                               https://www.amazon.com/Acer-Predator-Utility-Backpack-Notebook/dp/B0788C6Z99?ref_=Oct_DLandingS_D_41bb447c_3&th=1
                             </td>
                           </tr>
                           <tr>
-                          <td scope="row">B0788C6Z99</td>
+                            <td scope="row">B0788C6Z99</td>
                             <td>
                               https://www.amazon.com/Acer-Predator-Utility-Backpack-Notebook/dp/B0788C6Z99?ref_=Oct_DLandingS_D_41bb447c_3&th=1
                             </td>
@@ -253,15 +300,14 @@ function BrandsItem () {
                     </div>
                   </div>
                 </div>
-              
-              <div className="col-md-4">
-                <div className="sku-box">
-                  <p>SKU: B0788C6Z99</p>
-                  <p>Product: Backpack</p>
-                  <p>Category: Electronics</p>
+
+                <div className="col-md-4">
+                  <div className="sku-box">
+                    <p>SKU: B0788C6Z99</p>
+                    <p>Product: Backpack</p>
+                    <p>Category: Electronics</p>
+                  </div>
                 </div>
-              
-            </div>
               </div>
             </div>
             <div
@@ -271,11 +317,12 @@ function BrandsItem () {
               {/*======================= tabs b-tech =================*/}
               <div className="row">
                 <div className="col-md-8">
-               
                   <div className="container">
-                    <div className="row justify-content-end">
-                      <div className="col-auto">
-                        <button className="btn btn-primary" type="submit">
+                    <div className="row mb-3">
+                      <div className="col d-flex justify-content-end">
+                       
+
+                        <button className="btn btn-primary ml-2">
                           Add URL
                         </button>
                       </div>
@@ -284,13 +331,11 @@ function BrandsItem () {
                       <table className="table table-hover">
                         <thead>
                           <tr>
-                          
                             <th scope="col">URLs</th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
-                           
                             <td>
                               https://www.amazon.com/Acer-Predator-Utility-Backpack-Notebook/dp/B0788C6Z99?ref_=Oct_DLandingS_D_41bb447c_3&th=1
                             </td>
@@ -310,28 +355,27 @@ function BrandsItem () {
                     </div>
                   </div>
                 </div>
-              
-              <div className="col-md-4">
-                <div className="sku-box">
-                  <p>SKU: B0788C6Z99</p>
-                  <p>Product: Backpack</p>
-                  <p>Category: Electronics</p>
+
+                <div className="col-md-4">
+                  <div className="sku-box">
+                    <p>SKU: B0788C6Z99</p>
+                    <p>Product: Backpack</p>
+                    <p>Category: Electronics</p>
+                  </div>
                 </div>
-              
-            </div>
               </div>
             </div>
             <div
               className={`tab-pane ${activeTab === 4 ? "active" : ""}`}
               id="settings"
             >
-           <div className="row">
+              <div className="row">
                 <div className="col-md-8">
-               
                   <div className="container">
-                    <div className="row justify-content-end">
-                      <div className="col-auto">
-                        <button className="btn btn-primary" type="submit">
+                    <div className="row mb-3">
+                      <div className="col d-flex justify-content-end">
+                      
+                        <button className="btn btn-primary ml-2">
                           Add URL
                         </button>
                       </div>
@@ -352,13 +396,13 @@ function BrandsItem () {
                             </td>
                           </tr>
                           <tr>
-                          <td scope="row">B0788C6Z99</td>
+                            <td scope="row">B0788C6Z99</td>
                             <td>
                               https://www.amazon.com/Acer-Predator-Utility-Backpack-Notebook/dp/B0788C6Z99?ref_=Oct_DLandingS_D_41bb447c_3&th=1
                             </td>
                           </tr>
                           <tr>
-                          <td scope="row">B0788C6Z99</td>
+                            <td scope="row">B0788C6Z99</td>
                             <td>
                               https://www.amazon.com/Acer-Predator-Utility-Backpack-Notebook/dp/B0788C6Z99?ref_=Oct_DLandingS_D_41bb447c_3&th=1
                             </td>
@@ -368,18 +412,17 @@ function BrandsItem () {
                     </div>
                   </div>
                 </div>
-              
-              <div className="col-md-4">
-                <div className="sku-box">
-                  <p>SKU: B0788C6Z99</p>
-                  <p>Product: Backpack</p>
-                  <p>Category: Electronics</p>
+
+                <div className="col-md-4">
+                  <div className="sku-box">
+                    <p>SKU: B0788C6Z99</p>
+                    <p>Product: Backpack</p>
+                    <p>Category: Electronics</p>
+                  </div>
                 </div>
-              
-            </div>
               </div>
+            </div>
           </div>
-        </div>
         </div>
       </div>
     </div>
