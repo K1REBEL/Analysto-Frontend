@@ -3,7 +3,7 @@ import {Outlet , useNavigate} from 'react-router-dom'
 import Navbar from '../Navbar/Navbar';
 
 function Layout({userData , setuserData}){
-    console.log(userData)
+    // console.log(userData)
 
     let navigate  = useNavigate();
     function logOut()

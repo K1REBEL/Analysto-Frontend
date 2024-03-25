@@ -10,21 +10,26 @@ import imag5 from "../../img/imag5.svg";
 const Card = ({ saveUserData }) => {
   const [activeTab, setActiveTab] = useState(1);
   const [activeImage, setActiveImage] = useState(null);
-  const [product, setProduct] = useState([]);
+  const [products, setProducts] = useState([]);
   const [userToken, setUserToken] = useState("");
   const [user, setUser] = useState({});
-  const [beckoProducts, setBeckoProducts] = useState([]);
+  const [bekoProducts, setBekoProducts] = useState([]);
   const [samsungProducts, setSamsungProducts] = useState([]);
   const [zanusiProducts, setZanusiProducts] = useState([]);
   const [BoschProducts, setBoschProducts] = useState([]);
   const [TournadoProducts, setTournadoProducts] = useState([]);
 
-  // const getUserData = (eventinfo) => {
-  //   let myUser = { ...user };
-  //   myUser[eventinfo.target.name] = eventinfo.target.value;
-  //   setUser(myUser);
-  //   console.log(myUser);
-  // };
+  const handleButtonClick = () => {
+    // Change the URL to navigate to another page
+  window.location.href = "/brand";
+  };
+
+  const getUserData = (eventinfo) => {
+    let myUser = { ...user };
+    myUser[eventinfo.target.name] = eventinfo.target.value;
+    setUser(myUser);
+    console.log(myUser);
+  };
 
   ////////////////////////////////////////////get products///////////////////////////////
 
@@ -44,14 +49,15 @@ const Card = ({ saveUserData }) => {
           "http://127.0.0.1:4000/api/products",
           config
         );
-        const products = data.result;
+        const product = data.result;
 
         // Set state for all products
-        setProduct(products);
+        setProducts(product);
+        console.log(product.brand)
 
         // Filter products by brand and set state accordingly
-        setBeckoProducts(
-          products.filter((product) => product.brand === "becko")
+        setBekoProducts(
+          products.filter((product) => product.brand === "beko")
         );
         setSamsungProducts(
           products.filter((product) => product.brand === "samsung")
@@ -76,21 +82,21 @@ const Card = ({ saveUserData }) => {
   ////////////////////////////////////////////delete products///////////////////////////////
 
 
-  const deleteProduct = async (prod_id) => {
+  const deleteProduct = async (id) => {
     try {
       const response = await axios.delete(
-        `http://127.0.0.1:4000/api/product/${prod_id}`,
+        `http://127.0.0.1:4000/api/product/${id}`,
         {
           headers: {
             Authorization: `Bearer ${userToken}`,
           },
         }
       );
-      console.log(prod_id)
+      console.log(id)
       if (response.data.message === "Product Deleted successfully") {
-        setProduct(prevProducts => prevProducts.filter(product => product.prod_id !== prod_id));
+        setProducts(prevProducts => prevProducts.filter(product => product.prod_id !== id));
         // saveUserData();
-        console.log(product);
+        console.log(products);
       }
     } catch (error) {
       console.error("Error occurred while deleting product:", error);
@@ -121,7 +127,7 @@ const Card = ({ saveUserData }) => {
                 className={`nav-link ${
                   activeImage === imag1 ? "active-image" : ""
                 }`}
-                href="#home"
+                href="#beko"
                 aria-controls="home"
                 role="tab"
                 data-toggle="tab"
@@ -137,7 +143,7 @@ const Card = ({ saveUserData }) => {
                 className={`nav-link ${
                   activeImage === imag2 ? "active-image" : ""
                 }`}
-                href="#profile"
+                href="#samsung"
                 aria-controls="profile"
                 role="tab"
                 data-toggle="tab"
@@ -153,7 +159,7 @@ const Card = ({ saveUserData }) => {
                 className={`nav-link ${
                   activeImage === imag3 ? "active-image" : ""
                 }`}
-                href="#messages"
+                href="#zanussi"
                 aria-controls="messages"
                 role="tab"
                 data-toggle="tab"
@@ -169,7 +175,7 @@ const Card = ({ saveUserData }) => {
                 className={`nav-link ${
                   activeImage === imag4 ? "active-image" : ""
                 }`}
-                href="#settings"
+                href="#bosch"
                 aria-controls="settings"
                 role="tab"
                 data-toggle="tab"
@@ -185,7 +191,7 @@ const Card = ({ saveUserData }) => {
                 className={`nav-link ${
                   activeImage === imag5 ? "active-image" : ""
                 }`}
-                href="#settings"
+                href="#tornado"
                 aria-controls="settings"
                 role="tab"
                 data-toggle="tab"
@@ -212,16 +218,14 @@ const Card = ({ saveUserData }) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {beckoProducts.map((item, index) => (
+                  {bekoProducts.map((item, index) => (
                     <tr key={index}>
                       <td scope="row">{item.sku}</td>
                       <td>{item.category}</td>
                       <td>
-                        <button className="btn btn-primary">config</button>
-                        <button className="btn btn-danger" onClick={() => deleteProduct(item.id)}>Delete</button>
-      {/* Add the following line to log the ID */}
-      {/* {console.log(item.id)}                       */}
-      </td>
+                      <button className="btn btn-primary" onClick={handleButtonClick}>config</button> 
+                      <button className="btn btn-danger" onClick={() => deleteProduct(item.id)}>Delete</button>
+                        </td>
                     </tr>
                   ))}
                 </tbody>
@@ -250,10 +254,9 @@ const Card = ({ saveUserData }) => {
                           <td scope="row">{item.sku}</td>
                           <td>{item.category}</td>
                           <td>
-                            <button className="btn btn-primary">config</button>
-                            <button className="btn btn-danger" onClick={() => deleteProduct(item.id)}>Delete</button>
-      {/* Add the following line to log the ID */}
-      {console.log(item.id)}                          
+                          <button className="btn btn-primary" onClick={handleButtonClick}>config</button>
+                          <button className="btn btn-danger" onClick={() => deleteProduct(item.id)}>Delete</button>
+      
       </td>
                         </tr>
                       ))}
@@ -285,10 +288,9 @@ const Card = ({ saveUserData }) => {
                           <td scope="row">{item.sku}</td>
                           <td>{item.category}</td>
                           <td>
-                            <button className="btn btn-primary">config</button>
-                            <button className="btn btn-danger" onClick={() => deleteProduct(item.id)}>Delete</button>
-      {/* Add the following line to log the ID */}
-      {/* {console.log(item.id)}             */}
+                          <button className="btn btn-primary" onClick={handleButtonClick}>config</button>
+                          <button className="btn btn-danger" onClick={() => deleteProduct(item.id)}>Delete</button>
+     
                     </td>
                         </tr>
                       ))}
@@ -319,15 +321,8 @@ const Card = ({ saveUserData }) => {
                             <td scope="row">{item.sku}</td>
                             <td>{item.category}</td>
                             <td>
-                              <button
-                                className="btn btn-primary"
-                                // onClick={() => deleteProduct(item.id)}
-                              >
-                                config
-                              </button>
-                              <button className="btn btn-danger" onClick={() => deleteProduct(item.id)}>Delete</button>
-      {/* Add the following line to log the ID */}
-      {/* {console.log(item.id)} */}
+                            <button className="btn btn-primary" onClick={handleButtonClick}>config</button>
+                            <button className="btn btn-danger" onClick={() => deleteProduct(item.id)}>Delete</button>
                             </td>
                           </tr>
                         ))}
